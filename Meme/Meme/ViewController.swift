@@ -8,12 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    private let label: UILabel = {
+        let label = UILabel()
+        let labelText = Bundle.main.object(forInfoDictionaryKey: "APP_LABEL_TEXT") as? String
+        label.text = labelText
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureUI()
     }
-
-
+    
+    private func configureUI() {
+        view.addSubview(label)
+        view.backgroundColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
 }
 
