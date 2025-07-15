@@ -17,6 +17,10 @@
 		2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552392E268F9E004BE9AF /* SceneDelegate.swift */; };
 		2CE552522E269159004BE9AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CE552402E268FA0004BE9AF /* Assets.xcassets */; };
 		2CE552532E269159004BE9AF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2CE552432E268FA0004BE9AF /* Base */; };
+		2CE5525E2E26953F004BE9AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE5525D2E26953F004BE9AF /* Alamofire */; };
+		2CE552602E269546004BE9AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE5525F2E269546004BE9AF /* Alamofire */; };
+		2CE552632E269579004BE9AF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE552622E269579004BE9AF /* Moya */; };
+		2CE552652E26957C004BE9AF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE552642E26957C004BE9AF /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE552632E269579004BE9AF /* Moya in Frameworks */,
+				2CE5525E2E26953F004BE9AF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE552652E26957C004BE9AF /* Moya in Frameworks */,
+				2CE552602E269546004BE9AF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +63,7 @@
 			children = (
 				2CE552362E268F9E004BE9AF /* Meme */,
 				2CE552352E268F9E004BE9AF /* Products */,
+				2CE5525C2E26953F004BE9AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +91,13 @@
 			path = Meme;
 			sourceTree = "<group>";
 		};
+		2CE5525C2E26953F004BE9AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -98,6 +114,10 @@
 			dependencies = (
 			);
 			name = "Meme-release";
+			packageProductDependencies = (
+				2CE5525D2E26953F004BE9AF /* Alamofire */,
+				2CE552622E269579004BE9AF /* Moya */,
+			);
 			productName = Meme;
 			productReference = 2CE552342E268F9E004BE9AF /* Meme-release.app */;
 			productType = "com.apple.product-type.application";
@@ -115,6 +135,10 @@
 			dependencies = (
 			);
 			name = "Meme-dev";
+			packageProductDependencies = (
+				2CE5525F2E269546004BE9AF /* Alamofire */,
+				2CE552642E26957C004BE9AF /* Moya */,
+			);
 			productName = Meme;
 			productReference = 2CE552572E269159004BE9AF /* Meme-dev.app */;
 			productType = "com.apple.product-type.application";
@@ -143,6 +167,10 @@
 				Base,
 			);
 			mainGroup = 2CE5522B2E268F9E004BE9AF;
+			packageReferences = (
+				2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2CE552612E269571004BE9AF /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 2CE552352E268F9E004BE9AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -469,6 +497,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		2CE552612E269571004BE9AF /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2CE5525D2E26953F004BE9AF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2CE5525F2E269546004BE9AF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2CE552622E269579004BE9AF /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CE552612E269571004BE9AF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		2CE552642E26957C004BE9AF /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CE552612E269571004BE9AF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CE5522C2E268F9E004BE9AF /* Project object */;
 }
