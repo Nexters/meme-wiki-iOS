@@ -85,16 +85,21 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
 ### Xcode ###
 
 ## Xcode 8 and earlier
 
 ### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcodeproj/project.xcworkspace/
-!*.xcworkspace/contents.xcworkspacedata
+**/*.xcodeproj/**
+!**/*.xcodeproj/project.pbxproj
+!**/*.xcodeproj/xcshareddata/
+!**/*.xcodeproj/project.xcworkspace/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
