@@ -41,6 +41,8 @@
 		AD848E462E2C9BEC0003F09F /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E442E2C9BEC0003F09F /* Lobby.swift */; };
 		AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E472E2C9D1D0003F09F /* ViewModel.swift */; };
 		AD848E492E2C9D1D0003F09F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E472E2C9D1D0003F09F /* ViewModel.swift */; };
+		2CE552732E2B6EEA004BE9AF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552722E2B6EEA004BE9AF /* Logger.swift */; };
+		2CE552742E2B6EEA004BE9AF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552722E2B6EEA004BE9AF /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,7 @@
 		AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyUseCase.swift; sourceTree = "<group>"; };
 		AD848E442E2C9BEC0003F09F /* Lobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		AD848E472E2C9D1D0003F09F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		2CE552722E2B6EEA004BE9AF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 			children = (
 				AD848E112E2B42F30003F09F /* Sources */,
 				AD848E122E2B42F90003F09F /* Resources */,
+				2CE552722E2B6EEA004BE9AF /* Logger.swift */
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -382,6 +386,7 @@
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */,
+				2CE552732E2B6EEA004BE9AF /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +406,7 @@
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				AD848E492E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */,
+				2CE552742E2B6EEA004BE9AF /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
