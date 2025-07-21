@@ -8,20 +8,18 @@
 import Combine
 import Moya
 
-extension Wiki.Repository {
-    final class LobbyRepository: Wiki.Namespace, LobbyInterface {
-        private let provider = MoyaProvider<Wiki.API.Lobby>()
-    }
+final class LobbyRepository: LobbyInterface {
+    private let provider = MoyaProvider<LobbyAPI>()
 }
 
-extension Wiki.Repository.LobbyRepository {
-    func fetchSections() async throws -> Wiki.Repository.DTO.SectionResponse {
+extension LobbyRepository {
+    func fetchSections() async throws -> LobbyResponse {
         return try await withCheckedThrowingContinuation { continuation in
             provider.request(.sample(id: "sample")) { result in
                 switch result {
                 case .success(let response):
                     do {
-                        let response = try response.map(DTO.SectionResponse.self)
+                        let response = try response.map(LobbyResponse.self)
                         continuation.resume(returning: response)
                     } catch {
                         continuation.resume(throwing: error)

@@ -8,13 +8,11 @@
 import Foundation
 import Moya
 
-extension Wiki.API {
-    enum Lobby {
-        case sample(id: String) // TODO: - remove this line
-    }
+enum LobbyAPI {
+    case sample(id: String) // TODO: - remove this line
 }
 
-extension Wiki.API.Lobby: TargetType {
+extension LobbyAPI: TargetType {
     var baseURL: URL { ApiConfiguration.shared.hostUrl }
     
     var path: String {

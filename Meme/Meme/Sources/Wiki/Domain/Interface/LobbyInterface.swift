@@ -7,8 +7,6 @@
 
 import Foundation
 
-extension Wiki.Repository {
-    protocol LobbyInterface {
-        func fetchSections() async throws -> DTO.SectionResponse
-    }
+protocol LobbyInterface {
+    func fetchSections() async throws -> LobbyResponse
 }

@@ -29,10 +29,8 @@
 		AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* Endpoint.swift */; };
 		AD848E262E2B55CF0003F09F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E252E2B55CF0003F09F /* APIConfiguration.swift */; };
 		AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E252E2B55CF0003F09F /* APIConfiguration.swift */; };
-		AD848E2D2E2C8CCE0003F09F /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E2C2E2C8CCE0003F09F /* Namespace.swift */; };
-		AD848E2E2E2C8CCE0003F09F /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E2C2E2C8CCE0003F09F /* Namespace.swift */; };
-		AD848E362E2C93790003F09F /* SectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E352E2C93790003F09F /* SectionResponse.swift */; };
-		AD848E372E2C93790003F09F /* SectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E352E2C93790003F09F /* SectionResponse.swift */; };
+		AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E352E2C93790003F09F /* LobbyResponse.swift */; };
+		AD848E372E2C93790003F09F /* LobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E352E2C93790003F09F /* LobbyResponse.swift */; };
 		AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E382E2C93D40003F09F /* LobbyRepository.swift */; };
 		AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E382E2C93D40003F09F /* LobbyRepository.swift */; };
 		AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E3E2E2C94660003F09F /* LobbyInterface.swift */; };
@@ -59,8 +57,7 @@
 		AD848E152E2B49620003F09F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		AD848E1C2E2B4A430003F09F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
-		AD848E2C2E2C8CCE0003F09F /* Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
-		AD848E352E2C93790003F09F /* SectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResponse.swift; sourceTree = "<group>"; };
+		AD848E352E2C93790003F09F /* LobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyResponse.swift; sourceTree = "<group>"; };
 		AD848E382E2C93D40003F09F /* LobbyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyRepository.swift; sourceTree = "<group>"; };
 		AD848E3E2E2C94660003F09F /* LobbyInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyInterface.swift; sourceTree = "<group>"; };
 		AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyUseCase.swift; sourceTree = "<group>"; };
@@ -186,7 +183,6 @@
 		AD848E232E2B55B30003F09F /* Wiki */ = {
 			isa = PBXGroup;
 			children = (
-				AD848E2C2E2C8CCE0003F09F /* Namespace.swift */,
 				AD848E242E2B55BB0003F09F /* Data */,
 				AD848E322E2C92DD0003F09F /* Domain */,
 				AD848E332E2C92E20003F09F /* Presentation */,
@@ -233,7 +229,7 @@
 		AD848E342E2C936A0003F09F /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				AD848E352E2C93790003F09F /* SectionResponse.swift */,
+				AD848E352E2C93790003F09F /* LobbyResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -379,14 +375,13 @@
 				AD848E462E2C9BEC0003F09F /* Lobby.swift in Sources */,
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
-				AD848E372E2C93790003F09F /* SectionResponse.swift in Sources */,
+				AD848E372E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */,
-				AD848E2E2E2C8CCE0003F09F /* Namespace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,14 +394,13 @@
 				AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */,
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
-				AD848E362E2C93790003F09F /* SectionResponse.swift in Sources */,
+				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
 				2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				AD848E492E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */,
-				AD848E2D2E2C8CCE0003F09F /* Namespace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

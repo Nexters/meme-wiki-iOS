@@ -9,18 +9,15 @@ import Combine
 
 // FIXME: - 파일없으면 깃에서 안보여서 있는 임시 파일
 
-extension Wiki.ViewModel {
-    final class Main: Wiki.Namespace {
-        private let lobbyUseCase: Wiki.UseCase.LobbyUseCase
-        private var subscriptions = Set<AnyCancellable>()
-        
-        init(lobbyUseCase: Wiki.UseCase.LobbyUseCase) {
-            self.lobbyUseCase = lobbyUseCase
-        }
+final class MainViewModel {
+    private let lobbyUseCase: LobbyUseCase
+    private var subscriptions = Set<AnyCancellable>()
+    
+    init(lobbyUseCase: LobbyUseCase) {
+        self.lobbyUseCase = lobbyUseCase
     }
 }
-
-extension Wiki.ViewModel.Main {
+extension MainViewModel {
     private func fetch() {
         lobbyUseCase.result
             .sink { result in

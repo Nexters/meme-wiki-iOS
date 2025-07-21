@@ -7,11 +7,10 @@
 
 import Foundation
 
-extension Wiki.Entity {
-    enum Lobby: Wiki.Namespace { }
-}
-
-extension Wiki.Entity.Lobby {
+struct Lobby {
+    
+    let sections: [Section]
+    
     struct Section {
         let type: String
         let title: String
