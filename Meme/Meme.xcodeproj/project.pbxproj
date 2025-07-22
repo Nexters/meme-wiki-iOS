@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
+		2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
 		2CC3999F2E2F84BD00D14084 /* KeyChainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */; };
 		2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */; };
 		2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552372E268F9E004BE9AF /* AppDelegate.swift */; };
@@ -48,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CC399982E2F831100D14084 /* KeyChainStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStorable.swift; sourceTree = "<group>"; };
 		2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProperties.swift; sourceTree = "<group>"; };
 		2CE552342E268F9E004BE9AF /* Meme-release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme-release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE552372E268F9E004BE9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		2CC399972E2F830500D14084 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
+				2CC399982E2F831100D14084 /* KeyChainStorable.swift */,
 				2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */,
 			);
 			path = KeyChain;
@@ -400,6 +404,8 @@
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				AD848E372E2C93790003F09F /* LobbyResponse.swift in Sources */,
+				2CC3999F2E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
+				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
@@ -421,6 +427,7 @@
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
+				2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
 				2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
