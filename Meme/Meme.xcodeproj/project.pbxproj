@@ -11,6 +11,8 @@
 		2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
 		2CC3999F2E2F84BD00D14084 /* KeyChainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */; };
 		2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */; };
+		2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399A12E2F85AB00D14084 /* KeyChainError.swift */; };
+		2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399A12E2F85AB00D14084 /* KeyChainError.swift */; };
 		2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552372E268F9E004BE9AF /* AppDelegate.swift */; };
 		2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552392E268F9E004BE9AF /* SceneDelegate.swift */; };
 		2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5523B2E268F9E004BE9AF /* ViewController.swift */; };
@@ -52,6 +54,7 @@
 /* Begin PBXFileReference section */
 		2CC399982E2F831100D14084 /* KeyChainStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStorable.swift; sourceTree = "<group>"; };
 		2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProperties.swift; sourceTree = "<group>"; };
+		2CC399A12E2F85AB00D14084 /* KeyChainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainError.swift; sourceTree = "<group>"; };
 		2CE552342E268F9E004BE9AF /* Meme-release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme-release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE552372E268F9E004BE9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CE552392E268F9E004BE9AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 			children = (
 				2CC399982E2F831100D14084 /* KeyChainStorable.swift */,
 				2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */,
+				2CC399A12E2F85AB00D14084 /* KeyChainError.swift */,
 			);
 			path = KeyChain;
 			sourceTree = "<group>";
