@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CC3999F2E2F84BD00D14084 /* KeyChainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */; };
+		2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */; };
 		2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552372E268F9E004BE9AF /* AppDelegate.swift */; };
 		2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552392E268F9E004BE9AF /* SceneDelegate.swift */; };
 		2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5523B2E268F9E004BE9AF /* ViewController.swift */; };
@@ -46,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProperties.swift; sourceTree = "<group>"; };
 		2CE552342E268F9E004BE9AF /* Meme-release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme-release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE552372E268F9E004BE9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CE552392E268F9E004BE9AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CC399972E2F830500D14084 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */,
+			);
+			path = KeyChain;
+			sourceTree = "<group>";
+		};
 		2CE5522B2E268F9E004BE9AF = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +126,7 @@
 			children = (
 				AD848E112E2B42F30003F09F /* Sources */,
 				AD848E122E2B42F90003F09F /* Resources */,
+				2CC399972E2F830500D14084 /* KeyChain */
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -408,6 +420,7 @@
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
+				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
 				2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
