@@ -58,11 +58,12 @@ extension WikiWebViewController: WKUIDelegate, WKNavigationDelegate {
     private var configuration: WKWebViewConfiguration {
         let configuration = WKWebViewConfiguration()
         configuration.allowsAirPlayForMediaPlayback = true
+        configuration.userContentController = userContentController
         return configuration
     }
     private var userContentController: WKUserContentController {
         let contentController = WKUserContentController()
-        contentController.add(wikiScriptMessageHandler, contentWorld: .page, name: "MemeWiki")
+        contentController.add(wikiScriptMessageHandler, name: "wikiHandler")
         return contentController
     }
     private var wikiScriptMessageHandler: WKScriptMessageHandler {
