@@ -10,7 +10,7 @@ import Alamofire
 import Moya
 import Kingfisher
 
-class ViewController: UIViewController {
+class ViewController: UINavigationController {
     
     private let label: UILabel = {
         let label = UILabel()
@@ -33,6 +33,13 @@ class ViewController: UIViewController {
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let url = "http://google.com".asEncodedURL() else { return }
+            let webViewController = WikiWebViewController(url: url)
+            self?.pushViewController(webViewController, animated: true)
+        
+        }
     }
 }
 

@@ -25,6 +25,7 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
         
         switch handlerName {
         case .close:
+            Log.debug(">>> close", .networking)
             return
         case .share:
             let method = parameters["method"] as? String
