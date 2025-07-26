@@ -40,6 +40,9 @@ extension WikiWebViewController: WKUIDelegate, WKNavigationDelegate {
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
+        if #available(iOS 16.4, *) {
+            webView.isInspectable = true
+        }
         
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
