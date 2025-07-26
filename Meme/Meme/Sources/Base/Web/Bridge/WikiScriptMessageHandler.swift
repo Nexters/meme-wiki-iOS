@@ -29,6 +29,7 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
         case .share:
             let method = parameters["method"] as? String
             let link = (parameters["link"] as? String)?.asEncodedURL()
+            // TODO: - share
         }
     }
 }
