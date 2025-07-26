@@ -22,6 +22,7 @@ class WikiWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupWebView()
     }
     
     private func setupWebView() {
@@ -52,7 +53,7 @@ extension WikiWebViewController: WKUIDelegate, WKNavigationDelegate {
         return webView
     }
     private var configuration: WKWebViewConfiguration {
-        var configuration = WKWebViewConfiguration()
+        let configuration = WKWebViewConfiguration()
         configuration.allowsAirPlayForMediaPlayback = true
         return configuration
     }
