@@ -33,6 +33,12 @@
 		2CE5526A2E292245004BE9AF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE552692E292245004BE9AF /* Kingfisher */; };
 		2CE552732E2B6EEA004BE9AF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552722E2B6EEA004BE9AF /* Logger.swift */; };
 		2CE552742E2B6EEA004BE9AF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552722E2B6EEA004BE9AF /* Logger.swift */; };
+		AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */; };
+		AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */; };
+		AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */; };
+		AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */; };
+		AD5194672E346F770069D29B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String+Extension.swift */; };
+		AD5194682E346F770069D29B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String+Extension.swift */; };
 		AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* Endpoint.swift */; };
@@ -69,6 +75,9 @@
 		2CE552592E26928D004BE9AF /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		2CE5525A2E269298004BE9AF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		2CE552722E2B6EEA004BE9AF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiWebViewController.swift; sourceTree = "<group>"; };
+		AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiScriptMessageHandler.swift; sourceTree = "<group>"; };
+		AD5194662E346F770069D29B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		AD848E152E2B49620003F09F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		AD848E1C2E2B4A430003F09F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -138,7 +147,7 @@
 			children = (
 				AD848E112E2B42F30003F09F /* Sources */,
 				AD848E122E2B42F90003F09F /* Resources */,
-				2CC399972E2F830500D14084 /* KeyChain */
+				2CC399972E2F830500D14084 /* KeyChain */,
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -154,8 +163,26 @@
 			isa = PBXGroup;
 			children = (
 				2CE552722E2B6EEA004BE9AF /* Logger.swift */,
+				AD5194662E346F770069D29B /* String+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AD51945E2E346CF80069D29B /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		AD5194652E346E240069D29B /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */,
+				AD51945E2E346CF80069D29B /* Bridge */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		AD848E112E2B42F30003F09F /* Sources */ = {
@@ -186,6 +213,7 @@
 		AD848E132E2B45350003F09F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				AD5194652E346E240069D29B /* Web */,
 				AD848E222E2B559B0003F09F /* API */,
 			);
 			path = Base;
@@ -414,9 +442,12 @@
 				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				AD848E372E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC3999F2E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
+				AD5194682E346F770069D29B /* String+Extension.swift in Sources */,
+				AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
+				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
@@ -438,9 +469,12 @@
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
+				AD5194672E346F770069D29B /* String+Extension.swift in Sources */,
+				AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
+				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */,
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
