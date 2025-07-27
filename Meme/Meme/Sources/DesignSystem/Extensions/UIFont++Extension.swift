@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     static func customFont(_ font: CustomFont) -> UIFont {
-        return UIFont(name: font.name, size: font.size)!
+        return UIFont(name: font.name, size: font.size) ?? .systemFont(ofSize: font.size)
     }
 }
 
