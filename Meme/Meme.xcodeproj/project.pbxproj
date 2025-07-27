@@ -45,6 +45,9 @@
 		2CFAA30F2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CFAA30A2E34A8F9004E4604 /* Pretendard-Bold.otf */; };
 		2CFAA3102E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CFAA30B2E34A8F9004E4604 /* Pretendard-SemiBold.otf */; };
 		2CFAA3112E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CFAA30B2E34A8F9004E4604 /* Pretendard-SemiBold.otf */; };
+		2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */; };
+		2CFAA31C2E365459004E4604 /* CustomFontConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */; };
+		2CFAA3222E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */; };
 		AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* Endpoint.swift */; };
@@ -87,6 +90,7 @@
 		2CFAA3092E34A8F9004E4604 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		2CFAA30A2E34A8F9004E4604 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		2CFAA30B2E34A8F9004E4604 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontConvertible.swift; sourceTree = "<group>"; };
 		AD848E152E2B49620003F09F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		AD848E1C2E2B4A430003F09F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -210,6 +214,13 @@
 			path = Pretendard;
 			sourceTree = "<group>";
 		};
+		2CFAA3162E34B3A1004E4604 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
 		AD848E112E2B42F30003F09F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +495,7 @@
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */,
+				2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
 				AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */,
 				2CE552732E2B6EEA004BE9AF /* Logger.swift in Sources */,
 			);
@@ -511,6 +523,7 @@
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				AD848E492E2C9D1D0003F09F /* ViewModel.swift in Sources */,
+				2CFAA31C2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
 				AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */,
 				2CE552742E2B6EEA004BE9AF /* Logger.swift in Sources */,
 			);
@@ -660,7 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Meme/Info.plist;
+				INFOPLIST_FILE = Meme/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -690,7 +703,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Meme/Info.plist;
+				INFOPLIST_FILE = Meme/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
