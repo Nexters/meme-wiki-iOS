@@ -52,6 +52,9 @@
 		2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */; };
 		2CFAA31C2E365459004E4604 /* CustomFontConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */; };
 		2CFAA3222E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */; };
+		2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */; };
+		2CFAA3252E3654BC004E4604 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */; };
+		2CFAA3262E3654BC004E4604 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */; };
 		AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* Endpoint.swift */; };
@@ -97,6 +100,8 @@
 		2CFAA3132E34A964004E4604 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		2CFAA3172E34B3C8004E4604 /* Pretendard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pretendard.swift; sourceTree = "<group>"; };
 		2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontConvertible.swift; sourceTree = "<group>"; };
+		2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString++Extension.swift"; sourceTree = "<group>"; };
+		2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		AD848E152E2B49620003F09F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		AD848E1C2E2B4A430003F09F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -220,6 +225,15 @@
 			path = Pretendard;
 			sourceTree = "<group>";
 		};
+		2CFAA3122E34A951004E4604 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				2CFAA31D2E36547C004E4604 /* Extensions */,
+				2CFAA3162E34B3A1004E4604 /* Font */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
 		2CFAA3162E34B3A1004E4604 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,9 +243,20 @@
 			);
 			path = Font;
 			sourceTree = "<group>";
+		};
+		2CFAA31D2E36547C004E4604 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */,
+				2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AD848E112E2B42F30003F09F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2CFAA3122E34A951004E4604 /* DesignSystem */,
 				2CFAA3022E310C9D004E4604 /* Utils */,
 				AD848E132E2B45350003F09F /* Base */,
 				AD848E232E2B55B30003F09F /* Wiki */,
@@ -485,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CFAA3222E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */,
 				AD848E262E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
@@ -501,6 +527,7 @@
 				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */,
+				2CFAA3252E3654BC004E4604 /* UIFont++Extension.swift in Sources */,
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				2CFAA3142E34A964004E4604 /* CustomFont.swift in Sources */,
@@ -515,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				2CC3999D2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */,
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
@@ -531,6 +559,7 @@
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */,
+				2CFAA3262E3654BC004E4604 /* UIFont++Extension.swift in Sources */,
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				2CFAA3152E34A964004E4604 /* CustomFont.swift in Sources */,
