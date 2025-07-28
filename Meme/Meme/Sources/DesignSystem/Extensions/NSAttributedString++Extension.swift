@@ -12,11 +12,14 @@ extension NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.minimumLineHeight = font.lineHeight
         paragraph.maximumLineHeight = font.lineHeight
-
+        paragraph.lineBreakMode = .byTruncatingTail
+        let customFont = UIFont(name: font.name, size: font.size)!
+        
         return NSAttributedString(string: text, attributes: [
-            .font: UIFont(name: font.name, size: font.size)!,
+            .font: customFont,
             .kern: font.letterSpacing,
-            .paragraphStyle: paragraph
+            .paragraphStyle: paragraph,
+            .baselineOffset: (font.lineHeight - customFont.lineHeight) / 2
         ])
     }
 }
