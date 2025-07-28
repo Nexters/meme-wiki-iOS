@@ -32,7 +32,7 @@ enum CustomColor {
         case .purple(let purple): return purple
         case .red(let red): return red
         case .redOrange(let redOrange): return redOrange
-        case .violet(let violet): return violets
+        case .violet(let violet): return violet
         }
     }
     
