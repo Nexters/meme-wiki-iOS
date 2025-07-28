@@ -52,14 +52,16 @@ enum Black: String, CustomColorConvertible {
 }
 
 enum Gray: String, CustomColorConvertible {
-    case gray99
-    case gray90
-    case gray80
-    case gray70
-    case gray60
-    case gray50
-    case gray40
-    case gray30
+    case gray10
+    case gray9
+    case gray8
+    case gray7
+    case gray6
+    case gray5
+    case gray4
+    case gray3
+    case gray2
+    case gray1
     
     var color: UIColor? {
         return UIColor(named: self.rawValue)
@@ -82,16 +84,14 @@ enum Blue: String, CustomColorConvertible {
 }
 
 enum Green: String, CustomColorConvertible {
-    case green10
-    case green9
-    case green8
-    case green7
-    case green6
-    case green5
-    case green4
-    case green3
-    case green2
-    case green1
+    case green99
+    case green90
+    case green80
+    case green70
+    case green60
+    case green50
+    case green40
+    case green30
     
     var color: UIColor? {
         return UIColor(named: self.rawValue)
