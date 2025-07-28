@@ -11,15 +11,28 @@ enum CustomColor {
     case black(Black)
     case gray(Gray)
     case blue(Blue)
+    case green(Green)
+    case lightBlue(LightBlue)
+    case lime(Lime)
+    case pink(Pink)
+    case purple(Purple)
+    case red(Red)
+    case redOrange(RedOrange)
+    case violet(Violet)
     
     fileprivate var base: CustomColorConvertible {
         switch self {
-        case .black(let black):
-            return black
-        case .gray(let gray):
-            return gray
-        case .blue(let blue):
-            return blue
+        case .black(let black): return black
+        case .gray(let gray): return gray
+        case .blue(let blue): return blue
+        case .green(let green): return green
+        case .lightBlue(let leightBlue): return leightBlue
+        case .lime(let lime): return lime
+        case .pink(let pink): return pink
+        case .purple(let purple): return purple
+        case .red(let red): return red
+        case .redOrange(let redOrange): return redOrange
+        case .violet(let violet): return violets
         }
     }
     
@@ -69,14 +82,16 @@ enum Blue: String, CustomColorConvertible {
 }
 
 enum Green: String, CustomColorConvertible {
-    case green99
-    case green90
-    case green80
-    case green70
-    case green60
-    case green50
-    case green40
-    case green30
+    case green10
+    case green9
+    case green8
+    case green7
+    case green6
+    case green5
+    case green4
+    case green3
+    case green2
+    case green1
     
     var color: UIColor? {
         return UIColor(named: self.rawValue)
