@@ -8,13 +8,43 @@
 import UIKit
 
 final class ThumbnailView: UIView {
+    
+    // MARK: - Properties
+    
+    // TODO: - add Yellow Color
+    fileprivate enum RandomColor: CaseIterable {
+        case purple, pink, violet, lightBlue, green, red
+    }
+    
+    private var yearLabelColor: UIColor? {
+        switch randomColor {
+        case .purple: return CustomColor.purple(.purple90).color
+        case .pink: return CustomColor.pink(.pink90).color
+        case .violet: return CustomColor.violet(.violet90).color
+        case .lightBlue: return CustomColor.lightBlue(.lightBlue90).color
+        case .green: return CustomColor.green(.green90).color
+        case .red: return CustomColor.red(.red90).color
+        }
+    }
 
+    private var ThumnailGradientColor: UIColor? {
+        switch randomColor {
+        case .purple: return CustomColor.purple(.purple30).color
+        case .pink: return CustomColor.pink(.pink40).color
+        case .violet: return CustomColor.violet(.violet30).color
+        case .lightBlue: return CustomColor.lightBlue(.lightBlue30).color
+        case .green: return CustomColor.green(.green60).color
+        case .red: return CustomColor.red(.red50).color
+        }
+    }
+    
     // MARK: - UI Components
+    
+    private let randomColor = RandomColor.allCases.randomElement()!
 
     private let yearLabel: UILabel = {
         // TODO: - yearlabel random color
         let label = PaddingLabel(left: 8, right: 8)
-        label.backgroundColor = CustomColor.purple(.purple90).color
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         return label
@@ -74,6 +104,8 @@ final class ThumbnailView: UIView {
 private extension ThumbnailView {
     
     func configureUI() {
+        yearLabel.backgroundColor = yearLabelColor
+
         [imageView, yearLabel, titleLabel, hastagLabel].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -98,12 +130,7 @@ private extension ThumbnailView {
     }
 
     func configureGradient() {
-        // TODO: - add Yellow Color
-        let colorSets: [CustomColor] = [
-            .purple(.purple30), .pink(.pink40), .violet(.violet30), .lightBlue(.lightBlue30), .green(.green60), .red(.red50)
-        ]
-        
-        guard let baseColor = colorSets.randomElement()?.color else { return }
+        guard let baseColor = ThumnailGradientColor else { return }
         
         gradientLayer.colors = [
             baseColor.withAlphaComponent(0.0).cgColor,
