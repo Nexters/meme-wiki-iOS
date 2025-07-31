@@ -50,7 +50,7 @@ final class ThumbnailView: UIView {
         return imageView
     }()
     
-    private let gradientLayer = CAGradientLayer()
+    private var gradientLayer = CAGradientLayer()
     
     // MARK: - Init
     
@@ -122,18 +122,7 @@ private extension ThumbnailView {
     
     func configureGradient() {
         guard let baseColor = ThumnailGradientColor else { return }
-        
-        gradientLayer.colors = [
-            baseColor.withAlphaComponent(0.0).cgColor,
-            baseColor.withAlphaComponent(0.0).cgColor,
-            baseColor.withAlphaComponent(0.2).cgColor,
-            baseColor.withAlphaComponent(0.5).cgColor
-        ]
-        
-        gradientLayer.locations = [0.0, 0.4, 0.7, 1.0].map(NSNumber.init)
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        
+        gradientLayer = makeGradientLayer(baseColor)
         layer.insertSublayer(gradientLayer, above: imageView.layer)
     }
 }
