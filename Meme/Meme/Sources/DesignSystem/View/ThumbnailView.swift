@@ -105,6 +105,7 @@ private extension ThumbnailView {
             yearLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
             titleLabel.bottomAnchor.constraint(equalTo: hastagLabel.topAnchor, constant: Constants.titleLabel.bottom),
             
             hastagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
