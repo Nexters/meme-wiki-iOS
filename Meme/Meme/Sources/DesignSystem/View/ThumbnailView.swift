@@ -15,6 +15,7 @@ final class ThumbnailView: UIView {
     fileprivate enum RandomColor: CaseIterable {
         case purple, pink, violet, lightBlue, green, red
     }
+    private var type: ThumbnailType? = nil
     
     private var yearLabelColor: UIColor? {
         switch randomColor {
@@ -74,6 +75,10 @@ final class ThumbnailView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+    
+    convenience init(_ type: ThumbnailType) {
+        self.init(frame: .zero)
+        self.type = type
         configureUI()
         configureGradient()
     }
@@ -93,9 +98,10 @@ final class ThumbnailView: UIView {
 
     public func updateUI(_ thumbnail: Thumbnail) {
         // TODO: - imageView Setting
-        titleLabel.attributedText = .customFont(.pretendard(.title(.headline2)), text: thumbnail.title)
-        hastagLabel.attributedText = .customFont(.pretendard(.body(.caption)), text: thumbnail.hashtag.map { "#\($0)" }.joined(separator: " "))
-        yearLabel.attributedText = .customFont(.pretendard(.body(.body1)), text: String(thumbnail.year))
+        guard let type = type else { return }
+        titleLabel.attributedText = .customFont(type.titleFont, text: thumbnail.title)
+        hastagLabel.attributedText = .customFont(type.hastagFont, text: thumbnail.hashtag.map { "#\($0)" }.joined(separator: " "))
+        yearLabel.attributedText = .customFont(type.yearFont, text: String(thumbnail.year))
     }
 }
 
@@ -104,23 +110,24 @@ final class ThumbnailView: UIView {
 private extension ThumbnailView {
     
     func configureUI() {
+        guard let padding = type?.padding else { return }
         yearLabel.backgroundColor = yearLabelColor
-
+        
         [imageView, yearLabel, titleLabel, hastagLabel].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-
+        
         NSLayoutConstraint.activate([
-            yearLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            yearLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            yearLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+            yearLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             titleLabel.bottomAnchor.constraint(equalTo: hastagLabel.topAnchor, constant: -2),
-
-            hastagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            hastagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            hastagLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            
+            hastagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            hastagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            hastagLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
             
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
