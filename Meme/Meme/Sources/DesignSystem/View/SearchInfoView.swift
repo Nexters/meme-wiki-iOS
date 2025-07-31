@@ -61,19 +61,41 @@ private extension SearchInfoView {
         }
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.imageView.leading),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 22),
-            imageView.heightAnchor.constraint(equalToConstant: 22),
+            imageView.widthAnchor.constraint(equalToConstant: Constants.imageView.width),
+            imageView.heightAnchor.constraint(equalToConstant: Constants.imageView.height),
             
             
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 6),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Constants.titleLabel.leading),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: 24),
+            titleLabel.widthAnchor.constraint(equalToConstant: Constants.titleLabel.width),
             
-            contentLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
-            contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            contentLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: Constants.contentLabel.leading),
+            contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.contentLabel.trailing),
             contentLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private extension SearchInfoView {
+    enum Constants {
+        enum imageView {
+            static let leading: CGFloat = 10
+            static let width: CGFloat = 22
+            static let height: CGFloat = 22
+        }
+        
+        enum titleLabel {
+            static let leading: CGFloat = 6
+            static let width: CGFloat = 24
+        }
+        
+        enum contentLabel {
+            static let leading: CGFloat = 10
+            static let trailing: CGFloat = -8
+        }
     }
 }
