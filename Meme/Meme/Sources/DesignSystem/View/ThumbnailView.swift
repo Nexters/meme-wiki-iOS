@@ -26,8 +26,8 @@ final class ThumbnailView: UIView {
     
     private let yearLabel: UILabel = {
         // TODO: - yearlabel random color
-        let label = PaddingLabel(left: 8, right: 8)
-        label.layer.cornerRadius = 10
+        let label = PaddingLabel(left: Constants.yearLabel.padding, right: Constants.yearLabel.padding)
+        label.layer.cornerRadius = Constants.yearLabel.cornerRadius
         label.clipsToBounds = true
         return label
     }()
@@ -105,7 +105,7 @@ private extension ThumbnailView {
             yearLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            titleLabel.bottomAnchor.constraint(equalTo: hastagLabel.topAnchor, constant: -2),
+            titleLabel.bottomAnchor.constraint(equalTo: hastagLabel.topAnchor, constant: Constants.titleLabel.bottom),
             
             hastagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             hastagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
@@ -127,3 +127,17 @@ private extension ThumbnailView {
     }
 }
 
+// MARK: - Constants
+
+private extension ThumbnailView {
+    enum Constants {
+        enum yearLabel {
+            static let padding: CGFloat = 8
+            static let cornerRadius: CGFloat = 10
+        }
+        
+        enum titleLabel {
+            static let bottom: CGFloat = -2
+        }
+    }
+}
