@@ -11,38 +11,19 @@ final class ThumbnailView: UIView {
     
     // MARK: - Properties
     
-    // TODO: - add Yellow Color
-    fileprivate enum RandomColor: CaseIterable {
-        case purple, pink, violet, lightBlue, green, red
-    }
     private var type: ThumbnailType? = nil
-    
-    private var yearLabelColor: UIColor? {
-        switch randomColor {
-        case .purple: return CustomColor.purple(.purple90).color
-        case .pink: return CustomColor.pink(.pink90).color
-        case .violet: return CustomColor.violet(.violet90).color
-        case .lightBlue: return CustomColor.lightBlue(.lightBlue90).color
-        case .green: return CustomColor.green(.green90).color
-        case .red: return CustomColor.red(.red90).color
-        }
-    }
-
-    private var ThumnailGradientColor: UIColor? {
-        switch randomColor {
-        case .purple: return CustomColor.purple(.purple30).color
-        case .pink: return CustomColor.pink(.pink40).color
-        case .violet: return CustomColor.violet(.violet30).color
-        case .lightBlue: return CustomColor.lightBlue(.lightBlue30).color
-        case .green: return CustomColor.green(.green60).color
-        case .red: return CustomColor.red(.red50).color
-        }
-    }
+    private let randomColor = RandomColor.allCases.randomElement() ?? .none
     
     // MARK: - UI Components
     
-    private let randomColor = RandomColor.allCases.randomElement()!
-
+    private var yearLabelColor: UIColor? {
+        return randomColor?.labelColor
+    }
+    
+    private var ThumnailGradientColor: UIColor? {
+        return randomColor?.gradientColor
+    }
+    
     private let yearLabel: UILabel = {
         // TODO: - yearlabel random color
         let label = PaddingLabel(left: 8, right: 8)
@@ -50,13 +31,13 @@ final class ThumbnailView: UIView {
         label.clipsToBounds = true
         return label
     }()
-
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         return label
     }()
-
+    
     private let hastagLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -68,13 +49,14 @@ final class ThumbnailView: UIView {
         imageView.backgroundColor = CustomColor.gray(.gray9).color
         return imageView
     }()
-
+    
     private let gradientLayer = CAGradientLayer()
-
+    
     // MARK: - Init
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
     
     convenience init(_ type: ThumbnailType) {
         self.init(frame: .zero)
@@ -82,20 +64,20 @@ final class ThumbnailView: UIView {
         configureUI()
         configureGradient()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("Don't use Storyboard")
     }
-
+    
     // MARK: - Layout
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
     }
-
+    
     // MARK: - Public Methods
-
+    
     public func updateUI(_ thumbnail: Thumbnail) {
         // TODO: - imageView Setting
         guard let type = type else { return }
@@ -135,7 +117,9 @@ private extension ThumbnailView {
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
-
+    
+    // TODO: - Gradient UIView Extension으로 역할 변경
+    
     func configureGradient() {
         guard let baseColor = ThumnailGradientColor else { return }
         
@@ -145,11 +129,11 @@ private extension ThumbnailView {
             baseColor.withAlphaComponent(0.2).cgColor,
             baseColor.withAlphaComponent(0.5).cgColor
         ]
-
+        
         gradientLayer.locations = [0.0, 0.4, 0.7, 1.0].map(NSNumber.init)
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-
+        
         layer.insertSublayer(gradientLayer, above: imageView.layer)
     }
 }
