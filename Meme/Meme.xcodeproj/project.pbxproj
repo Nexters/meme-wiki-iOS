@@ -23,6 +23,8 @@
 		2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
+		2C5F23F62E3CEF53000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F52E3CEF53000AA318 /* MarqueeLabel */; };
+		2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F72E3CEF58000AA318 /* MarqueeLabel */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767552E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
@@ -160,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5F23F62E3CEF53000AA318 /* MarqueeLabel in Frameworks */,
 				2CE5526A2E292245004BE9AF /* Kingfisher in Frameworks */,
 				2CE552632E269579004BE9AF /* Moya in Frameworks */,
 				2CE5525E2E26953F004BE9AF /* Alamofire in Frameworks */,
@@ -170,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */,
 				2CE552682E292240004BE9AF /* Kingfisher in Frameworks */,
 				2CE552652E26957C004BE9AF /* Moya in Frameworks */,
 				2CE552602E269546004BE9AF /* Alamofire in Frameworks */,
@@ -510,6 +514,7 @@
 				2CE5525D2E26953F004BE9AF /* Alamofire */,
 				2CE552622E269579004BE9AF /* Moya */,
 				2CE552692E292245004BE9AF /* Kingfisher */,
+				2C5F23F52E3CEF53000AA318 /* MarqueeLabel */,
 			);
 			productName = Meme;
 			productReference = 2CE552342E268F9E004BE9AF /* Meme-release.app */;
@@ -532,6 +537,7 @@
 				2CE5525F2E269546004BE9AF /* Alamofire */,
 				2CE552642E26957C004BE9AF /* Moya */,
 				2CE552672E292240004BE9AF /* Kingfisher */,
+				2C5F23F72E3CEF58000AA318 /* MarqueeLabel */,
 			);
 			productName = Meme;
 			productReference = 2CE552572E269159004BE9AF /* Meme-dev.app */;
@@ -565,6 +571,7 @@
 				2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2CE552612E269571004BE9AF /* XCRemoteSwiftPackageReference "Moya" */,
 				2CE552662E29220E004BE9AF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
 			);
 			productRefGroup = 2CE552352E268F9E004BE9AF /* Products */;
 			projectDirPath = "";
@@ -837,6 +844,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 899UYL8QU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meme/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -867,6 +875,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 899UYL8QU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meme/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -978,6 +987,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cbpowell/MarqueeLabel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1005,6 +1022,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2C5F23F52E3CEF53000AA318 /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			productName = MarqueeLabel;
+		};
+		2C5F23F72E3CEF58000AA318 /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			productName = MarqueeLabel;
+		};
 		2CE5525D2E26953F004BE9AF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */;
