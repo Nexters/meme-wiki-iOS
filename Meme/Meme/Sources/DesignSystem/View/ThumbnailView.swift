@@ -20,7 +20,7 @@ final class ThumbnailView: UIView {
         return randomColor?.labelColor
     }
     
-    private var ThumnailGradientColor: UIColor? {
+    private var ThumbnailGradientColor: UIColor? {
         return randomColor?.gradientColor
     }
     
@@ -122,7 +122,7 @@ private extension ThumbnailView {
     // TODO: - Gradient UIView Extension으로 역할 변경
     
     func configureGradient() {
-        guard let baseColor = ThumnailGradientColor else { return }
+        guard let baseColor = ThumbnailGradientColor else { return }
         gradientLayer = makeGradientLayer(baseColor)
         layer.insertSublayer(gradientLayer, above: imageView.layer)
     }
