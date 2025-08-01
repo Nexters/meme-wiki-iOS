@@ -55,6 +55,8 @@
 		2C5F24342E3F99B1000AA318 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24322E3F99B1000AA318 /* Provider.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
+		2C5F23F62E3CEF53000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F52E3CEF53000AA318 /* MarqueeLabel */; };
+		2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F72E3CEF58000AA318 /* MarqueeLabel */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767552E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767582E37B0E600794E10 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6767572E37B0E600794E10 /* Color.xcassets */; };
