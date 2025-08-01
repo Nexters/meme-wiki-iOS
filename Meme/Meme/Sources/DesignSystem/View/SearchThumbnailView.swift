@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ThumbnailView: UIView {
+final class SearchThumbnailView: UIView {
     
     // MARK: - Properties
     
@@ -89,7 +89,7 @@ final class ThumbnailView: UIView {
 
 // MARK: - Private Methods
 
-private extension ThumbnailView {
+private extension SearchThumbnailView {
     
     func configureUI() {
         guard let padding = type?.padding else { return }
@@ -130,7 +130,7 @@ private extension ThumbnailView {
 
 // MARK: - Constants
 
-private extension ThumbnailView {
+private extension SearchThumbnailView {
     enum Constants {
         enum yearLabel {
             static let padding: CGFloat = 8

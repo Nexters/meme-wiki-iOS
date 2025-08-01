@@ -15,8 +15,8 @@
 		2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981DB2E3B6495007BDE92 /* RandomColor.swift */; };
 		2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
-		2C6767512E37978700794E10 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* ThumbnailView.swift */; };
-		2C6767522E37978700794E10 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* ThumbnailView.swift */; };
+		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
+		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767552E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767582E37B0E600794E10 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6767572E37B0E600794E10 /* Color.xcassets */; };
@@ -98,7 +98,7 @@
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
-		2C6767502E37978700794E10 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
+		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
 		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2C6767572E37B0E600794E10 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		2C67675B2E37B5D100794E10 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		2C67674F2E37977300794E10 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C6767502E37978700794E10 /* ThumbnailView.swift */,
+				2C6767502E37978700794E10 /* SearchThumbnailView.swift */,
 				2C6767532E37A07E00794E10 /* PaddingLabel.swift */,
 			);
 			path = View;
@@ -587,7 +587,7 @@
 				2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */,
 				AD848E262E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				AD848E462E2C9BEC0003F09F /* Lobby.swift in Sources */,
-				2C6767512E37978700794E10 /* ThumbnailView.swift in Sources */,
+				2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */,
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */,
@@ -627,7 +627,7 @@
 				2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */,
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */,
-				2C6767522E37978700794E10 /* ThumbnailView.swift in Sources */,
+				2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */,
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */,

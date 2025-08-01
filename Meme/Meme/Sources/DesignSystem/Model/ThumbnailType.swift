@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension ThumbnailView {
+extension SearchThumbnailView {
     public enum ThumbnailType {
         case half
         case full
