@@ -11,8 +11,8 @@ final class SearchResultView: UIView {
     
     // MARK: - UI Components
     
-    private let thumbnailView: ThumbnailView = {
-        let view = ThumbnailView(.full)
+    private let thumbnailView: SearchThumbnailView = {
+        let view = SearchThumbnailView(.full)
         view.layer.cornerRadius = Constants.ThumbnailView.cornerRadius
         view.clipsToBounds = true
         return view
