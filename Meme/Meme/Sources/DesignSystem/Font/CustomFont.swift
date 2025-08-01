@@ -9,10 +9,12 @@ import UIKit
 
 enum CustomFont {
     case pretendard(Pretendard)
-
+    case galmuri(Galmuri)
+    
     fileprivate var base: CustomFontConvertible {
         switch self {
         case .pretendard(let font): return font
+        case .galmuri(let font): return font
         }
     }
     
