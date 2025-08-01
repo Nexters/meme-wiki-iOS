@@ -19,6 +19,10 @@
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767552E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
+		2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
+		2C5F23F02E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
+		2C5F23F22E3CE6DD000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
+		2C5F23F32E3CE6DD000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
 		2C6767582E37B0E600794E10 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6767572E37B0E600794E10 /* Color.xcassets */; };
 		2C6767592E37B0E600794E10 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6767572E37B0E600794E10 /* Color.xcassets */; };
 		2C67675C2E37B5D100794E10 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67675B2E37B5D100794E10 /* CustomColor.swift */; };
@@ -100,6 +104,8 @@
 		2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
 		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Galmuri7.ttf; sourceTree = "<group>"; };
+		2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galmuri.swift; sourceTree = "<group>"; };
 		2C6767572E37B0E600794E10 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		2C67675B2E37B5D100794E10 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		2C67675E2E37B8A000794E10 /* CustomColorConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorConvertible.swift; sourceTree = "<group>"; };
@@ -182,6 +188,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2C5F23ED2E3CE557000AA318 /* Galmuri */ = {
+			isa = PBXGroup;
+			children = (
+				2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */,
+			);
+			path = Galmuri;
+			sourceTree = "<group>";
+		};
 		2C6767562E37B0B300794E10 /* Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +271,7 @@
 		2CFAA3072E34A8C5004E4604 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				2C5F23ED2E3CE557000AA318 /* Galmuri */,
 				2CFAA3082E34A8CD004E4604 /* Pretendard */,
 			);
 			path = Font;
@@ -290,6 +305,7 @@
 				2CFAA3132E34A964004E4604 /* CustomFont.swift */,
 				2CFAA3172E34B3C8004E4604 /* Pretendard.swift */,
 				2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */,
+				2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -554,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE552412E268FA0004BE9AF /* Assets.xcassets in Resources */,
+				2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */,
 				2CFAA30E2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */,
 				2CFAA3102E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */,
 				2CFAA30C2E34A8F9004E4604 /* Pretendard-Regular.otf in Resources */,
@@ -567,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE552522E269159004BE9AF /* Assets.xcassets in Resources */,
+				2C5F23F02E3CE56C000AA318 /* Galmuri7.ttf in Resources */,
 				2CFAA30F2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */,
 				2CFAA3112E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */,
 				2CFAA30D2E34A8F9004E4604 /* Pretendard-Regular.otf in Resources */,
@@ -588,6 +606,7 @@
 				AD848E262E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				AD848E462E2C9BEC0003F09F /* Lobby.swift in Sources */,
 				2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */,
+				2C5F23F22E3CE6DD000AA318 /* Galmuri.swift in Sources */,
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */,
