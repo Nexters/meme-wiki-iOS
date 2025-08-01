@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 final class SearchInfoView: UIView {
     
@@ -24,8 +25,9 @@ final class SearchInfoView: UIView {
         return label
     }()
     
-    private let contentLabel: UILabel = {
-        let label = UILabel()
+    private let contentLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
+        label.speed = .rate(50)
         label.textColor = CustomColor.gray(.gray4).color
         return label
     }()
