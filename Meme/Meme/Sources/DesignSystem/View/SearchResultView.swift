@@ -1,5 +1,5 @@
 //
-//  SearchContainerView.swift
+//  SearchResultView.swift
 //  Meme
 //
 //  Created by 임현규 on 7/31/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchContainerView: UIView {
+final class SearchResultView: UIView {
     
     // MARK: - UI Components
     
@@ -51,7 +51,7 @@ final class SearchContainerView: UIView {
 
 // MARK: - Private extension
 
-private extension SearchContainerView {
+private extension SearchResultView {
     func configureUI() {
         [ usageInfoView, sourceInfoView, thumbnailView ].forEach {
             addSubview($0)
@@ -78,7 +78,7 @@ private extension SearchContainerView {
 }
 
 // MARK: - Constants
-private extension SearchContainerView {
+private extension SearchResultView {
     enum Constants {
         enum infoView {
             static let cornerRadius: CGFloat = 8

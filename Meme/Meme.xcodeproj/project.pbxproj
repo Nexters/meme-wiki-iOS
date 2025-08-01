@@ -17,8 +17,8 @@
 		2C3981E02E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */; };
 		2C3981E22E3B7066007BDE92 /* MemeSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */; };
 		2C3981E32E3B7066007BDE92 /* MemeSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */; };
-		2C3981E52E3B757D007BDE92 /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchContainerView.swift */; };
-		2C3981E62E3B757D007BDE92 /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchContainerView.swift */; };
+		2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchResultView.swift */; };
+		2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchResultView.swift */; };
 		2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
@@ -111,7 +111,7 @@
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInfoView.swift; sourceTree = "<group>"; };
 		2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchItem.swift; sourceTree = "<group>"; };
-		2C3981E42E3B757C007BDE92 /* SearchContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
+		2C3981E42E3B757C007BDE92 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
 		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				2C6767502E37978700794E10 /* SearchThumbnailView.swift */,
 				2C6767532E37A07E00794E10 /* PaddingLabel.swift */,
 				2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */,
-				2C3981E42E3B757C007BDE92 /* SearchContainerView.swift */,
+				2C3981E42E3B757C007BDE92 /* SearchResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -639,7 +639,7 @@
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
-				2C3981E52E3B757D007BDE92 /* SearchContainerView.swift in Sources */,
+				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C67675C2E37B5D100794E10 /* CustomColor.swift in Sources */,
@@ -682,7 +682,7 @@
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
-				2C3981E62E3B757D007BDE92 /* SearchContainerView.swift in Sources */,
+				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981DA2E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C67675D2E37B5D100794E10 /* CustomColor.swift in Sources */,
