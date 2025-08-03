@@ -33,6 +33,8 @@
 		2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24232E3F98CD000AA318 /* APIError.swift */; };
 		2C5F24282E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24272E3F990F000AA318 /* MoyaLoggerPlugin.swift */; };
 		2C5F24292E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24272E3F990F000AA318 /* MoyaLoggerPlugin.swift */; };
+		2C5F242C2E3F995F000AA318 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F242B2E3F995F000AA318 /* BaseTargetType.swift */; };
+		2C5F242D2E3F995F000AA318 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F242B2E3F995F000AA318 /* BaseTargetType.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
@@ -124,6 +126,7 @@
 		2C5F24202E3F98BD000AA318 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		2C5F24232E3F98CD000AA318 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		2C5F24272E3F990F000AA318 /* MoyaLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggerPlugin.swift; sourceTree = "<group>"; };
+		2C5F242B2E3F995F000AA318 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
 		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2C6767572E37B0E600794E10 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
@@ -223,6 +226,7 @@
 			children = (
 				2C5F24202E3F98BD000AA318 /* APIResponse.swift */,
 				2C5F24232E3F98CD000AA318 /* APIError.swift */,
+				2C5F242B2E3F995F000AA318 /* BaseTargetType.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -691,6 +695,7 @@
 				2C5F24212E3F98BD000AA318 /* APIResponse.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
+				2C5F242C2E3F995F000AA318 /* BaseTargetType.swift in Sources */,
 				2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */,
 				AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */,
 				2CE552732E2B6EEA004BE9AF /* Logger.swift in Sources */,
@@ -727,6 +732,7 @@
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
+				2C5F242D2E3F995F000AA318 /* BaseTargetType.swift in Sources */,
 				2C3981DA2E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C5F24292E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */,
 				2C67675D2E37B5D100794E10 /* CustomColor.swift in Sources */,
