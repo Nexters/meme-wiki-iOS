@@ -20,7 +20,7 @@ extension SearchThumbnailView {
         }
         
         var yearFont: CustomFont {
-            return .pretendard(.body(.caption))
+            return .galmuri(.body(.body1))
         }
         
         var titleFont: CustomFont {
