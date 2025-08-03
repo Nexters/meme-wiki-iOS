@@ -39,6 +39,7 @@
 		2C5F24312E3F99A1000AA318 /* Providable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F242F2E3F99A1000AA318 /* Providable.swift */; };
 		2C5F24332E3F99B1000AA318 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24322E3F99B1000AA318 /* Provider.swift */; };
 		2C5F24342E3F99B1000AA318 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24322E3F99B1000AA318 /* Provider.swift */; };
+		2C5F24352E3F9A4C000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };

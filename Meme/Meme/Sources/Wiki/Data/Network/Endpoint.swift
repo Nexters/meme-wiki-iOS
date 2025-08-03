@@ -12,8 +12,7 @@ enum LobbyAPI {
     case sample(id: String) // TODO: - remove this line
 }
 
-extension LobbyAPI: TargetType {
-    var baseURL: URL { ApiConfiguration.shared.hostUrl }
+extension LobbyAPI: BaseTargetType {
     
     var path: String {
         switch self {
@@ -34,18 +33,5 @@ extension LobbyAPI: TargetType {
         default:
             return .requestPlain
         }
-    }
-    
-    var headers: [String: String]? {
-        switch self {
-        default:
-            return [
-                "Content-Type": "application/json"
-            ]
-        }
-    }
-    
-    var validationType: ValidationType {
-        return .successAndRedirectCodes
     }
 }
