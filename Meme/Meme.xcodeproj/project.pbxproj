@@ -22,6 +22,8 @@
 		2C5EB08C2E3FA21500D37F94 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB08B2E3FA21500D37F94 /* BaseViewController.swift */; };
 		2C5EB08D2E3FA25F00D37F94 /* MemeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */; };
 		2C5EB08E2E3FA25F00D37F94 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB08B2E3FA21500D37F94 /* BaseViewController.swift */; };
+		2C5EB0972E3FA52900D37F94 /* MemeSearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB0962E3FA52900D37F94 /* MemeSearchSection.swift */; };
+		2C5EB0982E3FA52900D37F94 /* MemeSearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB0962E3FA52900D37F94 /* MemeSearchSection.swift */; };
 		2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
@@ -152,6 +154,7 @@
 		2C3981E42E3B757C007BDE92 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchViewController.swift; sourceTree = "<group>"; };
 		2C5EB08B2E3FA21500D37F94 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2C5EB0962E3FA52900D37F94 /* MemeSearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchSection.swift; sourceTree = "<group>"; };
 		2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Galmuri7.ttf; sourceTree = "<group>"; };
 		2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galmuri.swift; sourceTree = "<group>"; };
@@ -252,9 +255,26 @@
 		2C5EB0882E3FA1E400D37F94 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				2C5EB0952E3FA50600D37F94 /* Model */,
+				2C5EB08F2E3FA4C200D37F94 /* ViewController */,
 				2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		2C5EB08F2E3FA4C200D37F94 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2C5EB0952E3FA50600D37F94 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C5EB0962E3FA52900D37F94 /* MemeSearchSection.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2C5F23ED2E3CE557000AA318 /* Galmuri */ = {
@@ -806,6 +826,7 @@
 				2C5F24282E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
+				2C5EB0972E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
@@ -869,6 +890,7 @@
 				ADE8E7962E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
+				2C5EB0982E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
