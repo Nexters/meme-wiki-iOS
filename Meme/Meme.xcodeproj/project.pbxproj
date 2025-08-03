@@ -27,6 +27,10 @@
 		2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F72E3CEF58000AA318 /* MarqueeLabel */; };
 		2C5F24002E3D15E5000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
 		2C5F24012E3D15EB000AA318 /* MemeSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */; };
+		2C5F24212E3F98BD000AA318 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24202E3F98BD000AA318 /* APIResponse.swift */; };
+		2C5F24222E3F98BD000AA318 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24202E3F98BD000AA318 /* APIResponse.swift */; };
+		2C5F24242E3F98CD000AA318 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24232E3F98CD000AA318 /* APIError.swift */; };
+		2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24232E3F98CD000AA318 /* APIError.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
@@ -115,6 +119,8 @@
 		2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Galmuri7.ttf; sourceTree = "<group>"; };
 		2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galmuri.swift; sourceTree = "<group>"; };
+		2C5F24202E3F98BD000AA318 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		2C5F24232E3F98CD000AA318 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
 		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2C6767572E37B0E600794E10 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
@@ -198,6 +204,23 @@
 				2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */,
 			);
 			path = Galmuri;
+			sourceTree = "<group>";
+		};
+		2C5F241E2E3F988B000AA318 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2C5F241F2E3F98AF000AA318 /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2C5F241F2E3F98AF000AA318 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2C5F24202E3F98BD000AA318 /* APIResponse.swift */,
+				2C5F24232E3F98CD000AA318 /* APIError.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		2C67674F2E37977300794E10 /* View */ = {
@@ -417,6 +440,7 @@
 		AD848E232E2B55B30003F09F /* Wiki */ = {
 			isa = PBXGroup;
 			children = (
+				2C5F241E2E3F988B000AA318 /* Network */,
 				AD848E242E2B55BB0003F09F /* Data */,
 				AD848E322E2C92DD0003F09F /* Domain */,
 				AD848E332E2C92E20003F09F /* Presentation */,
@@ -638,6 +662,7 @@
 				AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
+				2C5F24242E3F98CD000AA318 /* APIError.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
@@ -650,6 +675,7 @@
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				2CFAA3142E34A964004E4604 /* CustomFont.swift in Sources */,
+				2C5F24212E3F98BD000AA318 /* APIResponse.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
 				2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */,
@@ -670,6 +696,7 @@
 				2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */,
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */,
+				2C5F24222E3F98BD000AA318 /* APIResponse.swift in Sources */,
 				2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */,
 				2C3981E32E3B7066007BDE92 /* MemeSearchItem.swift in Sources */,
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
@@ -678,6 +705,7 @@
 				2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
+				2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */,
 				AD5194672E346F770069D29B /* String+Extension.swift in Sources */,
 				AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */,
