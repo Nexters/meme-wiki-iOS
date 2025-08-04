@@ -9,16 +9,18 @@ import Foundation
 import UIKit
 
 enum MemeSearchSection: Hashable {
-    case meme
-}
-
-enum MemeSearchDisplayItem: Hashable {
-    case list(MemeSearchItem)
-    case grid(MemeSearchItem)
+    case grid
+    case list
     case empty
 }
 
-extension MemeSearchDisplayItem {
+enum MemeSearchDisplayItem: Hashable {
+    case grid(MemeSearchItem)
+    case list(MemeSearchItem)
+    case empty
+}
+
+extension MemeSearchSection {
     var itemSize: NSCollectionLayoutSize {
         switch self {
         case .grid:
@@ -69,4 +71,9 @@ extension MemeSearchDisplayItem {
             return .zero
         }
     }
+
+    var groupCount: Int {
+        return 1
+    }
 }
+
