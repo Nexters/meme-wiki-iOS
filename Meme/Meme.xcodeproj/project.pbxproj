@@ -18,6 +18,8 @@
 		2C3981E32E3B7066007BDE92 /* MemeSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */; };
 		2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchResultView.swift */; };
 		2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchResultView.swift */; };
+		2C39822E2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39822D2E406164007BDE92 /* MemeSearchGridCell.swift */; };
+		2C39822F2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39822D2E406164007BDE92 /* MemeSearchGridCell.swift */; };
 		2C5EB08A2E3FA1EE00D37F94 /* MemeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */; };
 		2C5EB08C2E3FA21500D37F94 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB08B2E3FA21500D37F94 /* BaseViewController.swift */; };
 		2C5EB08D2E3FA25F00D37F94 /* MemeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */; };
@@ -152,6 +154,7 @@
 		2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInfoView.swift; sourceTree = "<group>"; };
 		2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchItem.swift; sourceTree = "<group>"; };
 		2C3981E42E3B757C007BDE92 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		2C39822D2E406164007BDE92 /* MemeSearchGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchGridCell.swift; sourceTree = "<group>"; };
 		2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchViewController.swift; sourceTree = "<group>"; };
 		2C5EB08B2E3FA21500D37F94 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2C5EB0962E3FA52900D37F94 /* MemeSearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchSection.swift; sourceTree = "<group>"; };
@@ -252,9 +255,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2C39822C2E406155007BDE92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C39822D2E406164007BDE92 /* MemeSearchGridCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2C5EB0882E3FA1E400D37F94 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				2C39822C2E406155007BDE92 /* View */,
 				2C5EB0952E3FA50600D37F94 /* Model */,
 				2C5EB08F2E3FA4C200D37F94 /* ViewController */,
 				2C5EB0892E3FA1EE00D37F94 /* MemeSearchViewController.swift */,
@@ -841,6 +853,7 @@
 				ADE8E7AC2E439B68008F0A24 /* MemeMainMostsharedHeaderView.swift in Sources */,
 				2C5F23FE2E3D0774000AA318 /* SearchTextField.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
+				2C39822F2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
 				2CFAA3142E34A964004E4604 /* CustomFont.swift in Sources */,
 				2C5F24212E3F98BD000AA318 /* APIResponse.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */,
@@ -907,6 +920,7 @@
 				ADE8E7AD2E439B68008F0A24 /* MemeMainMostsharedHeaderView.swift in Sources */,
 				2C5F23FF2E3D0774000AA318 /* SearchTextField.swift in Sources */,
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
+				2C39822E2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
 				2CFAA3152E34A964004E4604 /* CustomFont.swift in Sources */,
 				AD848E492E2C9D1D0003F09F /* ViewModel.swift in Sources */,
 				ADE8E79F2E438AD4008F0A24 /* MemeMainPageControlFooterView.swift in Sources */,
