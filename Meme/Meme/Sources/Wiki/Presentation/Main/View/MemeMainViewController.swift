@@ -33,7 +33,10 @@ class MemeMainViewController: UIViewController {
         
         collectionView.register(
             UICollectionViewCell.self,
-            forCellWithReuseIdentifier: "cell"
+            forCellWithReuseIdentifier: "cell")
+        collectionView.register(
+            MemeMainCustomCell.self,
+            forCellWithReuseIdentifier: MemeMainCustomCell.identifier
         )
     }
     
@@ -41,28 +44,32 @@ class MemeMainViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "cell",
-                for: indexPath)
-            cell.contentView.backgroundColor = .systemGray5
-            cell.contentView.layer.cornerRadius = 12
-            cell.contentView.layer.masksToBounds = true
-            
-            // TODO: - Dummy content
-            for sub in cell.contentView.subviews {
-                sub.removeFromSuperview()
+            switch item.type {
+            case .custom:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainCustomCell.identifier, for: indexPath)
+                guard let customCell = cell as? MemeMainCustomCell else { return .none }
+                customCell.configureCell()
+                return cell
+            default:
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "cell",
+                    for: indexPath)
+                cell.contentView.backgroundColor = .systemGray5
+                cell.contentView.layer.cornerRadius = 12
+                cell.contentView.layer.masksToBounds = true
+                let label = UILabel()
+                label.text = item.content
+                label.font = .systemFont(ofSize: 14, weight: .bold)
+                label.textColor = .black
+                label.translatesAutoresizingMaskIntoConstraints = false
+                cell.contentView.addSubview(label)
+                NSLayoutConstraint.activate([
+                    label.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+                    label.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
+                ])
+                return cell
+                
             }
-            let label = UILabel()
-            label.text = item.content
-            label.font = .systemFont(ofSize: 14, weight: .bold)
-            label.textColor = .black
-            label.translatesAutoresizingMaskIntoConstraints = false
-            cell.contentView.addSubview(label)
-            NSLayoutConstraint.activate([
-                label.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                label.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
-            ])
-            return cell
         }
     }
     
