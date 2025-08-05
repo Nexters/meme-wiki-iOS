@@ -38,6 +38,10 @@ class MemeMainViewController: UIViewController {
             MemeMainCustomCell.self,
             forCellWithReuseIdentifier: MemeMainCustomCell.identifier
         )
+        collectionView.register(
+            MemeMainCategoryCell.self,
+            forCellWithReuseIdentifier: MemeMainCategoryCell.identifier
+        )
     }
     
     private func setupDataSource() {
@@ -48,7 +52,12 @@ class MemeMainViewController: UIViewController {
             case .custom:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainCustomCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainCustomCell else { return .none }
-                customCell.configureCell()
+                customCell.configureCell(with: item)
+                return cell
+            case .category:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainCategoryCell.identifier, for: indexPath)
+                guard let customCell = cell as? MemeMainCategoryCell else { return .none }
+                customCell.configureCell(with: item)
                 return cell
             default:
                 let cell = collectionView.dequeueReusableCell(
@@ -78,7 +87,7 @@ class MemeMainViewController: UIViewController {
         Section.allCases.forEach { section in
             snapshot.appendSections([section])
             let items = (0..<sectionItemCount(for: section)).map {
-                Item(type: section, content: "\(section) \($0 + 1)")
+                Item(type: section, content: "\(section) \(section) \($0 + 1)")
             }
             snapshot.appendItems(items, toSection: section)
         }
@@ -125,7 +134,7 @@ class MemeMainViewController: UIViewController {
                 let itemFixSize = CGFloat(74)
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(itemFixSize),
-                    heightDimension: .absolute(itemFixSize))
+                    heightDimension: .absolute(122))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let screenWidth = UIScreen.main.bounds.width
@@ -135,10 +144,9 @@ class MemeMainViewController: UIViewController {
                 let availableWidth = screenWidth - horizontalInsets
                 let itemCount = 4
 
-                let groupWidth = availableWidth
                 let groupSize = NSCollectionLayoutSize(
-                    widthDimension: .absolute(groupWidth),
-                    heightDimension: .absolute(itemFixSize))
+                    widthDimension: .absolute(availableWidth),
+                    heightDimension: .absolute(122))
 
                 let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: groupSize,

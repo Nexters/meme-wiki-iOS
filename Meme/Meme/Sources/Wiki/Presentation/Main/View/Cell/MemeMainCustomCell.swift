@@ -17,8 +17,7 @@ final class MemeMainCustomCell: UICollectionViewCell {
         }
     }
     
-    func configureCell() {
-        contentView.backgroundColor = .systemGray5
+    func configureCell(with item: MemeMain.Model.Item) {
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         

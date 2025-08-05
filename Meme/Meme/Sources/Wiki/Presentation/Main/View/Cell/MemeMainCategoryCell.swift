@@ -1,0 +1,57 @@
+//
+//  MemeMainCategoryCell.swift
+//  Meme
+//
+//  Created by 제나 on 8/5/25.
+//
+
+import UIKit
+
+final class MemeMainCategoryCell: UICollectionViewCell {
+    static let identifier = "MemeMainCategoryCell"
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        for sub in contentView.subviews {
+            sub.removeFromSuperview()
+        }
+    }
+    
+    func configureCell(with item: MemeMain.Model.Item) {
+        let gradientView = UIView()
+        gradientView.backgroundColor = .yellow.withAlphaComponent(0.3)
+        gradientView.layer.cornerRadius = 12
+        gradientView.layer.masksToBounds = true
+        
+        let imageview = UIImageView()
+        imageview.image = UIImage(resource: .iconTemporaryCategory)
+        
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = item.content
+        label.numberOfLines = 2
+        
+        gradientView.addSubview(imageview)
+        contentView.addSubview(gradientView)
+        contentView.addSubview(label)
+        
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageview.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
+            imageview.centerYAnchor.constraint(equalTo: gradientView.centerYAnchor),
+            imageview.heightAnchor.constraint(equalToConstant: 44),
+            imageview.widthAnchor.constraint(equalToConstant: 44),
+            gradientView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            gradientView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            gradientView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            gradientView.heightAnchor.constraint(equalToConstant: 74),
+            label.topAnchor.constraint(equalTo: gradientView.bottomAnchor, constant: 8),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
+    }
+}
