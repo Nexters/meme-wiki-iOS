@@ -17,6 +17,7 @@ final class MemeSearchGridCell: UICollectionViewCell {
         let view = SearchThumbnailView(.half)
         view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
         return view
     }()
     
@@ -45,7 +46,7 @@ private extension MemeSearchGridCell {
         NSLayoutConstraint.activate([
             thumbnailView.topAnchor.constraint(equalTo: topAnchor),
             thumbnailView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            thumbnailView.trailingAnchor.constraint(equalTo: leadingAnchor),
+            thumbnailView.trailingAnchor.constraint(equalTo: trailingAnchor),
             thumbnailView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }

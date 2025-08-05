@@ -10,12 +10,17 @@ import Combine
 
 final class MemeSearchViewController: BaseViewController {
     typealias SearchDataSource = UICollectionViewDiffableDataSource<MemeSearchSection, MemeSearchDisplayItem>
+    typealias Snapshot
+    = NSDiffableDataSourceSnapshot<MemeSearchSection, MemeSearchDisplayItem>
+    
     private var dataSource: SearchDataSource?
+    private var dummyData: [MemeSearchItem] = []
     
     private lazy var searchTextField: SearchTextField = {
         let textField = SearchTextField()
         textField.setPlaceHolder(Constants.SearchTextField.placeHolder)
         textField.layer.cornerRadius = Constants.SearchTextField.cornerRadius
+        textField.delegate = self
         return textField
     }()
     
@@ -24,9 +29,10 @@ final class MemeSearchViewController: BaseViewController {
         collectionView.register(MemeSearchGridCell.self, forCellWithReuseIdentifier: MemeSearchGridCell.identifier)
         collectionView.register(MemeSearchListCell.self, forCellWithReuseIdentifier: MemeSearchListCell.identifier)
         collectionView.register(MemeSearchEmptyCell.self, forCellWithReuseIdentifier: MemeSearchEmptyCell.identifier)
+        collectionView.backgroundColor = CustomColor.black(.black).color
         return collectionView
     }()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
@@ -45,8 +51,8 @@ final class MemeSearchViewController: BaseViewController {
             searchTextField.heightAnchor.constraint(equalToConstant: Constants.SearchTextField.height),
             
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: Constants.CollectionView.top),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.CollectionView.leading),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.CollectionView.trailing),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.CollectionView.bottom)
         ])
     }
@@ -69,6 +75,16 @@ final class MemeSearchViewController: BaseViewController {
         })
     }
     
+    override func bind() {
+        setDummyData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            self.updateSnapshot(section: .grid, items: dummyData.map { .grid($0) })
+//            self.updateSnapshot(section: .list, items: dummyData.map { .list($0) })
+//            self.updateSnapshot(section: .empty, items: [.empty])
+        }
+    }
+    
     func configureLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self = self else { return nil }
@@ -86,8 +102,46 @@ final class MemeSearchViewController: BaseViewController {
             repeatingSubitem: item,
             count: section.groupCount
         )
+        
+        group.edgeSpacing = section.edgeSpacing
 
         return NSCollectionLayoutSection(group: group)
+    }
+}
+
+// MARK: - TEST
+
+private extension MemeSearchViewController {
+    func setDummyData() {
+        for _ in (0..<50) {
+            for j in (2010..<2025) {
+                dummyData += [.init(thumbnail: .init(year: j, title: "\(j)", hashtag: ["hastag1", "hastag2", "hastag3"], imageURL: ""), usage: "usageusageusageusageusageusageusage", source: "sourcesourcesourcesourcesourcesource")]
+            }
+        }
+    }
+}
+
+private extension MemeSearchViewController {
+    func updateSnapshot(section: MemeSearchSection, items: [MemeSearchDisplayItem]) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([section])
+        snapshot.appendItems(items, toSection: section)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+        collectionView.isScrollEnabled = section != .empty
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension MemeSearchViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let inputData = textField.text ?? ""
+        let filteringItems = dummyData.filter { $0.thumbnail.title == inputData }
+        if filteringItems.isEmpty {
+            updateSnapshot(section: .empty, items: [.empty])
+        } else {
+            updateSnapshot(section: .list, items: filteringItems.map { .list($0) })
+        }
     }
 }
 
@@ -104,8 +158,6 @@ private extension MemeSearchViewController {
         
         enum CollectionView {
             static let top: CGFloat = 10
-            static let leading: CGFloat = 10
-            static let trailing: CGFloat = 10
             static let bottom: CGFloat = 10
         }
     }

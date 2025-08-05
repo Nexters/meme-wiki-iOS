@@ -20,7 +20,9 @@ enum MemeSearchDisplayItem: Hashable {
     case empty
 }
 
+
 extension MemeSearchSection {
+
     var itemSize: NSCollectionLayoutSize {
         switch self {
         case .grid:
@@ -31,7 +33,7 @@ extension MemeSearchSection {
         case .list:
             return NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(100)
+                heightDimension: .estimated(363)
             )
         case .empty:
             return NSCollectionLayoutSize(
@@ -64,16 +66,27 @@ extension MemeSearchSection {
     var itemInset: NSDirectionalEdgeInsets {
         switch self {
         case .grid:
-            return .init(top: 8, leading: 8, bottom: 8, trailing: 8)
+            return .init(top: 5.5, leading: 7, bottom: 5.5, trailing: 7)
         case .list:
-            return .init(top: 6, leading: 20, bottom: 6, trailing: 20)
+            return .init(top: 0, leading: 14, bottom: 0, trailing: 14)
         case .empty:
             return .zero
         }
     }
+    
+    var edgeSpacing: NSCollectionLayoutEdgeSpacing {
+        switch self {
+        case .grid: .init(leading: nil, top: nil, trailing: nil, bottom: nil)
+        case .list: .init(leading: nil, top: nil, trailing: nil, bottom: .fixed(24))
+        case .empty: .init(leading: nil, top: nil, trailing: nil, bottom: nil)
+        }
+    }
 
     var groupCount: Int {
-        return 1
+        switch self {
+        case .grid: 2
+        case .list: 1
+        case .empty: 1
+        }
     }
 }
-

@@ -9,18 +9,20 @@ import UIKit
 
 final class MemeSearchEmptyCell: UICollectionViewCell {
     
-    static let identifier = "MemeSearchListCell"
+    static let identifier = "MemeSearchEmptyCell"
     
     // MARK: - UI Components
     
     private let imageView: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .blue30
         return view
     }()
     
     private let content: UILabel = {
         let label = UILabel()
         label.attributedText = .customFont(.pretendard(.body(.body1)), text: "검색 결과가 없습니다.\n다시입력해주세요")
+        label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = CustomColor.gray(.gray5).color
         return label
@@ -49,7 +51,7 @@ private extension MemeSearchEmptyCell {
         
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -64),
             imageView.widthAnchor.constraint(equalToConstant: 128),
             imageView.heightAnchor.constraint(equalToConstant: 128),
             
