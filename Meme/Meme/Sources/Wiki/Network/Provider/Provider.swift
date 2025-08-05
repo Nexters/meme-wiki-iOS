@@ -21,7 +21,7 @@ final class Provider<APIType: BaseTargetType>: Providable {
         )
     }
     
-    func reqeust<E: Decodable>(api: APIType, dto: E.Type) async throws -> APIResponse<E> {
+    func request<E: Decodable>(api: APIType, dto: E.Type) async throws -> APIResponse<E> {
         return try await withCheckedThrowingContinuation { continuation in
             moyaProvider.request(api) { result in
                 switch result {

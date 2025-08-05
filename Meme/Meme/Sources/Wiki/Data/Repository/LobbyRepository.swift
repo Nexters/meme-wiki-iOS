@@ -14,7 +14,7 @@ final class LobbyRepository: LobbyInterface {
 
 extension LobbyRepository {
     func fetchSections() async throws -> LobbyResponse {
-        let response = try await provider.reqeust(api: .sample(id: ""), dto: LobbyResponse.self)
+        let response = try await provider.request(api: .sample(id: ""), dto: LobbyResponse.self)
         return response.success
     }
 }

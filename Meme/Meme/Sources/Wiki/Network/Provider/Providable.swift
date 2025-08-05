@@ -11,5 +11,5 @@ import Moya
 protocol Providable<APIType> {
     associatedtype APIType: BaseTargetType
     
-    func reqeust<E: Decodable>(api: APIType, dto: E.Type) async throws -> APIResponse<E>
+    func request<E: Decodable>(api: APIType, dto: E.Type) async throws -> APIResponse<E>
 }
