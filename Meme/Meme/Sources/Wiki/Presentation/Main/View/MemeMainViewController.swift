@@ -43,6 +43,9 @@ class MemeMainViewController: UIViewController {
         collectionView.register(
             MemeMainTopRatedCell.self,
             forCellWithReuseIdentifier: MemeMainTopRatedCell.identifier)
+        collectionView.register(
+            MemeMainMostSharedCell.self,
+            forCellWithReuseIdentifier: MemeMainMostSharedCell.identifier)
     }
     
     private func setupDataSource() {
@@ -65,25 +68,11 @@ class MemeMainViewController: UIViewController {
                 guard let customCell = cell as? MemeMainTopRatedCell else { return .none }
                 customCell.configureCell(with: item)
                 return cell
-            default:
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "cell",
-                    for: indexPath)
-                cell.contentView.backgroundColor = .systemGray5
-                cell.contentView.layer.cornerRadius = 12
-                cell.contentView.layer.masksToBounds = true
-                let label = UILabel()
-                label.text = item.content
-                label.font = .systemFont(ofSize: 14, weight: .bold)
-                label.textColor = .black
-                label.translatesAutoresizingMaskIntoConstraints = false
-                cell.contentView.addSubview(label)
-                NSLayoutConstraint.activate([
-                    label.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                    label.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
-                ])
+            case .mostShared:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainMostSharedCell.identifier, for: indexPath)
+                guard let customCell = cell as? MemeMainMostSharedCell else { return .none }
+                customCell.configureCell(with: item)
                 return cell
-                
             }
         }
     }
@@ -203,7 +192,6 @@ class MemeMainViewController: UIViewController {
                 section.interGroupSpacing = 10
                 section.contentInsets = NSDirectionalEdgeInsets(
                     top: 20, leading: 0, bottom: 100, trailing: 0)
-                section.orthogonalScrollingBehavior = .continuous
                 return section
             }
         }

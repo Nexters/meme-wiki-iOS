@@ -126,6 +126,8 @@
 		ADE8E7972E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7952E4238CE008F0A24 /* MemeMainCategoryCell.swift */; };
 		ADE8E7992E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7982E423EC6008F0A24 /* MemeMainTopRatedCell.swift */; };
 		ADE8E79A2E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7982E423EC6008F0A24 /* MemeMainTopRatedCell.swift */; };
+		ADE8E79C2E424E4A008F0A24 /* MemeMainMostSharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E79B2E424E4A008F0A24 /* MemeMainMostSharedCell.swift */; };
+		ADE8E79D2E424E4A008F0A24 /* MemeMainMostSharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E79B2E424E4A008F0A24 /* MemeMainMostSharedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +191,7 @@
 		ADE8E78B2E423447008F0A24 /* MemeMainCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainCustomCell.swift; sourceTree = "<group>"; };
 		ADE8E7952E4238CE008F0A24 /* MemeMainCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainCategoryCell.swift; sourceTree = "<group>"; };
 		ADE8E7982E423EC6008F0A24 /* MemeMainTopRatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainTopRatedCell.swift; sourceTree = "<group>"; };
+		ADE8E79B2E424E4A008F0A24 /* MemeMainMostSharedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainMostSharedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +610,7 @@
 				ADE8E78B2E423447008F0A24 /* MemeMainCustomCell.swift */,
 				ADE8E7952E4238CE008F0A24 /* MemeMainCategoryCell.swift */,
 				ADE8E7982E423EC6008F0A24 /* MemeMainTopRatedCell.swift */,
+				ADE8E79B2E424E4A008F0A24 /* MemeMainMostSharedCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -746,6 +750,7 @@
 				AD848E462E2C9BEC0003F09F /* Lobby.swift in Sources */,
 				2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */,
 				2C5F23F22E3CE6DD000AA318 /* Galmuri.swift in Sources */,
+				ADE8E79C2E424E4A008F0A24 /* MemeMainMostSharedCell.swift in Sources */,
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */,
@@ -803,6 +808,7 @@
 				2C5F24222E3F98BD000AA318 /* APIResponse.swift in Sources */,
 				2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */,
 				2C3981E32E3B7066007BDE92 /* MemeSearchItem.swift in Sources */,
+				ADE8E79D2E424E4A008F0A24 /* MemeMainMostSharedCell.swift in Sources */,
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */,
