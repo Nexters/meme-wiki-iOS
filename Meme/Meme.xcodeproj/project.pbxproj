@@ -13,16 +13,24 @@
 		2C3981DA2E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
 		2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981DB2E3B6495007BDE92 /* RandomColor.swift */; };
 		2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981DB2E3B6495007BDE92 /* RandomColor.swift */; };
+		2C3981DF2E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */; };
+		2C3981E02E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */; };
+		2C3981E32E3B7066007BDE92 /* MemeSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */; };
+		2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchResultView.swift */; };
+		2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E42E3B757C007BDE92 /* SearchResultView.swift */; };
 		2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
 		2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */; };
+		2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
+		2C5F23F02E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
+		2C5F23F22E3CE6DD000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
+		2C5F23F62E3CEF53000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F52E3CEF53000AA318 /* MarqueeLabel */; };
+		2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5F23F72E3CEF58000AA318 /* MarqueeLabel */; };
+		2C5F24002E3D15E5000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
+		2C5F24012E3D15EB000AA318 /* MemeSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
 		2C6767552E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
-		2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
-		2C5F23F02E3CE56C000AA318 /* Galmuri7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */; };
-		2C5F23F22E3CE6DD000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
-		2C5F23F32E3CE6DD000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
 		2C6767582E37B0E600794E10 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6767572E37B0E600794E10 /* Color.xcassets */; };
 		2C6767592E37B0E600794E10 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6767572E37B0E600794E10 /* Color.xcassets */; };
 		2C67675C2E37B5D100794E10 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67675B2E37B5D100794E10 /* CustomColor.swift */; };
@@ -101,11 +109,14 @@
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
+		2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInfoView.swift; sourceTree = "<group>"; };
+		2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchItem.swift; sourceTree = "<group>"; };
+		2C3981E42E3B757C007BDE92 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
-		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
-		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Galmuri7.ttf; sourceTree = "<group>"; };
 		2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galmuri.swift; sourceTree = "<group>"; };
+		2C6767502E37978700794E10 /* SearchThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThumbnailView.swift; sourceTree = "<group>"; };
+		2C6767532E37A07E00794E10 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2C6767572E37B0E600794E10 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		2C67675B2E37B5D100794E10 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		2C67675E2E37B8A000794E10 /* CustomColorConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorConvertible.swift; sourceTree = "<group>"; };
@@ -151,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5F23F62E3CEF53000AA318 /* MarqueeLabel in Frameworks */,
 				2CE5526A2E292245004BE9AF /* Kingfisher in Frameworks */,
 				2CE552632E269579004BE9AF /* Moya in Frameworks */,
 				2CE5525E2E26953F004BE9AF /* Alamofire in Frameworks */,
@@ -161,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */,
 				2CE552682E292240004BE9AF /* Kingfisher in Frameworks */,
 				2CE552652E26957C004BE9AF /* Moya in Frameworks */,
 				2CE552602E269546004BE9AF /* Alamofire in Frameworks */,
@@ -179,21 +192,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2C67674F2E37977300794E10 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2C6767502E37978700794E10 /* SearchThumbnailView.swift */,
-				2C6767532E37A07E00794E10 /* PaddingLabel.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		2C5F23ED2E3CE557000AA318 /* Galmuri */ = {
 			isa = PBXGroup;
 			children = (
 				2C5F23EE2E3CE56B000AA318 /* Galmuri7.ttf */,
 			);
 			path = Galmuri;
+			sourceTree = "<group>";
+		};
+		2C67674F2E37977300794E10 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C6767502E37978700794E10 /* SearchThumbnailView.swift */,
+				2C6767532E37A07E00794E10 /* PaddingLabel.swift */,
+				2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */,
+				2C3981E42E3B757C007BDE92 /* SearchResultView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2C6767562E37B0B300794E10 /* Color */ = {
@@ -474,6 +489,7 @@
 			children = (
 				AD848E442E2C9BEC0003F09F /* Lobby.swift */,
 				2C5F23EA2E37C9E7000AA318 /* Thumbnail.swift */,
+				2C3981E12E3B7066007BDE92 /* MemeSearchItem.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -498,6 +514,7 @@
 				2CE5525D2E26953F004BE9AF /* Alamofire */,
 				2CE552622E269579004BE9AF /* Moya */,
 				2CE552692E292245004BE9AF /* Kingfisher */,
+				2C5F23F52E3CEF53000AA318 /* MarqueeLabel */,
 			);
 			productName = Meme;
 			productReference = 2CE552342E268F9E004BE9AF /* Meme-release.app */;
@@ -520,6 +537,7 @@
 				2CE5525F2E269546004BE9AF /* Alamofire */,
 				2CE552642E26957C004BE9AF /* Moya */,
 				2CE552672E292240004BE9AF /* Kingfisher */,
+				2C5F23F72E3CEF58000AA318 /* MarqueeLabel */,
 			);
 			productName = Meme;
 			productReference = 2CE552572E269159004BE9AF /* Meme-dev.app */;
@@ -553,6 +571,7 @@
 				2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2CE552612E269571004BE9AF /* XCRemoteSwiftPackageReference "Moya" */,
 				2CE552662E29220E004BE9AF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
 			);
 			productRefGroup = 2CE552352E268F9E004BE9AF /* Products */;
 			projectDirPath = "";
@@ -600,6 +619,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5F24012E3D15EB000AA318 /* MemeSearchItem.swift in Sources */,
+				2C3981DF2E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */,
 				2CFAA3222E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */,
@@ -619,6 +640,7 @@
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
+				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C67675C2E37B5D100794E10 /* CustomColor.swift in Sources */,
@@ -641,12 +663,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5F24002E3D15E5000AA318 /* Galmuri.swift in Sources */,
+				2C3981E02E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */,
 				2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				2CC3999D2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */,
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */,
 				2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */,
+				2C3981E32E3B7066007BDE92 /* MemeSearchItem.swift in Sources */,
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */,
@@ -659,6 +684,7 @@
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
+				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981DA2E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C67675D2E37B5D100794E10 /* CustomColor.swift in Sources */,
@@ -820,6 +846,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 899UYL8QU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meme/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -850,6 +877,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 899UYL8QU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meme/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -961,6 +989,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cbpowell/MarqueeLabel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -988,6 +1024,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2C5F23F52E3CEF53000AA318 /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			productName = MarqueeLabel;
+		};
+		2C5F23F72E3CEF58000AA318 /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			productName = MarqueeLabel;
+		};
 		2CE5525D2E26953F004BE9AF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2CE5525B2E269532004BE9AF /* XCRemoteSwiftPackageReference "Alamofire" */;
