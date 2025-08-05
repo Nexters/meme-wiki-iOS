@@ -36,12 +36,13 @@ class MemeMainViewController: UIViewController {
             forCellWithReuseIdentifier: "cell")
         collectionView.register(
             MemeMainCustomCell.self,
-            forCellWithReuseIdentifier: MemeMainCustomCell.identifier
-        )
+            forCellWithReuseIdentifier: MemeMainCustomCell.identifier)
         collectionView.register(
             MemeMainCategoryCell.self,
-            forCellWithReuseIdentifier: MemeMainCategoryCell.identifier
-        )
+            forCellWithReuseIdentifier: MemeMainCategoryCell.identifier)
+        collectionView.register(
+            MemeMainTopRatedCell.self,
+            forCellWithReuseIdentifier: MemeMainTopRatedCell.identifier)
     }
     
     private func setupDataSource() {
@@ -57,6 +58,11 @@ class MemeMainViewController: UIViewController {
             case .category:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainCategoryCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainCategoryCell else { return .none }
+                customCell.configureCell(with: item)
+                return cell
+            case .topRated:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainTopRatedCell.identifier, for: indexPath)
+                guard let customCell = cell as? MemeMainTopRatedCell else { return .none }
                 customCell.configureCell(with: item)
                 return cell
             default:

@@ -30,6 +30,7 @@ final class MemeMainCustomCell: UICollectionViewCell {
             imageview.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageview.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             imageview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
+            imageview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
     }
 }
