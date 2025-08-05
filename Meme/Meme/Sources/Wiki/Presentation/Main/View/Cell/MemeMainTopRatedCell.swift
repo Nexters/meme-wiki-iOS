@@ -23,7 +23,7 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         contentView.backgroundColor = .systemPink.withAlphaComponent(0.3)
         
         let imageview = UIImageView()
-        imageview.image = UIImage(resource: .imageTemporaryTopRated)
+        imageview.image = UIImage(resource: .imageTemporary)
         imageview.contentMode = .scaleAspectFill
         
         let gradientView = UIView()
