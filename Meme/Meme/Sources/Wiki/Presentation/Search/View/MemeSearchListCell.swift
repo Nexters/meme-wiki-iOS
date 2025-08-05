@@ -18,6 +18,12 @@ final class MemeSearchListCell: UICollectionViewCell {
         return view
     }()
     
+    private let separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray9
+        return view
+    }()
+    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -38,13 +44,21 @@ final class MemeSearchListCell: UICollectionViewCell {
 
 private extension MemeSearchListCell {
     func configureUI() {
-        addSubview(searchResultView)
+        [ searchResultView, separatorLine ].forEach {
+            addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         NSLayoutConstraint.activate([
             searchResultView.topAnchor.constraint(equalTo: topAnchor),
             searchResultView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchResultView.trailingAnchor.constraint(equalTo: leadingAnchor),
+            searchResultView.trailingAnchor.constraint(equalTo: trailingAnchor),
             searchResultView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            separatorLine.topAnchor.constraint(equalTo: searchResultView.bottomAnchor, constant: 24),
+            separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorLine.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorLine.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }
