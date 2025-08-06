@@ -18,15 +18,27 @@ class MemeMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        setupNavigation()
         layoutCollectionView()
         setupDataSource()
         applySnapshot()
     }
     
+    private func setupNavigation() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(resource: .imageLogo), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(resource: .iconSearch), style: .plain, target: self, action: nil)
+    }
+    
     private func layoutCollectionView() {
+        let layout = createLayout()
+        layout.register(
+            MemeMainTopRatedDecorationView.self,
+            forDecorationViewOfKind: MemeMainTopRatedDecorationView.elementKind)
         collectionView = UICollectionView(
             frame: view.bounds,
-            collectionViewLayout: createLayout())
+            collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .black
         view.addSubview(collectionView)
@@ -46,6 +58,22 @@ class MemeMainViewController: UIViewController {
         collectionView.register(
             MemeMainMostSharedCell.self,
             forCellWithReuseIdentifier: MemeMainMostSharedCell.identifier)
+        collectionView.register(
+            MemeMainCustomFooterView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: MemeMainCustomFooterView.identifier)
+        collectionView.register(
+            MemeMainCategoryHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: MemeMainCategoryHeaderView.identifier)
+        collectionView.register(
+            MemeMainTopRatedHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: MemeMainTopRatedHeaderView.identifier)
+        collectionView.register(
+            MemeMainMostsharedHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: MemeMainMostsharedHeaderView.identifier)
     }
     
     private func setupDataSource() {
@@ -54,26 +82,72 @@ class MemeMainViewController: UIViewController {
             
             switch item.type {
             case .custom:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainCustomCell.identifier, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: MemeMainCustomCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainCustomCell else { return .none }
                 customCell.configureCell(with: item)
                 return cell
             case .category:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainCategoryCell.identifier, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: MemeMainCategoryCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainCategoryCell else { return .none }
                 customCell.configureCell(with: item)
                 return cell
             case .topRated:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainTopRatedCell.identifier, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: MemeMainTopRatedCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainTopRatedCell else { return .none }
                 customCell.configureCell(with: item)
                 return cell
             case .mostShared:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainMostSharedCell.identifier, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: MemeMainMostSharedCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainMostSharedCell else { return .none }
                 customCell.configureCell(with: item)
                 return cell
             }
+        }
+        
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            if kind == UICollectionView.elementKindSectionHeader {
+                guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+                let section = MemeMain.Model.Section(rawValue: indexPath.section)
+                switch section {
+                case .category:
+                    let header = collectionView.dequeueReusableSupplementaryView(
+                        ofKind: kind,
+                        withReuseIdentifier: MemeMainCategoryHeaderView.identifier,
+                        for: indexPath) as! MemeMainCategoryHeaderView
+                    return header
+                case .topRated:
+                    let header = collectionView.dequeueReusableSupplementaryView(
+                        ofKind: kind,
+                        withReuseIdentifier: MemeMainTopRatedHeaderView.identifier,
+                        for: indexPath) as? MemeMainTopRatedHeaderView
+                    return header
+                case .mostShared:
+                    let header = collectionView.dequeueReusableSupplementaryView(
+                        ofKind: kind,
+                        withReuseIdentifier: MemeMainMostsharedHeaderView.identifier,
+                        for: indexPath) as? MemeMainMostsharedHeaderView
+                    return header
+                default:
+                    return nil
+                }
+            } else if kind == UICollectionView.elementKindSectionFooter {
+                let section = MemeMain.Model.Section(rawValue: indexPath.section)
+                if section == .custom {
+                    let footer = collectionView.dequeueReusableSupplementaryView(
+                        ofKind: kind,
+                        withReuseIdentifier: MemeMainCustomFooterView.identifier,
+                        for: indexPath) as? MemeMainCustomFooterView
+                    footer?.pageControl.numberOfPages = self.sectionItemCount(for: .custom)
+                    footer?.pageControl.currentPage = 0
+                    footer?.pageControl.isUserInteractionEnabled = false
+                    return footer
+                }
+            }
+            return nil
         }
     }
     
@@ -122,7 +196,31 @@ class MemeMainViewController: UIViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .paging
                 section.contentInsets = NSDirectionalEdgeInsets(
-                    top: 30, leading: 14, bottom: 18, trailing: 14)
+                    top: 30, leading: 14, bottom: 0, trailing: 14)
+                
+                /// Setup Footer
+                let footerSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .absolute(6))
+                let footer = NSCollectionLayoutBoundarySupplementaryItem(
+                    layoutSize: footerSize,
+                    elementKind: UICollectionView.elementKindSectionFooter,
+                    alignment: .bottom)
+                footer.contentInsets = NSDirectionalEdgeInsets(
+                    top: 18, leading: 0, bottom: 0, trailing: 0)
+                
+                section.boundarySupplementaryItems = [footer]
+                section.visibleItemsInvalidationHandler = { [weak self] (visibleItems, offset, env) in
+                    guard let self = self else { return }
+                    let itemWidth = env.container.contentSize.width * 0.92
+                    let page = Int(round(offset.x / itemWidth))
+                    if let footer = self.collectionView.supplementaryView(
+                        forElementKind: UICollectionView.elementKindSectionFooter,
+                        at: IndexPath(item: 0, section: MemeMain.Model.Section.custom.rawValue)
+                    ) as? MemeMainCustomFooterView {
+                        footer.pageControl.currentPage = page
+                    }
+                }
                 return section
                 
             case .category:
@@ -131,31 +229,45 @@ class MemeMainViewController: UIViewController {
                     widthDimension: .absolute(itemFixSize),
                     heightDimension: .absolute(122))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+                
                 let screenWidth = UIScreen.main.bounds.width
                 let horizontalInsets = CGFloat(28)
                 let interItemSpacing = CGFloat(17)
                 
                 let availableWidth = screenWidth - horizontalInsets
                 let itemCount = 4
-
+                
                 let groupSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(availableWidth),
                     heightDimension: .absolute(122))
-
+                
                 let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: groupSize,
                     subitem: item,
                     count: itemCount)
-
+                
                 group.interItemSpacing = .fixed(interItemSpacing)
-
+                
                 let section = NSCollectionLayoutSection(group: group)
                 section.contentInsets = NSDirectionalEdgeInsets(
-                    top: 18, leading: 14, bottom: 8, trailing: 14)
+                    top: 10, leading: 14, bottom: 60, trailing: 14)
                 section.interGroupSpacing = 12
+                
+                /// Setup header
+                let headerSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(130))
+                
+                let header = NSCollectionLayoutBoundarySupplementaryItem(
+                    layoutSize: headerSize,
+                    elementKind: UICollectionView.elementKindSectionHeader,
+                    alignment: .top)
+                
+                header.contentInsets = NSDirectionalEdgeInsets(
+                    top: 0, leading: 0, bottom: 10, trailing: 4)
+                section.boundarySupplementaryItems = [header]
                 return section
-
+                
             case .topRated:
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.5),
@@ -172,7 +284,22 @@ class MemeMainViewController: UIViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 12
                 section.contentInsets = NSDirectionalEdgeInsets(
-                    top: 12, leading: 14, bottom: 16, trailing: 14)
+                    top: 36, leading: 14, bottom: 64, trailing: 14)
+                
+                /// setup header
+                let headerSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(90))
+                let header = NSCollectionLayoutBoundarySupplementaryItem(
+                    layoutSize: headerSize,
+                    elementKind: UICollectionView.elementKindSectionHeader,
+                    alignment: .top)
+                section.boundarySupplementaryItems = [header]
+                
+                /// setup background
+                let background = NSCollectionLayoutDecorationItem.background(
+                    elementKind: MemeMainTopRatedDecorationView.elementKind)
+                section.decorationItems = [background]
                 return section
                 
             case .mostShared:
@@ -192,9 +319,18 @@ class MemeMainViewController: UIViewController {
                 section.interGroupSpacing = 10
                 section.contentInsets = NSDirectionalEdgeInsets(
                     top: 20, leading: 0, bottom: 100, trailing: 0)
+                
+                /// setup header
+                let headerSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(256))
+                let header = NSCollectionLayoutBoundarySupplementaryItem(
+                    layoutSize: headerSize,
+                    elementKind: UICollectionView.elementKindSectionHeader,
+                    alignment: .top)
+                section.boundarySupplementaryItems = [header]
                 return section
             }
         }
     }
 }
-
