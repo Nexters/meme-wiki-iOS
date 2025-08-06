@@ -11,6 +11,10 @@
 		2C14ECEE2E437680009B605C /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECEC2E437680009B605C /* SearchAPI.swift */; };
 		2C14ECF02E4376F6009B605C /* SearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECEF2E4376F6009B605C /* SearchResponseDTO.swift */; };
 		2C14ECF12E4376F6009B605C /* SearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECEF2E4376F6009B605C /* SearchResponseDTO.swift */; };
+		2C14ECF32E43774B009B605C /* SearchReposioryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */; };
+		2C14ECF42E43774B009B605C /* SearchReposioryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */; };
+		2C14ECF62E4377B2009B605C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF52E4377B2009B605C /* SearchRepository.swift */; };
+		2C14ECF72E4377B2009B605C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF52E4377B2009B605C /* SearchRepository.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -164,6 +168,8 @@
 /* Begin PBXFileReference section */
 		2C14ECEC2E437680009B605C /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		2C14ECEF2E4376F6009B605C /* SearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseDTO.swift; sourceTree = "<group>"; };
+		2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposioryInterface.swift; sourceTree = "<group>"; };
+		2C14ECF52E4377B2009B605C /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -599,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				AD848E382E2C93D40003F09F /* LobbyRepository.swift */,
+				2C14ECF52E4377B2009B605C /* SearchRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -645,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */,
+				2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -885,6 +893,7 @@
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C67675C2E37B5D100794E10 /* CustomColor.swift in Sources */,
+				2C14ECF62E4377B2009B605C /* SearchRepository.swift in Sources */,
 				2C67675F2E37B8A000794E10 /* CustomColorConvertible.swift in Sources */,
 				2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */,
 				ADE8E7A92E4397F8008F0A24 /* MemeMainTopRatedDecorationView.swift in Sources */,
@@ -909,6 +918,7 @@
 				2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
 				2C5F242C2E3F995F000AA318 /* BaseTargetType.swift in Sources */,
 				2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */,
+				2C14ECF32E43774B009B605C /* SearchReposioryInterface.swift in Sources */,
 				AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */,
 				2CE552732E2B6EEA004BE9AF /* Logger.swift in Sources */,
 				2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */,
@@ -961,6 +971,7 @@
 				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C5F24342E3F99B1000AA318 /* Provider.swift in Sources */,
+				2C14ECF72E4377B2009B605C /* SearchRepository.swift in Sources */,
 				2C5F242D2E3F995F000AA318 /* BaseTargetType.swift in Sources */,
 				2C3981DA2E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C5F24292E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */,
@@ -986,6 +997,7 @@
 				ADE8E78A2E4225E3008F0A24 /* MemeMainViewController.swift in Sources */,
 				2CFAA31C2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
 				2C6767552E37A07E00794E10 /* PaddingLabel.swift in Sources */,
+				2C14ECF42E43774B009B605C /* SearchReposioryInterface.swift in Sources */,
 				AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */,
 				2CE552742E2B6EEA004BE9AF /* Logger.swift in Sources */,
 				2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */,
