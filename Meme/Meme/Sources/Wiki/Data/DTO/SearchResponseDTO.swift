@@ -8,6 +8,21 @@
 import Foundation
 
 struct SearchResponseDTO: Decodable {
+    let paging: PagingDTO
+    let results: [SearchItemDTO]
+    
+    func toEntity() -> [MemeSearchItem] {
+        return results.map { $0.toEntity() }
+    }
+}
+
+struct PagingDTO: Codable {
+    let next: Int?
+    let hasMore: Bool
+    let pageSize: Int
+}
+
+struct SearchItemDTO: Codable {
     let id: Int
     let title: String
     let usageContext: String

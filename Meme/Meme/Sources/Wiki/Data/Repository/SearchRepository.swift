@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SearchRepository: SearchReposioryInterface {
+final class SearchRepository: SearchRepositoryInterface {
     private var provider = Provider<SearchAPI>()
     
     init(provider: Provider<SearchAPI>) {

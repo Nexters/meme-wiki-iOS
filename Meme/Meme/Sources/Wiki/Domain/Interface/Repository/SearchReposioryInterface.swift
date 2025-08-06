@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SearchReposioryInterface {
+protocol SearchRepositoryInterface {
     func search(title: String?, next: Int?, limit: Int) async throws -> APIResponse<SearchResponseDTO>
 }

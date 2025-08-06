@@ -15,6 +15,10 @@
 		2C14ECF42E43774B009B605C /* SearchReposioryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */; };
 		2C14ECF62E4377B2009B605C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF52E4377B2009B605C /* SearchRepository.swift */; };
 		2C14ECF72E4377B2009B605C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF52E4377B2009B605C /* SearchRepository.swift */; };
+		2C14ECFB2E437887009B605C /* SearchUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */; };
+		2C14ECFC2E437887009B605C /* SearchUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */; };
+		2C14ECFE2E4378C0009B605C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */; };
+		2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -170,6 +174,8 @@
 		2C14ECEF2E4376F6009B605C /* SearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseDTO.swift; sourceTree = "<group>"; };
 		2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposioryInterface.swift; sourceTree = "<group>"; };
 		2C14ECF52E4377B2009B605C /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseInterface.swift; sourceTree = "<group>"; };
+		2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -273,6 +279,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C14ECF82E437872009B605C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */,
+				AD848E3E2E2C94660003F09F /* LobbyInterface.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		2C14ECF92E437879009B605C /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		2C3981D12E3B5E9C007BDE92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +667,7 @@
 			children = (
 				AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */,
 				AD9FC4D82E4A1BC3008894E7 /* Lobby */,
+				2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -653,6 +677,8 @@
 			children = (
 				AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */,
 				2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */,
+				2C14ECF92E437879009B605C /* UseCase */,
+				2C14ECF82E437872009B605C /* Repository */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -890,6 +916,7 @@
 				2C5EB0972E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2C3982352E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,
+				2C14ECFB2E437887009B605C /* SearchUseCaseInterface.swift in Sources */,
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
 				2C67675C2E37B5D100794E10 /* CustomColor.swift in Sources */,
@@ -958,6 +985,7 @@
 				ADE8E78D2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
+				2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */,
 				2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */,
 				AD5194672E346F770069D29B /* String+Extension.swift in Sources */,
 				AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
@@ -968,6 +996,7 @@
 				2C5EB0982E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2C3982342E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,
+				2C14ECFC2E437887009B605C /* SearchUseCaseInterface.swift in Sources */,
 				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C5F24342E3F99B1000AA318 /* Provider.swift in Sources */,
