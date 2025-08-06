@@ -21,6 +21,8 @@
 		2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */; };
 		2C14ED022E437A50009B605C /* MemeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED012E437A50009B605C /* MemeSearchViewModel.swift */; };
 		2C14ED032E437A50009B605C /* MemeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED012E437A50009B605C /* MemeSearchViewModel.swift */; };
+		2C14ED052E438E9A009B605C /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED042E438E9A009B605C /* DebounceTextField.swift */; };
+		2C14ED062E438E9A009B605C /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED042E438E9A009B605C /* DebounceTextField.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -179,6 +181,7 @@
 		2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseInterface.swift; sourceTree = "<group>"; };
 		2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		2C14ED012E437A50009B605C /* MemeSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeSearchViewModel.swift; sourceTree = "<group>"; };
+		2C14ED042E438E9A009B605C /* DebounceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTextField.swift; sourceTree = "<group>"; };
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -406,6 +409,7 @@
 				2C3981DE2E3B6CEA007BDE92 /* SearchInfoView.swift */,
 				2C3981E42E3B757C007BDE92 /* SearchResultView.swift */,
 				2C5F23FD2E3D0774000AA318 /* SearchTextField.swift */,
+				2C14ED042E438E9A009B605C /* DebounceTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -925,6 +929,7 @@
 				2C5F24282E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
 				AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
+				2C14ED052E438E9A009B605C /* DebounceTextField.swift in Sources */,
 				2C5EB0972E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2C3982352E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,
@@ -1007,6 +1012,7 @@
 				ADE8E7962E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
+				2C14ED062E438E9A009B605C /* DebounceTextField.swift in Sources */,
 				2C5EB0982E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2C3982342E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,

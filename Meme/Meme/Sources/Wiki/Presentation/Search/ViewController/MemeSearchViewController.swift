@@ -21,7 +21,6 @@ final class MemeSearchViewController: BaseViewController {
         let textField = SearchTextField()
         textField.setPlaceHolder(Constants.SearchTextField.placeHolder)
         textField.layer.cornerRadius = Constants.SearchTextField.cornerRadius
-        textField.delegate = self
         return textField
     }()
     
@@ -99,6 +98,29 @@ final class MemeSearchViewController: BaseViewController {
                 guard let self = self else { return }
                 self.updateSnapshot(section: .grid, items: items.map { .grid($0) })
             }.store(in: &subscription)
+        
+        viewModel.searchResultPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                guard let self = self else { return }
+                Log.debug("items: \(items)", .ui)
+                self.updateSnapshot(section: .list, items: items.map { .list($0) })
+            }.store(in: &subscription)
+        
+        
+        viewModel.emptyPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEmpty in
+                guard let self = self else { return }
+                if !isEmpty { return }
+                self.updateSnapshot(section: .empty, items: [.empty])
+            }.store(in: &subscription)
+        
+        searchTextField.textChangePublisher
+            .sink { [weak self] text in
+                guard let self = self else { return }
+                viewModel.textFieldDidChanged(text)
+            }.store(in: &subscription)
     }
     
     func configureLayout() -> UICollectionViewCompositionalLayout {
@@ -132,20 +154,6 @@ private extension MemeSearchViewController {
         snapshot.appendItems(items, toSection: section)
         dataSource?.apply(snapshot, animatingDifferences: true)
         collectionView.isScrollEnabled = section != .empty
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension MemeSearchViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-//        let inputData = textField.text ?? ""
-//        let filteringItems = dummyData.filter { $0.thumbnail.title == inputData }
-//        if filteringItems.isEmpty {
-//            updateSnapshot(section: .empty, items: [.empty])
-//        } else {
-//            updateSnapshot(section: .list, items: filteringItems.map { .list($0) })
-//        }
     }
 }
 
