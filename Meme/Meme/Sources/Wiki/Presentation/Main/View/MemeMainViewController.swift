@@ -9,8 +9,8 @@ import UIKit
 
 class MemeMainViewController: UIViewController {
     
-    typealias Section = MemeMain.Model.Section
-    typealias Item = MemeMain.Model.Item
+    typealias Section = Lobby.Section
+    typealias Item = Lobby.Item
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
@@ -111,7 +111,7 @@ class MemeMainViewController: UIViewController {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionHeader {
                 guard kind == UICollectionView.elementKindSectionHeader else { return nil }
-                let section = MemeMain.Model.Section(rawValue: indexPath.section)
+                let section = Section(rawValue: indexPath.section)
                 switch section {
                 case .category:
                     let header = collectionView.dequeueReusableSupplementaryView(
@@ -135,7 +135,7 @@ class MemeMainViewController: UIViewController {
                     return nil
                 }
             } else if kind == UICollectionView.elementKindSectionFooter {
-                let section = MemeMain.Model.Section(rawValue: indexPath.section)
+                let section = Section(rawValue: indexPath.section)
                 if section == .custom {
                     let footer = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
@@ -216,7 +216,7 @@ class MemeMainViewController: UIViewController {
                     let page = Int(round(offset.x / itemWidth))
                     if let footer = self.collectionView.supplementaryView(
                         forElementKind: UICollectionView.elementKindSectionFooter,
-                        at: IndexPath(item: 0, section: MemeMain.Model.Section.custom.rawValue)
+                        at: IndexPath(item: 0, section: Section.custom.rawValue)
                     ) as? MemeMainCustomFooterView {
                         footer.pageControl.currentPage = page
                     }

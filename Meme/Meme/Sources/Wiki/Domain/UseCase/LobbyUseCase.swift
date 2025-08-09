@@ -32,7 +32,7 @@ final class DefaultLobbyUseCase: LobbyUseCase {
         task = Task {
             do {
                 let response = try await repository.fetchSections()
-                result.send(.success(response.toEntity()))
+                // TODO: - return success with result
             } catch let error as ServiceError {
                 result.send(.failure(error))
             } catch {

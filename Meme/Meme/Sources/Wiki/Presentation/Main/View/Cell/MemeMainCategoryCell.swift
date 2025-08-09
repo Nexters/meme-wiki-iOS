@@ -17,7 +17,7 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         }
     }
     
-    func configureCell(with item: MemeMain.Model.Item) {
+    func configureCell(with item: Lobby.Item) {
         let gradientView = UIView()
         gradientView.backgroundColor = .yellow.withAlphaComponent(0.3)
         gradientView.layer.cornerRadius = 12
