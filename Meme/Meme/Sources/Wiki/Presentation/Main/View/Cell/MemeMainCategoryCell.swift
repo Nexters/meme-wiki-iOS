@@ -27,8 +27,8 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         imageview.image = UIImage(resource: .iconTemporaryCategory)
         
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .white
+        label.font = .customFont(.pretendard(.body(.body1)))
+        label.textColor = .gray1
         label.textAlignment = .center
         label.text = item.content
         label.numberOfLines = 2
