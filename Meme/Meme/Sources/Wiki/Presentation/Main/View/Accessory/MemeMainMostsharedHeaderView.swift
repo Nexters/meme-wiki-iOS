@@ -14,7 +14,7 @@ final class MemeMainMostsharedHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.text = "단톡방행 밈 셔틀,\n지금 탑승하세요 🚂"
         label.numberOfLines = 2
-        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.font = .customFont(.pretendard(.title(.display2)))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -23,8 +23,8 @@ final class MemeMainMostsharedHeaderView: UICollectionReusableView {
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "지금 가장 많이 공유된 밈만 골라 실었어요"
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .darkGray
+        label.font = .customFont(.pretendard(.title(.subhead1)))
+        label.textColor = .gray4
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -32,7 +32,7 @@ final class MemeMainMostsharedHeaderView: UICollectionReusableView {
     private let timerLabel: UILabel = {
         let label = UILabel()
         label.text = "24 : 00 : 00"
-        label.font = .systemFont(ofSize: 34, weight: .black)
+        label.font = .customFont(.galmuri(.headline))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

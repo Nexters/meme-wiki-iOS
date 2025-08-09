@@ -29,7 +29,7 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
         imageview.layer.masksToBounds = true
         
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .customFont(.pretendard(.title(.subhead2)))
         label.textColor = .black
         label.textAlignment = .center
         label.text = item.content

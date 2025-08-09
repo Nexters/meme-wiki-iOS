@@ -13,7 +13,7 @@ final class MemeMainTopRatedHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "🔥인급밈🔥"
-        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.font = .customFont(.pretendard(.title(.display1)))
         label.textAlignment = .center
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,9 +23,9 @@ final class MemeMainTopRatedHeaderView: UICollectionReusableView {
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "지금 가장 따끈따근한 밈만 골랐어요"
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
+        label.font = .customFont(.pretendard(.title(.subhead2)))
         label.textAlignment = .center
-        label.textColor = .darkGray
+        label.textColor = .gray7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

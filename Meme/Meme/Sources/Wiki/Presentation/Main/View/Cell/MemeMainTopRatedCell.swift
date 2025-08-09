@@ -32,7 +32,7 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         textView.backgroundColor = .systemPink
         
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .customFont(.pretendard(.title(.subhead2)))
         label.textColor = .black
         label.textAlignment = .center
         label.text = item.content

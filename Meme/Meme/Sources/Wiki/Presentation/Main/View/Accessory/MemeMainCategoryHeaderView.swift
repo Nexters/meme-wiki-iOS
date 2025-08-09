@@ -20,7 +20,7 @@ class MemeMainCategoryHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.text = "뭘 좋아하는지 몰라서\n그냥 다 준비했어 👀"
         label.numberOfLines = 2
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = .customFont(.pretendard(.title(.display1)))
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
