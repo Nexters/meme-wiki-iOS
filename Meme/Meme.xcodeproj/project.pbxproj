@@ -39,7 +39,6 @@
 		2C5F24312E3F99A1000AA318 /* Providable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F242F2E3F99A1000AA318 /* Providable.swift */; };
 		2C5F24332E3F99B1000AA318 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24322E3F99B1000AA318 /* Provider.swift */; };
 		2C5F24342E3F99B1000AA318 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F24322E3F99B1000AA318 /* Provider.swift */; };
-		2C5F24352E3F9A4C000AA318 /* Galmuri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F23F12E3CE6DD000AA318 /* Galmuri.swift */; };
 		2C6767512E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767522E37978700794E10 /* SearchThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767502E37978700794E10 /* SearchThumbnailView.swift */; };
 		2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6767532E37A07E00794E10 /* PaddingLabel.swift */; };
@@ -116,8 +115,6 @@
 		AD848E462E2C9BEC0003F09F /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E442E2C9BEC0003F09F /* Lobby.swift */; };
 		AD848E482E2C9D1D0003F09F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E472E2C9D1D0003F09F /* ViewModel.swift */; };
 		AD848E492E2C9D1D0003F09F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E472E2C9D1D0003F09F /* ViewModel.swift */; };
-		ADE8E7842E422570008F0A24 /* MemeMain.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7832E422570008F0A24 /* MemeMain.Model.swift */; };
-		ADE8E7852E422570008F0A24 /* MemeMain.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7832E422570008F0A24 /* MemeMain.Model.swift */; };
 		ADE8E7892E4225E3008F0A24 /* MemeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7882E4225E3008F0A24 /* MemeMainViewController.swift */; };
 		ADE8E78A2E4225E3008F0A24 /* MemeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E7882E4225E3008F0A24 /* MemeMainViewController.swift */; };
 		ADE8E78C2E423447008F0A24 /* MemeMainCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E78B2E423447008F0A24 /* MemeMainCustomCell.swift */; };
@@ -196,7 +193,6 @@
 		AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyUseCase.swift; sourceTree = "<group>"; };
 		AD848E442E2C9BEC0003F09F /* Lobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		AD848E472E2C9D1D0003F09F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		ADE8E7832E422570008F0A24 /* MemeMain.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMain.Model.swift; sourceTree = "<group>"; };
 		ADE8E7882E4225E3008F0A24 /* MemeMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainViewController.swift; sourceTree = "<group>"; };
 		ADE8E78B2E423447008F0A24 /* MemeMainCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainCustomCell.swift; sourceTree = "<group>"; };
 		ADE8E7952E4238CE008F0A24 /* MemeMainCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMainCategoryCell.swift; sourceTree = "<group>"; };
@@ -588,19 +584,10 @@
 		ADE8E7812E42254F008F0A24 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ADE8E7822E422559008F0A24 /* Model */,
 				ADE8E7862E4225CB008F0A24 /* View */,
 				ADE8E7872E4225D2008F0A24 /* ViewModel */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		ADE8E7822E422559008F0A24 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				ADE8E7832E422570008F0A24 /* MemeMain.Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		ADE8E7862E4225CB008F0A24 /* View */ = {
@@ -791,7 +778,6 @@
 				AD5194682E346F770069D29B /* String+Extension.swift in Sources */,
 				AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
-				ADE8E7842E422570008F0A24 /* MemeMain.Model.swift in Sources */,
 				ADE8E7972E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2C5F24242E3F98CD000AA318 /* APIError.swift in Sources */,
@@ -855,7 +841,6 @@
 				AD5194672E346F770069D29B /* String+Extension.swift in Sources */,
 				AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */,
-				ADE8E7852E422570008F0A24 /* MemeMain.Model.swift in Sources */,
 				ADE8E7962E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,

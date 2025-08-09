@@ -17,7 +17,7 @@ final class MemeMainCustomCell: UICollectionViewCell {
         }
     }
     
-    func configureCell(with item: MemeMain.Model.Item) {
+    func configureCell(with item: Lobby.Item) {
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         

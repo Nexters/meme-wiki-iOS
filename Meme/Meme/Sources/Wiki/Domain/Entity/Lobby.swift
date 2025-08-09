@@ -8,11 +8,16 @@
 import Foundation
 
 struct Lobby {
+    enum Section: Int, CaseIterable {
+        case custom
+        case category
+        case topRated
+        case mostShared
+    }
     
-    let sections: [Section]
-    
-    struct Section {
-        let type: String
-        let title: String
+    struct Item: Hashable {
+        let id = UUID()
+        let type: Section
+        let content: String
     }
 }
