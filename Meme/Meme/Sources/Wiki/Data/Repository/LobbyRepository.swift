@@ -13,7 +13,7 @@ final class LobbyRepository: LobbyInterface {
 }
 
 extension LobbyRepository {
-    func fetchSections() async throws -> LobbyResponse {
-        return LobbyResponse()
+    func fetchSections() async throws -> BannerResponseDTO {
+        return BannerResponseDTO(id: 0, title: "", imgUrl: "")
     }
 }

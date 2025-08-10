@@ -23,3 +23,30 @@ struct Lobby {
         let indexPath: IndexPath
     }
 }
+
+extension Lobby {
+    struct BannerItem {
+        let id: Int
+        let title: String
+        let subTitle: String
+        let imageURL: String
+    }
+    
+    struct CategoryItem {
+        let id: Int
+        let title: String
+        let imageURL: String
+    }
+    
+    struct TopRatedItem {
+        let id: Int
+        let title: String
+        let imageURL: String
+    }
+    
+    struct MostSharedItem {
+        let id: Int
+        let title: String
+        let imageURL: String
+    }
+}
