@@ -121,8 +121,8 @@
 		AD848E372E2C93790003F09F /* LobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E352E2C93790003F09F /* LobbyResponse.swift */; };
 		AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E382E2C93D40003F09F /* LobbyRepository.swift */; };
 		AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E382E2C93D40003F09F /* LobbyRepository.swift */; };
-		AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E3E2E2C94660003F09F /* LobbyInterface.swift */; };
-		AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E3E2E2C94660003F09F /* LobbyInterface.swift */; };
+		AD848E3F2E2C94660003F09F /* LobbyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */; };
+		AD848E402E2C94660003F09F /* LobbyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */; };
 		AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */; };
 		AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */; };
 		AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E442E2C9BEC0003F09F /* Lobby.swift */; };
@@ -210,7 +210,7 @@
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		AD848E352E2C93790003F09F /* LobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyResponse.swift; sourceTree = "<group>"; };
 		AD848E382E2C93D40003F09F /* LobbyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyRepository.swift; sourceTree = "<group>"; };
-		AD848E3E2E2C94660003F09F /* LobbyInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyInterface.swift; sourceTree = "<group>"; };
+		AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyRepositoryInterface.swift; sourceTree = "<group>"; };
 		AD848E412E2C9B2A0003F09F /* LobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyUseCase.swift; sourceTree = "<group>"; };
 		AD848E442E2C9BEC0003F09F /* Lobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		AD848E472E2C9D1D0003F09F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -626,7 +626,7 @@
 		AD848E3C2E2C943C0003F09F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				AD848E3E2E2C94660003F09F /* LobbyInterface.swift */,
+				AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -830,7 +830,7 @@
 				2C5F23F22E3CE6DD000AA318 /* Galmuri.swift in Sources */,
 				ADE8E79C2E424E4A008F0A24 /* MemeMainMostSharedCell.swift in Sources */,
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
-				AD848E402E2C94660003F09F /* LobbyInterface.swift in Sources */,
+				AD848E402E2C94660003F09F /* LobbyRepositoryInterface.swift in Sources */,
 				2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */,
 				2C3982322E40630E007BDE92 /* MemeSearchListCell.swift in Sources */,
 				2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
@@ -903,6 +903,7 @@
 				AD848E392E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E3F2E2C94660003F09F /* LobbyInterface.swift in Sources */,
 				2C3982312E40630E007BDE92 /* MemeSearchListCell.swift in Sources */,
+				AD848E3F2E2C94660003F09F /* LobbyRepositoryInterface.swift in Sources */,
 				2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */,
 				2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
 				ADE8E78D2E423447008F0A24 /* MemeMainCustomCell.swift in Sources */,

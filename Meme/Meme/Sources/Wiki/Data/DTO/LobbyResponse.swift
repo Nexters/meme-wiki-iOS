@@ -37,7 +37,7 @@ struct TopRatedRatedReponseDTO: Decodable {
     }
 }
 
-struct MostSharedResposneDTO: Decodable {
+struct MostSharedResponseDTO: Decodable {
     let id: Int
     let title: String
     let imgUrl: String

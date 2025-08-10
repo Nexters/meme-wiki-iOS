@@ -17,9 +17,9 @@ final class DefaultLobbyUseCase: LobbyUseCase {
     var result = CurrentValueSubject<Result<Lobby, ServiceError>?, Never>(nil)
     
     private var task: Task<Void, Never>?
-    private let repository: LobbyInterface
+    private let repository: LobbyRepositoryInterface
     
-    init(repository: LobbyInterface) {
+    init(repository: LobbyRepositoryInterface) {
         self.repository = repository
     }
     
@@ -31,7 +31,7 @@ final class DefaultLobbyUseCase: LobbyUseCase {
         task?.cancel()
         task = Task {
             do {
-                let response = try await repository.fetchSections()
+                let response = try await repository.fetchBanners()
                 // TODO: - return success with result
             } catch let error as ServiceError {
                 result.send(.failure(error))
