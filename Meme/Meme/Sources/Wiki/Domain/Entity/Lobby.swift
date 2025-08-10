@@ -8,6 +8,10 @@
 import Foundation
 
 struct Lobby {
+    let banners: [BannerItem]
+}
+
+extension Lobby {
     enum Section: Int, CaseIterable {
         case custom = 0
         case category

@@ -31,8 +31,11 @@ final class DefaultLobbyUseCase: LobbyUseCase {
         task?.cancel()
         task = Task {
             do {
+                // TODO: - Call the all sections
                 let response = try await repository.fetchBanners()
-                // TODO: - return success with result
+                let banners = response.success.map { $0.toEntity() }
+                let lobby = Lobby(banners: banners)
+                result.send(.success(lobby))
             } catch let error as ServiceError {
                 result.send(.failure(error))
             } catch {
