@@ -19,6 +19,7 @@ enum CustomColor {
     case red(Red)
     case redOrange(RedOrange)
     case violet(Violet)
+    case yellow(Yellow)
     
     fileprivate var base: CustomColorConvertible {
         switch self {
@@ -33,6 +34,7 @@ enum CustomColor {
         case .red(let red): return red
         case .redOrange(let redOrange): return redOrange
         case .violet(let violet): return violet
+        case .yellow(let yellow): return yellow
         }
     }
     
@@ -197,6 +199,14 @@ enum Violet: String, CustomColorConvertible {
     case violet50
     case violet40
     case violet30
+
+    var color: UIColor? {
+        return UIColor(named: self.rawValue)
+    }
+}
+
+enum Yellow: String, CustomColorConvertible {
+    case yellow99, yellow90, yellow80, yellow70, yellow60, yellow50, yellow40, yellow30
 
     var color: UIColor? {
         return UIColor(named: self.rawValue)
