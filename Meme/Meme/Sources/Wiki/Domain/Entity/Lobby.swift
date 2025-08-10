@@ -9,7 +9,7 @@ import Foundation
 
 struct Lobby {
     enum Section: Int, CaseIterable {
-        case custom
+        case custom = 0
         case category
         case topRated
         case mostShared
@@ -19,5 +19,7 @@ struct Lobby {
         let id = UUID()
         let type: Section
         let content: String
+        
+        let indexPath: IndexPath
     }
 }

@@ -156,7 +156,10 @@ class MemeMainViewController: UIViewController {
         Section.allCases.forEach { section in
             snapshot.appendSections([section])
             let items = (0..<sectionItemCount(for: section)).map {
-                Item(type: section, content: "\(section) \(section) \($0 + 1)")
+                Item(
+                    type: section,
+                    content: "\(section) \(section) \($0 + 1)",
+                    indexPath: IndexPath(item: $0, section: section.rawValue))
             }
             snapshot.appendItems(items, toSection: section)
         }
@@ -170,7 +173,7 @@ class MemeMainViewController: UIViewController {
         case .category:
             return 4
         case .topRated:
-            return 8
+            return 6
         case .mostShared:
             return 4
         }

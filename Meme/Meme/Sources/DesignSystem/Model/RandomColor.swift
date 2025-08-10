@@ -8,8 +8,7 @@
 import UIKit
 
 enum RandomColor: CaseIterable {
-    // TODO: - add yellow color
-    case purple, pink, violet, lightBlue, green, red
+    case purple, pink, violet, lightBlue, green, red, yellow
     
     var labelColor: UIColor? {
         switch self {
@@ -19,6 +18,7 @@ enum RandomColor: CaseIterable {
         case .lightBlue: return CustomColor.lightBlue(.lightBlue90).color
         case .green: return CustomColor.green(.green90).color
         case .red: return CustomColor.red(.red90).color
+        case .yellow: return CustomColor.yellow(.yellow90).color
         }
     }
     
@@ -30,6 +30,7 @@ enum RandomColor: CaseIterable {
         case .lightBlue: return CustomColor.lightBlue(.lightBlue30).color
         case .green: return CustomColor.green(.green60).color
         case .red: return CustomColor.red(.red50).color
+        case .yellow: return CustomColor.yellow(.yellow90).color
         }
     }
 }

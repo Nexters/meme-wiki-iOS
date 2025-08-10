@@ -9,6 +9,7 @@ import UIKit
 
 final class MemeMainCategoryCell: UICollectionViewCell {
     static let identifier = "MemeMainCategoryCell"
+    private let fixedColor = [UIColor.blue80, .purple80, .yellow80, .red80]
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -19,7 +20,7 @@ final class MemeMainCategoryCell: UICollectionViewCell {
     
     func configureCell(with item: Lobby.Item) {
         let gradientView = UIView()
-        gradientView.backgroundColor = .yellow.withAlphaComponent(0.3)
+        gradientView.backgroundColor = fixedColor[item.indexPath.item % fixedColor.count]
         gradientView.layer.cornerRadius = 12
         gradientView.layer.masksToBounds = true
         

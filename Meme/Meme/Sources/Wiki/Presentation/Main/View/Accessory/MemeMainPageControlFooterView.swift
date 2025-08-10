@@ -26,7 +26,7 @@ class MemeMainCustomFooterView: UICollectionReusableView {
         addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.currentPageIndicatorTintColor = .white
-        pageControl.pageIndicatorTintColor = .gray
+        pageControl.pageIndicatorTintColor = .gray8
         NSLayoutConstraint.activate([
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             pageControl.centerYAnchor.constraint(equalTo: centerYAnchor)
