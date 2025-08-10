@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct SearchPage<Item> {
+    let items: [Item]
+    let pageState: PageState
+}
+
+struct PageState {
+    let next: Int?
+    let hasMore: Bool?
+    let pageSize: Int?
+}
