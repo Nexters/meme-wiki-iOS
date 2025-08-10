@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LobbyInterface {
-    func fetchSections() async throws -> LobbyResponse
+    func fetchSections() async throws -> BannerResponseDTO
 }
