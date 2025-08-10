@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  MemeMainViewModel.swift
 //  Meme
 //
 //  Created by 제나 on 7/20/25.
@@ -7,23 +7,23 @@
 
 import Combine
 
-// FIXME: - 파일없으면 깃에서 안보여서 있는 임시 파일
-
-final class MainViewModel {
+final class MemeMainViewModel {
     private let lobbyUseCase: LobbyUseCase
     private var subscriptions = Set<AnyCancellable>()
     
+    @Published var banners: [Lobby.BannerItem] = []
+    
     init(lobbyUseCase: LobbyUseCase) {
         self.lobbyUseCase = lobbyUseCase
+        bind()
     }
-}
-extension MainViewModel {
-    private func fetch() {
+    
+    private func bind() {
         lobbyUseCase.result
-            .sink { result in
+            .sink { [weak self] result in
                 switch result {
                 case .success(let value):
-                    let sections = value
+                    self?.banners = value.banners
                 case .failure(let error):
                     let erorr = error
                 case nil:
@@ -31,5 +31,10 @@ extension MainViewModel {
                 }
             }
             .store(in: &subscriptions)
+    }
+}
+extension MemeMainViewModel {
+    func fetch() {
+        lobbyUseCase.execute()
     }
 }

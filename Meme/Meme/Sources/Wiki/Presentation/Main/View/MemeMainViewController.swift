@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class MemeMainViewController: UIViewController {
     
@@ -15,13 +16,26 @@ class MemeMainViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
     
+    private var subscriptions = Set<AnyCancellable>()
+    private lazy var viewModel = MemeMainViewModel(
+        lobbyUseCase: DefaultLobbyUseCase(repository: LobbyRepository()))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupNavigation()
         layoutCollectionView()
         setupDataSource()
-        applySnapshot()
+        setupViewModel()
+    }
+    
+    private func setupViewModel() {
+        viewModel.fetch()
+        
+        viewModel.$banners
+            .sink { [weak self] banners in
+                self?.applySnapshot()
+            }.store(in: &subscriptions)
     }
     
     private func setupNavigation() {
@@ -169,7 +183,7 @@ class MemeMainViewController: UIViewController {
     private func sectionItemCount(for section: Section) -> Int {
         switch section {
         case .custom:
-            return 3
+            return viewModel.banners.count
         case .category:
             return 4
         case .topRated:
