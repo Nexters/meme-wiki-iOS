@@ -113,8 +113,8 @@
 		AD5194682E346F770069D29B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String+Extension.swift */; };
 		AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
-		AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* Endpoint.swift */; };
-		AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* Endpoint.swift */; };
+		AD848E1D2E2B4A430003F09F /* LobbyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */; };
+		AD848E1E2E2B4A430003F09F /* LobbyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */; };
 		AD848E262E2B55CF0003F09F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E252E2B55CF0003F09F /* APIConfiguration.swift */; };
 		AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E252E2B55CF0003F09F /* APIConfiguration.swift */; };
 		AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E352E2C93790003F09F /* LobbyResponse.swift */; };
@@ -206,7 +206,7 @@
 		AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiScriptMessageHandler.swift; sourceTree = "<group>"; };
 		AD5194662E346F770069D29B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		AD848E152E2B49620003F09F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
-		AD848E1C2E2B4A430003F09F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyAPI.swift; sourceTree = "<group>"; };
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		AD848E352E2C93790003F09F /* LobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyResponse.swift; sourceTree = "<group>"; };
 		AD848E382E2C93D40003F09F /* LobbyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyRepository.swift; sourceTree = "<group>"; };
@@ -543,7 +543,7 @@
 		AD848E182E2B49A50003F09F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				AD848E1C2E2B4A430003F09F /* Endpoint.swift */,
+				AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -861,6 +861,7 @@
 				2C5F24332E3F99B1000AA318 /* Provider.swift in Sources */,
 				AD848E432E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				ADE8E7AC2E439B68008F0A24 /* MemeMainMostsharedHeaderView.swift in Sources */,
+				AD848E1D2E2B4A430003F09F /* LobbyAPI.swift in Sources */,
 				2C5F23FE2E3D0774000AA318 /* SearchTextField.swift in Sources */,
 				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				2C39822F2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
@@ -930,6 +931,7 @@
 				2CFAA3262E3654BC004E4604 /* UIFont++Extension.swift in Sources */,
 				AD848E422E2C9B2A0003F09F /* LobbyUseCase.swift in Sources */,
 				ADE8E7AD2E439B68008F0A24 /* MemeMainMostsharedHeaderView.swift in Sources */,
+				AD848E1E2E2B4A430003F09F /* LobbyAPI.swift in Sources */,
 				2C5F23FF2E3D0774000AA318 /* SearchTextField.swift in Sources */,
 				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
 				2C39822E2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
