@@ -11,8 +11,8 @@ struct SearchResponseDTO: Decodable {
     let paging: PagingDTO
     let results: [SearchItemDTO]
     
-    func toEntity() -> [MemeSearchItem] {
-        return results.map { $0.toEntity() }
+    func toEntity() -> SearchPage<MemeSearchItem> {
+        .init(items: results.map { $0.toEntity() }, pageState: .init(next: paging.next, hasMore: paging.hasMore, pageSize: paging.pageSize))
     }
 }
 

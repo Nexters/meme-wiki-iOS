@@ -8,6 +8,6 @@
 import Combine
 
 protocol SearchUseCaseInterface {
-    var result: AnyPublisher<Result<[MemeSearchItem], ServiceError>?, Never> { get }
-    func excute(title: String?, next: Int?, limit: Int)
+    var result: AnyPublisher<Result<SearchPage<MemeSearchItem>, ServiceError>?, Never> { get }
+    func execute(title: String?, next: Int?, limit: Int)
 }

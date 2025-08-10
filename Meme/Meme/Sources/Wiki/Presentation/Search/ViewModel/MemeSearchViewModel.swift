@@ -13,7 +13,8 @@ final class MemeSearchViewModel {
     // MARK: - Properties
     
     private var subscriptions = Set<AnyCancellable>()
-    private var searchState: SearchState = SearchState(title: nil, next: nil, limit: 20)
+    private var searchState: SearchState = SearchState(title: nil, page: .init(next: nil, hasMore: nil, pageSize: nil))
+    private var isLoading: Bool = true
     
     // MARK: - Subject
     private let searchItemSubject = CurrentValueSubject<[MemeSearchItem], Never>([])
@@ -41,20 +42,26 @@ final class MemeSearchViewModel {
         self.searchUseCase = searchUseCase
     }
     
-    func viewDidLoad() {
-        searchUseCase.excute(title: searchState.title, next: searchState.next, limit: searchState.limit)
+    func fetchMeme() {
+        isLoading = true
+
+        searchUseCase.execute(title: searchState.title, next: searchState.page.next, limit: searchState.page.pageSize ?? 16)
         
         searchUseCase.result
             .sink { [weak self] result in
                 guard let self = self else { return }
+                self.isLoading = false
+                
                 switch result {
-                case .success(let items):
-                    if items.isEmpty {
+                case .success(let page):
+                    self.searchState.update(page.pageState)
+
+                    if page.items.isEmpty {
                         self.emptySubject.send(true)
                     } else if searchState.title == nil {
-                        self.searchItemSubject.send(items)
+                        self.searchItemSubject.send(page.items)
                     } else {
-                        self.searchResultSubject.send(items)
+                        self.searchResultSubject.send(page.items)
                     }
                 case .failure(let failure):
                     Log.error(failure.localizedDescription, .networking)
@@ -64,24 +71,31 @@ final class MemeSearchViewModel {
             }.store(in: &subscriptions)
     }
     
-    func textFieldDidChanged(_ input: String) {
+    func searchMeme(_ input: String) {
+        isLoading = true
         searchState.setTitle(input.isEmpty ? nil : input)
-        searchUseCase.excute(title: searchState.title, next: searchState.next, limit: searchState.limit)
+        searchUseCase.execute(title: searchState.title, next: searchState.page.next, limit: searchState.page.pageSize ?? 16)
+    }
+    
+    func fetchNextPage() {
+        guard let hasMore = searchState.page.hasMore, hasMore, !isLoading else { return }
+        isLoading = true
+        searchUseCase.execute(title: searchState.title, next: searchState.page.next, limit: searchState.page.pageSize ?? 16)
     }
 }
 
 extension MemeSearchViewModel {
     struct SearchState {
         var title: String? = ""
-        var next: Int? = nil
-        var limit: Int
+        var page: PageState
         
-        mutating func nextPage() {
-            self.next = (self.next ?? 0) + 1
+        mutating func update(_ page: PageState) {
+            self.page = page
         }
         
         mutating func setTitle(_ title: String?) {
             self.title = title
+            self.page = .init(next: nil, hasMore: nil, pageSize: nil)
         }
     }
 }

@@ -8,10 +8,10 @@
 import Combine
 
 final class SearchUseCase: SearchUseCaseInterface {
-    private let subject = CurrentValueSubject<Result<[MemeSearchItem], ServiceError>?, Never>(nil)
+    private let subject = CurrentValueSubject<Result<SearchPage<MemeSearchItem>, ServiceError>?, Never>(nil)
     
-    var result: AnyPublisher<Result<[MemeSearchItem], ServiceError>?, Never> {
-        return subject.eraseToAnyPublisher()
+    var result: AnyPublisher<Result<SearchPage<MemeSearchItem>, ServiceError>?, Never> {
+        subject.eraseToAnyPublisher()
     }
     
     private let repository: SearchRepositoryInterface
@@ -20,12 +20,12 @@ final class SearchUseCase: SearchUseCaseInterface {
         self.repository = repository
     }
     
-    func excute(title: String?, next: Int?, limit: Int) {
+    func execute(title: String?, next: Int?, limit: Int) {
         Task {
             do {
                 let response = try await repository.search(title: title, next: next, limit: limit)
-                let item = response.success.toEntity()
-                subject.send(.success(item))
+                let page = response.success.toEntity()
+                subject.send(.success(page))
             } catch let error as ServiceError {
                 subject.send(.failure(error))
             } catch {

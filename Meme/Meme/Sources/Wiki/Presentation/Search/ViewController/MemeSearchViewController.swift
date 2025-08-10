@@ -13,6 +13,7 @@ final class MemeSearchViewController: BaseViewController {
     typealias Snapshot
     = NSDiffableDataSourceSnapshot<MemeSearchSection, MemeSearchDisplayItem>
     
+    private var isLoading: Bool = false
     private var dataSource: SearchDataSource?
     private var viewModel: MemeSearchViewModel
     private var subscription = Set<AnyCancellable>()
@@ -30,6 +31,7 @@ final class MemeSearchViewController: BaseViewController {
         collectionView.register(MemeSearchListCell.self, forCellWithReuseIdentifier: MemeSearchListCell.identifier)
         collectionView.register(MemeSearchEmptyCell.self, forCellWithReuseIdentifier: MemeSearchEmptyCell.identifier)
         collectionView.backgroundColor = CustomColor.black(.black).color
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -90,21 +92,30 @@ final class MemeSearchViewController: BaseViewController {
     }
     
     override func bind() {
-        viewModel.viewDidLoad()
+        viewModel.fetchMeme()
         
         viewModel.searchItemPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
                 guard let self = self else { return }
-                self.updateSnapshot(section: .grid, items: items.map { .grid($0) })
+                let snapshot = dataSource?.snapshot()
+                if snapshot?.indexOfSection(.grid) == nil {
+                    self.updateSnapshot(section: .grid, items: items.map { .grid($0) })
+                } else {
+                    self.appendSnapshot(section: .grid, items: items.map { .grid($0) })
+                }
             }.store(in: &subscription)
         
         viewModel.searchResultPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
                 guard let self = self else { return }
-                Log.debug("items: \(items)", .ui)
-                self.updateSnapshot(section: .list, items: items.map { .list($0) })
+                let snapshot = dataSource?.snapshot()
+                if snapshot?.indexOfSection(.list) == nil {
+                    self.updateSnapshot(section: .list, items: items.map { .list($0) })
+                } else {
+                    self.appendSnapshot(section: .list, items: items.map { .list($0) })
+                }
             }.store(in: &subscription)
         
         
@@ -119,7 +130,7 @@ final class MemeSearchViewController: BaseViewController {
         searchTextField.textChangePublisher
             .sink { [weak self] text in
                 guard let self = self else { return }
-                viewModel.textFieldDidChanged(text)
+                viewModel.searchMeme(text)
             }.store(in: &subscription)
     }
     
@@ -152,11 +163,31 @@ private extension MemeSearchViewController {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: false)
+        collectionView.setContentOffset(.zero, animated: false)
         collectionView.isScrollEnabled = section != .empty
+    }
+    
+    func appendSnapshot(section: MemeSearchSection, items: [MemeSearchDisplayItem]) {
+        var snapshot = dataSource?.snapshot() ?? Snapshot()
+        if !snapshot.sectionIdentifiers.contains(section) {
+            snapshot.appendSections([section])
+        }
+        snapshot.appendItems(items, toSection: section)
+        dataSource?.apply(snapshot, animatingDifferences: false)
     }
 }
 
+extension MemeSearchViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentH = scrollView.contentSize.height
+        let visibleH = scrollView.bounds.height
+        if offsetY > contentH - visibleH - 200, contentH > 0 {
+            viewModel.fetchNextPage()
+        }
+    }
+}
 private extension MemeSearchViewController {
     enum Constants {
         enum SearchTextField {
