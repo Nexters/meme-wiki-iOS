@@ -84,6 +84,8 @@ final class SearchThumbnailView: UIView {
         titleLabel.attributedText = .customFont(type.titleFont, text: thumbnail.title)
         hastagLabel.attributedText = .customFont(type.hastagFont, text: thumbnail.hashtag.map { "#\($0)" }.joined(separator: " "))
         yearLabel.attributedText = .customFont(type.yearFont, text: String(thumbnail.year))
+        titleLabel.textColor = .white
+        hastagLabel.textColor = .white
     }
 }
 

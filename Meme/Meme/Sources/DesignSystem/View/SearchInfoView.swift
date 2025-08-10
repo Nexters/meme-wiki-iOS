@@ -21,14 +21,12 @@ final class SearchInfoView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = CustomColor.gray(.gray1).color
         return label
     }()
     
     private let contentLabel: MarqueeLabel = {
         let label = MarqueeLabel()
         label.speed = .rate(50)
-        label.textColor = CustomColor.gray(.gray4).color
         return label
     }()
 
@@ -50,6 +48,8 @@ final class SearchInfoView: UIView {
     func updateUI(_ title: String, _ content: String) {
         titleLabel.attributedText = .customFont(.pretendard(.title(.subhead2)), text: title)
         contentLabel.attributedText = .customFont(.pretendard(.body(.body1)), text: content)
+        titleLabel.textColor = CustomColor.gray(.gray1).color
+        contentLabel.textColor = CustomColor.gray(.gray4).color
     }
 }
 
@@ -71,12 +71,13 @@ private extension SearchInfoView {
             
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Constants.titleLabel.leading),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: Constants.titleLabel.width),
             
             contentLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: Constants.contentLabel.leading),
             contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.contentLabel.trailing),
             contentLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+        
+        titleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 }
 
@@ -92,7 +93,6 @@ private extension SearchInfoView {
         
         enum titleLabel {
             static let leading: CGFloat = 6
-            static let width: CGFloat = 24
         }
         
         enum contentLabel {

@@ -8,7 +8,7 @@
 import UIKit
 
 extension NSAttributedString {
-    static func customFont(_ font: CustomFont, text: String) -> NSAttributedString {
+    static func customFont(_ font: CustomFont, text: String, color: CustomColor? = nil) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.minimumLineHeight = font.lineHeight
         paragraph.maximumLineHeight = font.lineHeight
@@ -19,7 +19,8 @@ extension NSAttributedString {
             .font: customFont,
             .kern: font.letterSpacing,
             .paragraphStyle: paragraph,
-            .baselineOffset: (font.lineHeight - customFont.lineHeight) / 2
+            .baselineOffset: (font.lineHeight - customFont.lineHeight) / 2,
+            .foregroundColor: color?.color ?? UIColor.label
         ])
     }
 }
