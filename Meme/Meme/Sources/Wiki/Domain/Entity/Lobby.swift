@@ -8,12 +8,14 @@
 import Foundation
 
 struct Lobby {
-    let banners: [BannerItem]
+    let categories: [CategoryItem]
+    let topRatedMemes: [TopRatedItem]
+    let mostSharedMemes: [MostSharedItem]
 }
 
 extension Lobby {
     enum Section: Int, CaseIterable {
-        case custom = 0
+        case banner = 0
         case category
         case topRated
         case mostShared
@@ -23,6 +25,7 @@ extension Lobby {
         let id = UUID()
         let type: Section
         let content: String
+        let imageURL: String?
         
         let indexPath: IndexPath
     }
