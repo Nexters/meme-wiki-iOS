@@ -81,6 +81,8 @@
 		2C6767602E37B8A000794E10 /* CustomColorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67675E2E37B8A000794E10 /* CustomColorConvertible.swift */; };
 		2CAC9F432E48C8BF00D7C1F6 /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F422E48C8BF00D7C1F6 /* SearchPage.swift */; };
 		2CAC9F442E48C8BF00D7C1F6 /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F422E48C8BF00D7C1F6 /* SearchPage.swift */; };
+		2CAC9F482E48DFBE00D7C1F6 /* MemeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F472E48DFBE00D7C1F6 /* MemeCategoryViewController.swift */; };
+		2CAC9F492E48DFBE00D7C1F6 /* MemeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F472E48DFBE00D7C1F6 /* MemeCategoryViewController.swift */; };
 		2CAC9F4C2E48E12500D7C1F6 /* MemeCategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F4B2E48E12500D7C1F6 /* MemeCategorySection.swift */; };
 		2CAC9F4D2E48E12500D7C1F6 /* MemeCategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F4B2E48E12500D7C1F6 /* MemeCategorySection.swift */; };
 		2CAC9F4F2E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F4E2E4A1FC000D7C1F6 /* CategoryItem.swift */; };
@@ -222,6 +224,7 @@
 		2C67675B2E37B5D100794E10 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		2C67675E2E37B8A000794E10 /* CustomColorConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorConvertible.swift; sourceTree = "<group>"; };
 		2CAC9F422E48C8BF00D7C1F6 /* SearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPage.swift; sourceTree = "<group>"; };
+		2CAC9F472E48DFBE00D7C1F6 /* MemeCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCategoryViewController.swift; sourceTree = "<group>"; };
 		2CAC9F4B2E48E12500D7C1F6 /* MemeCategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCategorySection.swift; sourceTree = "<group>"; };
 		2CAC9F4E2E4A1FC000D7C1F6 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCell.swift; sourceTree = "<group>"; };
@@ -453,8 +456,17 @@
 			children = (
 				2CAC9F512E4A325000D7C1F6 /* View */,
 				2CAC9F4A2E48E11900D7C1F6 /* Model */,
+				2CAC9F462E48DFB100D7C1F6 /* ViewController */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		2CAC9F462E48DFB100D7C1F6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2CAC9F472E48DFBE00D7C1F6 /* MemeCategoryViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		2CAC9F4A2E48E11900D7C1F6 /* Model */ = {
@@ -975,6 +987,7 @@
 				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				ADE8E7972E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
+				2CAC9F482E48DFBE00D7C1F6 /* MemeCategoryViewController.swift in Sources */,
 				2C5F24242E3F98CD000AA318 /* APIError.swift in Sources */,
 				2C5F24302E3F99A1000AA318 /* Providable.swift in Sources */,
 				2CAC9F502E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */,
@@ -1065,6 +1078,7 @@
 				2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */,
 				2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */,
 				AD5194672E346F770069D29B /* String+Extension.swift in Sources */,
+				2CAC9F492E48DFBE00D7C1F6 /* MemeCategoryViewController.swift in Sources */,
 				AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CAC9F4F2E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */,
