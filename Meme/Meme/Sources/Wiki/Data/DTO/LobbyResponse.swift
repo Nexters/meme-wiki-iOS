@@ -7,16 +7,6 @@
 
 import Foundation
 
-struct BannerResponseDTO: Decodable {
-    let id: Int
-    let title: String
-    let imgUrl: String
-    
-    func toEntity() -> Lobby.BannerItem {
-        .init(id: id, title: title, subTitle: title, imageURL: imgUrl)
-    }
-}
-
 struct CategoryResponseDTO: Decodable {
     let id: Int
     let name: String

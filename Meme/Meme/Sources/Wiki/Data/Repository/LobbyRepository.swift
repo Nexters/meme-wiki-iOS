@@ -13,11 +13,6 @@ final class LobbyRepository: LobbyRepositoryInterface {
 }
 
 extension LobbyRepository {
-    func fetchBanners() async throws -> APIResponse<[BannerResponseDTO]> {
-        let response = try await provider.request(api: .banner, dto: [BannerResponseDTO].self)
-        return response
-    }
-    
     func fetchCategories() async throws -> APIResponse<[CategoryResponseDTO]> {
         let response = try await provider.request(api: .categories, dto: [CategoryResponseDTO].self)
         return response

@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 enum LobbyAPI {
-    case banner
     case categories
     case category(id: String, next: Int?, limit: Int = 20)
     case topRated
@@ -20,8 +19,6 @@ extension LobbyAPI: BaseTargetType {
     
     var path: String {
         switch self {
-        case .banner:
-            return "/api/memes/rankings/custom"
         case .categories:
             return "/api/memes/categories"
         case .category(let id, _, _):

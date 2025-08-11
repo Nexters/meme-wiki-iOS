@@ -1,5 +1,5 @@
 //
-//  MemeMainCustomFooterView.swift
+//  MemeMainBannerFooterView.swift
 //  Meme
 //
 //  Created by 제나 on 8/6/25.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class MemeMainCustomFooterView: UICollectionReusableView {
-    static let identifier = "MemeMainCustomFooterView"
+class MemeMainBannerFooterView: UICollectionReusableView {
+    static let identifier = "MemeMainBannerFooterView"
 
     let pageControl = UIPageControl()
 

@@ -1,5 +1,5 @@
 //
-//  MemeMainCustomCell.swift
+//  MemeMainBannerCell.swift
 //  Meme
 //
 //  Created by 제나 on 8/5/25.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class MemeMainCustomCell: UICollectionViewCell {
-    static let identifier = "MemeMainCustomCell"
+final class MemeMainBannerCell: UICollectionViewCell {
+    static let identifier = "MemeMainBannerCell"
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -22,11 +22,7 @@ final class MemeMainCustomCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         
         let imageview = UIImageView()
-        imageview.image = [
-            UIImage(resource: .bannerCustom1),
-            UIImage(resource: .bannerCustom2),
-            UIImage(resource: .bannerCustom3)
-        ].randomElement()
+        imageview.image = UIImage(named: "banner_custom_\(item.indexPath.item + 1)")
         imageview.contentMode = .scaleAspectFill
         contentView.addSubview(imageview)
         imageview.translatesAutoresizingMaskIntoConstraints = false

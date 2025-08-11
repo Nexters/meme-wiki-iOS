@@ -68,8 +68,8 @@ class MemeMainViewController: UIViewController {
             UICollectionViewCell.self,
             forCellWithReuseIdentifier: "cell")
         collectionView.register(
-            MemeMainCustomCell.self,
-            forCellWithReuseIdentifier: MemeMainCustomCell.identifier)
+            MemeMainBannerCell.self,
+            forCellWithReuseIdentifier: MemeMainBannerCell.identifier)
         collectionView.register(
             MemeMainCategoryCell.self,
             forCellWithReuseIdentifier: MemeMainCategoryCell.identifier)
@@ -80,9 +80,9 @@ class MemeMainViewController: UIViewController {
             MemeMainMostSharedCell.self,
             forCellWithReuseIdentifier: MemeMainMostSharedCell.identifier)
         collectionView.register(
-            MemeMainCustomFooterView.self,
+            MemeMainBannerFooterView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-            withReuseIdentifier: MemeMainCustomFooterView.identifier)
+            withReuseIdentifier: MemeMainBannerFooterView.identifier)
         collectionView.register(
             MemeMainCategoryHeaderView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -104,27 +104,27 @@ class MemeMainViewController: UIViewController {
             switch item.type {
             case .banner:
                 let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: MemeMainCustomCell.identifier, for: indexPath)
-                guard let customCell = cell as? MemeMainCustomCell else { return .none }
-                customCell.configureCell(with: item)
+                    withReuseIdentifier: MemeMainBannerCell.identifier, for: indexPath)
+                guard let bannerCell = cell as? MemeMainBannerCell else { return .none }
+                bannerCell.configureCell(with: item)
                 return cell
             case .category:
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: MemeMainCategoryCell.identifier, for: indexPath)
-                guard let customCell = cell as? MemeMainCategoryCell else { return .none }
-                customCell.configureCell(with: item)
+                guard let bannerCell = cell as? MemeMainCategoryCell else { return .none }
+                bannerCell.configureCell(with: item)
                 return cell
             case .topRated:
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: MemeMainTopRatedCell.identifier, for: indexPath)
-                guard let customCell = cell as? MemeMainTopRatedCell else { return .none }
-                customCell.configureCell(with: item)
+                guard let bannerCell = cell as? MemeMainTopRatedCell else { return .none }
+                bannerCell.configureCell(with: item)
                 return cell
             case .mostShared:
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: MemeMainMostSharedCell.identifier, for: indexPath)
-                guard let customCell = cell as? MemeMainMostSharedCell else { return .none }
-                customCell.configureCell(with: item)
+                guard let bannerCell = cell as? MemeMainMostSharedCell else { return .none }
+                bannerCell.configureCell(with: item)
                 return cell
             }
         }
@@ -160,8 +160,8 @@ class MemeMainViewController: UIViewController {
                 if section == .banner {
                     let footer = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
-                        withReuseIdentifier: MemeMainCustomFooterView.identifier,
-                        for: indexPath) as? MemeMainCustomFooterView
+                        withReuseIdentifier: MemeMainBannerFooterView.identifier,
+                        for: indexPath) as? MemeMainBannerFooterView
                     footer?.pageControl.numberOfPages = self.sectionItemCount(for: .banner)
                     footer?.pageControl.currentPage = 0
                     footer?.pageControl.isUserInteractionEnabled = false
@@ -172,62 +172,7 @@ class MemeMainViewController: UIViewController {
         }
     }
     
-    private func applySnapshot(_ item: Lobby) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        
-        // 배너
-        let bannerSection = Section.banner
-        snapshot.appendSections([bannerSection])
-        let bannerItems = (0..<4).map { index in
-            Item(
-                type: .banner,
-                content: "", imageURL: nil,
-                indexPath: IndexPath(item: index, section: bannerSection.rawValue)
-            )
-        }
-        snapshot.appendItems(bannerItems, toSection: bannerSection)
-
-        // 카테고리
-        let categorySection = Section.category
-        snapshot.appendSections([categorySection])
-        let categoryItems = item.categories.enumerated().map { index, category in
-            Item(
-                type: .category,
-                content: category.title,
-                imageURL: category.imageURL,
-                indexPath: IndexPath(item: index, section: categorySection.rawValue)
-            )
-        }
-        snapshot.appendItems(categoryItems, toSection: categorySection)
-        
-        // 인급밈
-        let topRatedSection = Section.topRated
-        snapshot.appendSections([topRatedSection])
-        let topRatedItems = item.topRatedMemes.enumerated().map { index, meme in
-            Item(
-                type: .topRated,
-                content: meme.title,
-                imageURL: meme.imageURL,
-                indexPath: IndexPath(item: index, section: topRatedSection.rawValue)
-            )
-        }
-        snapshot.appendItems(topRatedItems, toSection: topRatedSection)
-        
-        // 밈열차
-        let mostSharedSection = Section.mostShared
-        snapshot.appendSections([mostSharedSection])
-        let mostSharedItems = item.mostSharedMemes.enumerated().map { index, meme in
-            Item(
-                type: .mostShared,
-                content: meme.title,
-                imageURL: meme.imageURL,
-                indexPath: IndexPath(item: index, section: mostSharedSection.rawValue)
-            )
-        }
-        snapshot.appendItems(mostSharedItems, toSection: mostSharedSection)
-        
-        dataSource.apply(snapshot, animatingDifferences: false)
-    }
+    
     
     private func sectionItemCount(for section: Section) -> Int {
         guard let lobby = viewModel.lobby else { return 0 }
@@ -242,7 +187,74 @@ class MemeMainViewController: UIViewController {
             return lobby.mostSharedMemes.count
         }
     }
-    
+}
+
+extension MemeMainViewController {
+    private func applySnapshot(_ item: Lobby) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        
+        // 공통 섹션 추가 함수
+        func appendSectionItems<T>(
+            _ section: Section,
+            from array: [T],
+            type: Lobby.Section,
+            content: (T) -> String,
+            imageURL: (T) -> String?
+        ) {
+            snapshot.appendSections([section])
+            let items = array.enumerated().map { index, element in
+                Item(
+                    type: type,
+                    content: content(element),
+                    imageURL: imageURL(element),
+                    indexPath: IndexPath(item: index, section: section.rawValue)
+                )
+            }
+            snapshot.appendItems(items, toSection: section)
+        }
+        
+        // 배너 (0~2 고정)
+        appendSectionItems(
+            .banner,
+            from: Array(0..<3),
+            type: .banner,
+            content: { _ in "" },
+            imageURL: { _ in nil }
+        )
+        
+        // 카테고리
+        appendSectionItems(
+            .category,
+            from: item.categories,
+            type: .category,
+            content: { $0.title },
+            imageURL: { $0.imageURL }
+        )
+        
+        // 인급밈
+        appendSectionItems(
+            .topRated,
+            from: item.topRatedMemes,
+            type: .topRated,
+            content: { $0.title },
+            imageURL: { $0.imageURL }
+        )
+        
+        // 밈열차
+        appendSectionItems(
+            .mostShared,
+            from: item.mostSharedMemes,
+            type: .mostShared,
+            content: { $0.title },
+            imageURL: { $0.imageURL }
+        )
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+// MARK: - compositional layout
+extension MemeMainViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, environment in
             guard let sectionType = Section(rawValue: sectionIndex) else { return nil }
@@ -284,7 +296,7 @@ class MemeMainViewController: UIViewController {
                     if let footer = self.collectionView.supplementaryView(
                         forElementKind: UICollectionView.elementKindSectionFooter,
                         at: IndexPath(item: 0, section: Section.banner.rawValue)
-                    ) as? MemeMainCustomFooterView {
+                    ) as? MemeMainBannerFooterView {
                         footer.pageControl.currentPage = page
                     }
                 }
