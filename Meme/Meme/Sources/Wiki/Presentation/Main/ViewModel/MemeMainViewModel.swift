@@ -11,7 +11,7 @@ final class MemeMainViewModel {
     private let lobbyUseCase: LobbyUseCase
     private var subscriptions = Set<AnyCancellable>()
     
-    @Published var banners: [Lobby.BannerItem] = []
+    @Published var lobby: Lobby?
     
     init(lobbyUseCase: LobbyUseCase) {
         self.lobbyUseCase = lobbyUseCase
@@ -23,7 +23,7 @@ final class MemeMainViewModel {
             .sink { [weak self] result in
                 switch result {
                 case .success(let value):
-                    self?.banners = value.banners
+                    self?.lobby = value
                 case .failure(let error):
                     let erorr = error
                 case nil:

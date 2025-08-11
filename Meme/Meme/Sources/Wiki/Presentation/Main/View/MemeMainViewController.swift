@@ -17,8 +17,14 @@ class MemeMainViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
     
     private var subscriptions = Set<AnyCancellable>()
-    private lazy var viewModel = MemeMainViewModel(
-        lobbyUseCase: DefaultLobbyUseCase(repository: LobbyRepository()))
+    private lazy var viewModel: MemeMainViewModel = {
+        let repository = LobbyRepository()
+        return MemeMainViewModel(
+            lobbyUseCase: DefaultLobbyUseCase(
+                categoriesUseCase: DefaultCategoriesUseCase(repository: repository),
+                topRatedUseCase: DefaultTopRatedUseCase(repository: repository),
+                mostSharedUseCase: DefaultMostSharedUseCase(repository: repository)))
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +38,10 @@ class MemeMainViewController: UIViewController {
     private func setupViewModel() {
         viewModel.fetch()
         
-        viewModel.$banners
-            .sink { [weak self] banners in
-                self?.applySnapshot()
+        viewModel.$lobby
+            .sink { [weak self] item in
+                guard let item else { return }
+                self?.applySnapshot(item)
             }.store(in: &subscriptions)
     }
     
@@ -95,7 +102,7 @@ class MemeMainViewController: UIViewController {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             
             switch item.type {
-            case .custom:
+            case .banner:
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: MemeMainCustomCell.identifier, for: indexPath)
                 guard let customCell = cell as? MemeMainCustomCell else { return .none }
@@ -150,12 +157,12 @@ class MemeMainViewController: UIViewController {
                 }
             } else if kind == UICollectionView.elementKindSectionFooter {
                 let section = Section(rawValue: indexPath.section)
-                if section == .custom {
+                if section == .banner {
                     let footer = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: MemeMainCustomFooterView.identifier,
                         for: indexPath) as? MemeMainCustomFooterView
-                    footer?.pageControl.numberOfPages = self.sectionItemCount(for: .custom)
+                    footer?.pageControl.numberOfPages = self.sectionItemCount(for: .banner)
                     footer?.pageControl.currentPage = 0
                     footer?.pageControl.isUserInteractionEnabled = false
                     return footer
@@ -165,31 +172,74 @@ class MemeMainViewController: UIViewController {
         }
     }
     
-    private func applySnapshot() {
+    private func applySnapshot(_ item: Lobby) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        Section.allCases.forEach { section in
-            snapshot.appendSections([section])
-            let items = (0..<sectionItemCount(for: section)).map {
-                Item(
-                    type: section,
-                    content: "\(section) \(section) \($0 + 1)",
-                    indexPath: IndexPath(item: $0, section: section.rawValue))
-            }
-            snapshot.appendItems(items, toSection: section)
+        
+        // 배너
+        let bannerSection = Section.banner
+        snapshot.appendSections([bannerSection])
+        let bannerItems = (0..<4).map { index in
+            Item(
+                type: .banner,
+                content: "", imageURL: nil,
+                indexPath: IndexPath(item: index, section: bannerSection.rawValue)
+            )
         }
+        snapshot.appendItems(bannerItems, toSection: bannerSection)
+
+        // 카테고리
+        let categorySection = Section.category
+        snapshot.appendSections([categorySection])
+        let categoryItems = item.categories.enumerated().map { index, category in
+            Item(
+                type: .category,
+                content: category.title,
+                imageURL: category.imageURL,
+                indexPath: IndexPath(item: index, section: categorySection.rawValue)
+            )
+        }
+        snapshot.appendItems(categoryItems, toSection: categorySection)
+        
+        // 인급밈
+        let topRatedSection = Section.topRated
+        snapshot.appendSections([topRatedSection])
+        let topRatedItems = item.topRatedMemes.enumerated().map { index, meme in
+            Item(
+                type: .topRated,
+                content: meme.title,
+                imageURL: meme.imageURL,
+                indexPath: IndexPath(item: index, section: topRatedSection.rawValue)
+            )
+        }
+        snapshot.appendItems(topRatedItems, toSection: topRatedSection)
+        
+        // 밈열차
+        let mostSharedSection = Section.mostShared
+        snapshot.appendSections([mostSharedSection])
+        let mostSharedItems = item.mostSharedMemes.enumerated().map { index, meme in
+            Item(
+                type: .mostShared,
+                content: meme.title,
+                imageURL: meme.imageURL,
+                indexPath: IndexPath(item: index, section: mostSharedSection.rawValue)
+            )
+        }
+        snapshot.appendItems(mostSharedItems, toSection: mostSharedSection)
+        
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func sectionItemCount(for section: Section) -> Int {
+        guard let lobby = viewModel.lobby else { return 0 }
         switch section {
-        case .custom:
-            return viewModel.banners.count
+        case .banner:
+            return 3
         case .category:
-            return 4
+            return lobby.categories.count
         case .topRated:
-            return 6
+            return lobby.topRatedMemes.count
         case .mostShared:
-            return 4
+            return lobby.mostSharedMemes.count
         }
     }
     
@@ -198,7 +248,7 @@ class MemeMainViewController: UIViewController {
             guard let sectionType = Section(rawValue: sectionIndex) else { return nil }
             
             switch sectionType {
-            case .custom:
+            case .banner:
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.95),
                     heightDimension: .absolute(218))
@@ -233,7 +283,7 @@ class MemeMainViewController: UIViewController {
                     let page = Int(round(offset.x / itemWidth))
                     if let footer = self.collectionView.supplementaryView(
                         forElementKind: UICollectionView.elementKindSectionFooter,
-                        at: IndexPath(item: 0, section: Section.custom.rawValue)
+                        at: IndexPath(item: 0, section: Section.banner.rawValue)
                     ) as? MemeMainCustomFooterView {
                         footer.pageControl.currentPage = page
                     }

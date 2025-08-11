@@ -23,9 +23,9 @@ extension LobbyAPI: BaseTargetType {
         case .banner:
             return "/api/memes/rankings/custom"
         case .categories:
-            return "/api/memes/rankings/categories"
+            return "/api/memes/categories"
         case .category(let id, _, _):
-            return "/api/memes/rankings/categories/\(id)"
+            return "/api/memes/categories/\(id)"
         case .topRated:
             return "/api/memes/rankings/top-rated"
         case .mostShared:
