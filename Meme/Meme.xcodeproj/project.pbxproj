@@ -83,6 +83,8 @@
 		2CAC9F442E48C8BF00D7C1F6 /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F422E48C8BF00D7C1F6 /* SearchPage.swift */; };
 		2CAC9F4F2E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F4E2E4A1FC000D7C1F6 /* CategoryItem.swift */; };
 		2CAC9F502E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F4E2E4A1FC000D7C1F6 /* CategoryItem.swift */; };
+		2CAC9F532E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */; };
+		2CAC9F542E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */; };
 		2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
 		2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
 		2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999B2E2F848800D14084 /* KeyChainStore.swift */; };
@@ -215,6 +217,7 @@
 		2C67675E2E37B8A000794E10 /* CustomColorConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorConvertible.swift; sourceTree = "<group>"; };
 		2CAC9F422E48C8BF00D7C1F6 /* SearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPage.swift; sourceTree = "<group>"; };
 		2CAC9F4E2E4A1FC000D7C1F6 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCell.swift; sourceTree = "<group>"; };
 		2CC399982E2F831100D14084 /* KeyChainStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStorable.swift; sourceTree = "<group>"; };
 		2CC3999B2E2F848800D14084 /* KeyChainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStore.swift; sourceTree = "<group>"; };
 		2CC3999E2E2F84BD00D14084 /* KeyChainProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProperties.swift; sourceTree = "<group>"; };
@@ -434,6 +437,22 @@
 				2C67675E2E37B8A000794E10 /* CustomColorConvertible.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		2CAC9F452E48DFA900D7C1F6 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2CAC9F512E4A325000D7C1F6 /* View */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		2CAC9F512E4A325000D7C1F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2CC399972E2F830500D14084 /* KeyChain */ = {
@@ -666,6 +685,7 @@
 		AD848E332E2C92E20003F09F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2CAC9F452E48DFA900D7C1F6 /* Category */,
 				ADE8E7812E42254F008F0A24 /* Main */,
 				2C5EB0882E3FA1E400D37F94 /* Search */,
 				2C5EB08B2E3FA21500D37F94 /* BaseViewController.swift */,
@@ -907,6 +927,7 @@
 				ADE8E7A62E4393D4008F0A24 /* MemeMainTopRatedHeaderView.swift in Sources */,
 				2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */,
+				2CAC9F532E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */,
 				2C5EB08C2E3FA21500D37F94 /* BaseViewController.swift in Sources */,
 				2C14ECF02E4376F6009B605C /* SearchResponseDTO.swift in Sources */,
 				AD848E262E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
@@ -990,6 +1011,7 @@
 				2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				ADE8E7992E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */,
 				ADE8E7A52E4393D4008F0A24 /* MemeMainTopRatedHeaderView.swift in Sources */,
+				2CAC9F542E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */,
 				2CC3999D2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2C14ECF12E4376F6009B605C /* SearchResponseDTO.swift in Sources */,
 				2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */,
