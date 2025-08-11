@@ -87,6 +87,8 @@
 		2CAC9F542E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */; };
 		2CAC9F562E4A344F00D7C1F6 /* MemeSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F552E4A344F00D7C1F6 /* MemeSearchHeaderView.swift */; };
 		2CAC9F572E4A344F00D7C1F6 /* MemeSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F552E4A344F00D7C1F6 /* MemeSearchHeaderView.swift */; };
+		2CAC9F592E4A35EA00D7C1F6 /* SeparatorDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F582E4A35EA00D7C1F6 /* SeparatorDecorationView.swift */; };
+		2CAC9F5A2E4A35EA00D7C1F6 /* SeparatorDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAC9F582E4A35EA00D7C1F6 /* SeparatorDecorationView.swift */; };
 		2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
 		2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399982E2F831100D14084 /* KeyChainStorable.swift */; };
 		2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3999B2E2F848800D14084 /* KeyChainStore.swift */; };
@@ -455,6 +457,7 @@
 			children = (
 				2CAC9F522E4A32C800D7C1F6 /* SearchCategoryCell.swift */,
 				2CAC9F552E4A344F00D7C1F6 /* MemeSearchHeaderView.swift */,
+				2CAC9F582E4A35EA00D7C1F6 /* SeparatorDecorationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -953,6 +956,7 @@
 				2CAC9F432E48C8BF00D7C1F6 /* SearchPage.swift in Sources */,
 				AD5194682E346F770069D29B /* String+Extension.swift in Sources */,
 				2CAC9F572E4A344F00D7C1F6 /* MemeSearchHeaderView.swift in Sources */,
+				2CAC9F592E4A35EA00D7C1F6 /* SeparatorDecorationView.swift in Sources */,
 				AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				ADE8E7972E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
@@ -1040,6 +1044,7 @@
 				ADE8E78D2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
 				ADE8E78D2E423447008F0A24 /* MemeMainCustomCell.swift in Sources */,
 				2CAC9F562E4A344F00D7C1F6 /* MemeSearchHeaderView.swift in Sources */,
+				2CAC9F5A2E4A35EA00D7C1F6 /* SeparatorDecorationView.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
 				2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */,
