@@ -27,6 +27,9 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         let imageview = UIImageView()
         imageview.image = UIImage(resource: .imageTemporary)
         imageview.contentMode = .scaleAspectFill
+        if let urlString = item.imageURL, let url = URL(string: urlString) {
+            imageview.kf.setImage(with: url)
+        }
         
         let rateLabel = UILabel()
         rateLabel.backgroundColor = fixedColor[index]

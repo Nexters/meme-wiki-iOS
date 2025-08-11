@@ -27,6 +27,9 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
         imageview.contentMode = .scaleAspectFill
         imageview.layer.cornerRadius = 12
         imageview.layer.masksToBounds = true
+        if let urlString = item.imageURL, let url = URL(string: urlString) {
+            imageview.kf.setImage(with: url)
+        }
         
         let label = UILabel()
         label.font = .customFont(.pretendard(.title(.subhead2)))

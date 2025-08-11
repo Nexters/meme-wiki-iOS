@@ -26,6 +26,9 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         
         let imageview = UIImageView()
         imageview.image = UIImage(resource: .iconTemporaryCategory)
+        if let urlString = item.imageURL, let url = URL(string: urlString) {
+            imageview.kf.setImage(with: url)
+        }
         
         let label = UILabel()
         label.font = .customFont(.pretendard(.body(.body1)))
