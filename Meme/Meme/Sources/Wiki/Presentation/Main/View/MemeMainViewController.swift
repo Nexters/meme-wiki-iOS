@@ -65,9 +65,6 @@ class MemeMainViewController: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.register(
-            UICollectionViewCell.self,
-            forCellWithReuseIdentifier: "cell")
-        collectionView.register(
             MemeMainBannerCell.self,
             forCellWithReuseIdentifier: MemeMainBannerCell.identifier)
         collectionView.register(
