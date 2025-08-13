@@ -17,12 +17,12 @@
 		2C14ECF72E4377B2009B605C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECF52E4377B2009B605C /* SearchRepository.swift */; };
 		2C14ECFB2E437887009B605C /* SearchUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */; };
 		2C14ECFC2E437887009B605C /* SearchUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */; };
-		2C14ECFE2E4378C0009B605C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */; };
 		2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */; };
 		2C14ED022E437A50009B605C /* MemeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED012E437A50009B605C /* MemeSearchViewModel.swift */; };
 		2C14ED032E437A50009B605C /* MemeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED012E437A50009B605C /* MemeSearchViewModel.swift */; };
 		2C14ED052E438E9A009B605C /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED042E438E9A009B605C /* DebounceTextField.swift */; };
 		2C14ED062E438E9A009B605C /* DebounceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ED042E438E9A009B605C /* DebounceTextField.swift */; };
+		2C1B77F72E4CDC3B00E6C1B3 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -292,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */,
-				AD848E3E2E2C94660003F09F /* LobbyInterface.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -607,7 +606,6 @@
 			isa = PBXGroup;
 			children = (
 				AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */,
-				AD848E1C2E2B4A430003F09F /* Endpoint.swift */,
 				2C14ECEC2E437680009B605C /* SearchAPI.swift */,
 			);
 			path = Network;
@@ -695,7 +693,6 @@
 			isa = PBXGroup;
 			children = (
 				AD848E3E2E2C94660003F09F /* LobbyRepositoryInterface.swift */,
-				2C14ECF22E43774B009B605C /* SearchReposioryInterface.swift */,
 				2C14ECF92E437879009B605C /* UseCase */,
 				2C14ECF82E437872009B605C /* Repository */,
 			);
@@ -898,6 +895,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1B77F72E4CDC3B00E6C1B3 /* SearchUseCase.swift in Sources */,
 				2C5F24012E3D15EB000AA318 /* MemeSearchItem.swift in Sources */,
 				2C3981DF2E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */,
 				2CFAA3222E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
@@ -958,7 +956,7 @@
 				2C14ED022E437A50009B605C /* MemeSearchViewModel.swift in Sources */,
 				2C14ECED2E437680009B605C /* SearchAPI.swift in Sources */,
 				2C5F23FE2E3D0774000AA318 /* SearchTextField.swift in Sources */,
-				AD848E1D2E2B4A430003F09F /* Endpoint.swift in Sources */,
+				AD848E1D2E2B4A430003F09F /* LobbyAPI.swift in Sources */,
 				2C39822F2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
 				2CFAA3142E34A964004E4604 /* CustomFont.swift in Sources */,
 				2C5F24212E3F98BD000AA318 /* APIResponse.swift in Sources */,
@@ -1045,7 +1043,7 @@
 				2C39822E2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
 				AD9FC4DD2E4A1E07008894E7 /* TopRatedUseCase.swift in Sources */,
 				2C5F23FF2E3D0774000AA318 /* SearchTextField.swift in Sources */,
-				AD848E1E2E2B4A430003F09F /* Endpoint.swift in Sources */,
+				AD848E1E2E2B4A430003F09F /* LobbyAPI.swift in Sources */,
 				2C39822E2E406164007BDE92 /* MemeSearchGridCell.swift in Sources */,
 				2CFAA3152E34A964004E4604 /* CustomFont.swift in Sources */,
 				AD848E492E2C9D1D0003F09F /* MemeMainViewModel.swift in Sources */,
