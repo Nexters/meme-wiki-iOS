@@ -13,14 +13,15 @@ final class MemeSearchViewController: BaseViewController {
     typealias Snapshot
     = NSDiffableDataSourceSnapshot<MemeSearchSection, MemeSearchDisplayItem>
     
+    private var isLoading: Bool = false
     private var dataSource: SearchDataSource?
-    private var dummyData: [MemeSearchItem] = []
+    private var viewModel: MemeSearchViewModel
+    private var subscription = Set<AnyCancellable>()
     
     private lazy var searchTextField: SearchTextField = {
         let textField = SearchTextField()
         textField.setPlaceHolder(Constants.SearchTextField.placeHolder)
         textField.layer.cornerRadius = Constants.SearchTextField.cornerRadius
-        textField.delegate = self
         return textField
     }()
     
@@ -30,8 +31,23 @@ final class MemeSearchViewController: BaseViewController {
         collectionView.register(MemeSearchListCell.self, forCellWithReuseIdentifier: MemeSearchListCell.identifier)
         collectionView.register(MemeSearchEmptyCell.self, forCellWithReuseIdentifier: MemeSearchEmptyCell.identifier)
         collectionView.backgroundColor = CustomColor.black(.black).color
+        collectionView.delegate = self
         return collectionView
     }()
+    
+    // MARK: - init
+    
+    init(viewModel: MemeSearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,13 +92,46 @@ final class MemeSearchViewController: BaseViewController {
     }
     
     override func bind() {
-        setDummyData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            guard let self = self else { return }
-            self.updateSnapshot(section: .grid, items: dummyData.map { .grid($0) })
-//            self.updateSnapshot(section: .list, items: dummyData.map { .list($0) })
-//            self.updateSnapshot(section: .empty, items: [.empty])
-        }
+        viewModel.fetchMeme()
+        
+        viewModel.searchItemPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                guard let self = self else { return }
+                let snapshot = dataSource?.snapshot()
+                if snapshot?.indexOfSection(.grid) == nil {
+                    self.updateSnapshot(section: .grid, items: items.map { .grid($0) })
+                } else {
+                    self.appendSnapshot(section: .grid, items: items.map { .grid($0) })
+                }
+            }.store(in: &subscription)
+        
+        viewModel.searchResultPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                guard let self = self else { return }
+                let snapshot = dataSource?.snapshot()
+                if snapshot?.indexOfSection(.list) == nil {
+                    self.updateSnapshot(section: .list, items: items.map { .list($0) })
+                } else {
+                    self.appendSnapshot(section: .list, items: items.map { .list($0) })
+                }
+            }.store(in: &subscription)
+        
+        
+        viewModel.emptyPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEmpty in
+                guard let self = self else { return }
+                if !isEmpty { return }
+                self.updateSnapshot(section: .empty, items: [.empty])
+            }.store(in: &subscription)
+        
+        searchTextField.textChangePublisher
+            .sink { [weak self] text in
+                guard let self = self else { return }
+                viewModel.searchMeme(text)
+            }.store(in: &subscription)
     }
     
     func configureLayout() -> UICollectionViewCompositionalLayout {
@@ -109,42 +158,36 @@ final class MemeSearchViewController: BaseViewController {
     }
 }
 
-// MARK: - TEST
-
-private extension MemeSearchViewController {
-    func setDummyData() {
-        for _ in (0..<50) {
-            for j in (2010..<2025) {
-                dummyData += [.init(thumbnail: .init(year: j, title: "\(j)", hashtag: ["hastag1", "hastag2", "hastag3"], imageURL: ""), usage: "usageusageusageusageusageusageusage", source: "sourcesourcesourcesourcesourcesource")]
-            }
-        }
-    }
-}
-
 private extension MemeSearchViewController {
     func updateSnapshot(section: MemeSearchSection, items: [MemeSearchDisplayItem]) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: false)
+        collectionView.setContentOffset(.zero, animated: false)
         collectionView.isScrollEnabled = section != .empty
+    }
+    
+    func appendSnapshot(section: MemeSearchSection, items: [MemeSearchDisplayItem]) {
+        var snapshot = dataSource?.snapshot() ?? Snapshot()
+        if !snapshot.sectionIdentifiers.contains(section) {
+            snapshot.appendSections([section])
+        }
+        snapshot.appendItems(items, toSection: section)
+        dataSource?.apply(snapshot, animatingDifferences: false)
     }
 }
 
-// MARK: - UITextFieldDelegate
-
-extension MemeSearchViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        let inputData = textField.text ?? ""
-        let filteringItems = dummyData.filter { $0.thumbnail.title == inputData }
-        if filteringItems.isEmpty {
-            updateSnapshot(section: .empty, items: [.empty])
-        } else {
-            updateSnapshot(section: .list, items: filteringItems.map { .list($0) })
+extension MemeSearchViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentH = scrollView.contentSize.height
+        let visibleH = scrollView.bounds.height
+        if offsetY > contentH - visibleH - 200, contentH > 0 {
+            viewModel.fetchNextPage()
         }
     }
 }
-
 private extension MemeSearchViewController {
     enum Constants {
         enum SearchTextField {

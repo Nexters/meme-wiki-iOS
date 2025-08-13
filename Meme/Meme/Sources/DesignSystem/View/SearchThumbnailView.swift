@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class SearchThumbnailView: UIView {
     
@@ -47,6 +48,7 @@ final class SearchThumbnailView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = CustomColor.gray(.gray9).color
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -82,10 +84,11 @@ final class SearchThumbnailView: UIView {
         // TODO: - imageView Setting
         guard let type = type else { return }
         titleLabel.attributedText = .customFont(type.titleFont, text: thumbnail.title)
-        hastagLabel.attributedText = .customFont(type.hastagFont, text: thumbnail.hashtag.map { "#\($0)" }.joined(separator: " "))
+        hastagLabel.attributedText = .customFont(type.hastagFont, text: thumbnail.hashtag.map { $0 }.joined(separator: " "))
         yearLabel.attributedText = .customFont(type.yearFont, text: String(thumbnail.year))
         titleLabel.textColor = .white
         hastagLabel.textColor = .white
+        configureImageView(url: thumbnail.imageURL)
     }
 }
 
@@ -128,6 +131,22 @@ private extension SearchThumbnailView {
         gradientLayer = makeGradientLayer(baseColor)
         layer.insertSublayer(gradientLayer, above: imageView.layer)
     }
+    
+    func configureImageView(url: String) {
+        guard let url = URL(string: url) else { return }
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 200, height: 200))
+        imageView.kf.setImage(
+            with: url,
+            placeholder: UIImage(),
+            options: [
+                .transition(.fade(1)),
+                .forceTransition,
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .cacheOriginalImage
+            ]
+        )
+    }
 }
 
 // MARK: - Constants
@@ -136,7 +155,7 @@ private extension SearchThumbnailView {
     enum Constants {
         enum yearLabel {
             static let padding: CGFloat = 8
-            static let cornerRadius: CGFloat = 10
+            static let cornerRadius: CGFloat = 9
         }
         
         enum titleLabel {

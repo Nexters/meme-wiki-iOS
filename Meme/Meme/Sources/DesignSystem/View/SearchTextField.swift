@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchTextField: UITextField {
+final class SearchTextField: DebounceTextField {
     
     // MARK: - UI Components
     
@@ -68,6 +68,7 @@ final class SearchTextField: UITextField {
     @objc private func clearText() {
         text = ""
         updateClearButtonVisibility()
+        sendActions(for: .editingChanged)
     }
     
     @objc private func textDidChange() {
