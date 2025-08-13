@@ -8,54 +8,84 @@
 import UIKit
 
 final class MemeMainCategoryCell: UICollectionViewCell {
-    static let identifier = "MemeMainCategoryCell"
-    private let fixedColor = [UIColor.blue80, .purple80, .yellow80, .red80]
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        for sub in contentView.subviews {
-            sub.removeFromSuperview()
-        }
+    // MARK: - Properties
+    static let identifier = "MemeMainCategoryCell"
+    
+    private var gradientView: UIView!
+    private var gradientLayer: CAGradientLayer?
+    private var imageView: UIImageView!
+    private var titleLabel: UILabel!
+    
+    private let gradientColors: [[UIColor]] = [
+        [.lightBlue95, .lightBlue80],
+        [.violet95, .violet80],
+        [.red95, .red80],
+        [.yellow95, .yellow80]
+    ]
+    
+    // MARK: - Lifecycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layoutCell()
     }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        layoutCell()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientView.frame = contentView.bounds
+        gradientLayer?.frame = gradientView.bounds
+    }
+    
+    // MARK: - Public
     func configureCell(with item: Lobby.Item) {
-        let gradientView = UIView()
-        gradientView.backgroundColor = fixedColor[item.indexPath.item % fixedColor.count]
+        if let urlString = item.imageURL, let url = URL(string: urlString) {
+            imageView.kf.setImage(with: url)
+        }
+        titleLabel.text = item.content
+        let index = item.indexPath.item % gradientColors.count
+        gradientLayer = makeDiagonalGradientLayer(gradientColors[index])
+        gradientView.layer.insertSublayer(gradientLayer!, at: 0)
+    }
+    
+    // MARK: - Private
+    private func layoutCell() {
+        gradientView = UIView()
         gradientView.layer.cornerRadius = 12
         gradientView.layer.masksToBounds = true
         
-        let imageview = UIImageView()
-        imageview.image = UIImage(resource: .iconTemporaryCategory)
-        if let urlString = item.imageURL, let url = URL(string: urlString) {
-            imageview.kf.setImage(with: url)
-        }
+        imageView = UIImageView()
+        imageView.image = UIImage(resource: .iconTemporaryCategory)
         
-        let label = UILabel()
-        label.font = .customFont(.pretendard(.body(.body1)))
-        label.textColor = .gray1
-        label.textAlignment = .center
-        label.text = item.content
-        label.numberOfLines = 2
+        titleLabel = UILabel()
+        titleLabel.font = .customFont(.pretendard(.body(.body1)))
+        titleLabel.textColor = .gray1
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 2
         
-        gradientView.addSubview(imageview)
+        gradientView.addSubview(imageView)
         contentView.addSubview(gradientView)
-        contentView.addSubview(label)
+        contentView.addSubview(titleLabel)
         
-        imageview.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         gradientView.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageview.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
-            imageview.centerYAnchor.constraint(equalTo: gradientView.centerYAnchor),
-            imageview.heightAnchor.constraint(equalToConstant: 44),
-            imageview.widthAnchor.constraint(equalToConstant: 44),
+            imageView.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: gradientView.centerYAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 44),
+            imageView.widthAnchor.constraint(equalToConstant: 44),
             gradientView.topAnchor.constraint(equalTo: contentView.topAnchor),
             gradientView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             gradientView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             gradientView.heightAnchor.constraint(equalToConstant: 74),
-            label.topAnchor.constraint(equalTo: gradientView.bottomAnchor, constant: 8),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: gradientView.bottomAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
     }
 }
