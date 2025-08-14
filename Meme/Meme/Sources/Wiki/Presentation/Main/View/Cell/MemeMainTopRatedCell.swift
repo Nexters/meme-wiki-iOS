@@ -8,73 +8,103 @@
 import UIKit
 
 final class MemeMainTopRatedCell: UICollectionViewCell {
-    static let identifier = "MemeMainTopRatedCell"
-    private let fixedColor = [UIColor.pink80, .red80, .yellow90, .lightBlue80, .purple80, .green90]
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        for sub in contentView.subviews {
-            sub.removeFromSuperview()
-        }
+    // MARK: - Properties
+    static let identifier = "MemeMainTopRatedCell"
+    private let fixedColor = [UIColor.pink90, .red90, .yellow90, .lightBlue80, .purple80, .green90]
+    
+    private var gradientView = UIView()
+    private var dimmedLayer: CAGradientLayer?
+    private var gradientLayer: CAGradientLayer?
+    private var imageView: UIImageView!
+    private var rateLabel: UILabel!
+    private var textView = UIView()
+    private var titleLabel: UILabel!
+    
+    // MARK: - Lifecycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layoutCell()
     }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        layoutCell()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = contentView.bounds.inset(
+            by: UIEdgeInsets(top: 0, left: 0, bottom: 36, right: 0))
+        gradientView.frame = imageView.bounds
+        dimmedLayer?.frame = gradientView.bounds
+        gradientLayer?.frame = gradientView.bounds
+    }
+    
+    // MARK: - Public
     func configureCell(with item: Lobby.Item) {
         let index = item.indexPath.item % fixedColor.count
+        let itemColor = fixedColor[index]
+        if let urlString = item.imageURL, let url = URL(string: urlString) {
+            imageView.kf.setImage(with: url)
+        }
+        gradientLayer = makeGradientLayer(itemColor)
+        gradientView.layer.insertSublayer(gradientLayer!, at: 1)
+        rateLabel.backgroundColor = itemColor
+        rateLabel.text = "\(index + 1)위"
+        textView.backgroundColor = itemColor
+        titleLabel.text = item.content
+    }
+    
+    // MARK: - Private
+    private func layoutCell() {
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .systemPink.withAlphaComponent(0.3)
         
-        let imageview = UIImageView()
-        imageview.image = UIImage(resource: .imageTemporary)
-        imageview.contentMode = .scaleAspectFill
-        if let urlString = item.imageURL, let url = URL(string: urlString) {
-            imageview.kf.setImage(with: url)
-        }
+        dimmedLayer = makeDimmedLayer()
+        gradientView.layer.insertSublayer(dimmedLayer!, at: 0)
         
-        let rateLabel = UILabel()
-        rateLabel.backgroundColor = fixedColor[index]
+        imageView = UIImageView()
+        imageView.image = UIImage(resource: .imageTemporary)
+        imageView.contentMode = .scaleAspectFill
+        
+        rateLabel = UILabel()
         rateLabel.layer.cornerRadius = 6
         rateLabel.layer.masksToBounds = true
         rateLabel.font = .customFont(.pretendard(.title(.subhead2)))
         rateLabel.textColor = .black
         rateLabel.textAlignment = .center
-        rateLabel.text = "\(index + 1)위"
         
-        let gradientView = UIView()
-        
-        let textView = UIView()
-        textView.backgroundColor = fixedColor[index]
-        
-        let titleLabel = UILabel()
+        titleLabel = UILabel()
         titleLabel.font = .customFont(.pretendard(.title(.subhead2)))
         titleLabel.textColor = .black
         titleLabel.textAlignment = .center
-        titleLabel.text = item.content
         
-        imageview.addSubview(gradientView)
-        contentView.addSubview(imageview)
+        imageView.addSubview(gradientView)
+        contentView.addSubview(imageView)
         contentView.addSubview(rateLabel)
         textView.addSubview(titleLabel)
         contentView.addSubview(textView)
         
-        imageview.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         rateLabel.translatesAutoresizingMaskIntoConstraints = false
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageview.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageview.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -36),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -36),
             rateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             rateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             rateLabel.widthAnchor.constraint(equalToConstant: 38),
             rateLabel.heightAnchor.constraint(equalToConstant: 24),
-            gradientView.leadingAnchor.constraint(equalTo: imageview.leadingAnchor),
-            gradientView.trailingAnchor.constraint(equalTo: imageview.trailingAnchor),
-            gradientView.topAnchor.constraint(equalTo: imageview.topAnchor),
-            gradientView.bottomAnchor.constraint(equalTo: imageview.bottomAnchor),
+            gradientView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            gradientView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            gradientView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            gradientView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
             textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
