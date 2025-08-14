@@ -75,14 +75,14 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: gradientView.centerYAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 44),
-            imageView.widthAnchor.constraint(equalToConstant: 44),
             gradientView.topAnchor.constraint(equalTo: contentView.topAnchor),
             gradientView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             gradientView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             gradientView.heightAnchor.constraint(equalToConstant: 74),
+            imageView.leadingAnchor.constraint(equalTo: gradientView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: gradientView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: gradientView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: gradientView.bottomAnchor),
             titleLabel.topAnchor.constraint(equalTo: gradientView.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

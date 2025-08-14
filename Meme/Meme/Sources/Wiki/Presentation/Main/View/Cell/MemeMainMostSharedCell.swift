@@ -48,7 +48,6 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
             imageview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
             imageview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
             label.topAnchor.constraint(equalTo: imageview.bottomAnchor, constant: 8),
-            label.widthAnchor.constraint(lessThanOrEqualToConstant: 176),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
         ])
