@@ -26,6 +26,7 @@ final class MemeMainMostSharedNestedCell: UICollectionViewCell {
         let suffix = Array(items.suffix(items.count / 2))
         return suffix + suffix
     }
+    var didTapCell: ((Int) -> Void)?
     
     // 자동 스크롤 관련
     private var displayLink: CADisplayLink?
@@ -79,6 +80,8 @@ final class MemeMainMostSharedNestedCell: UICollectionViewCell {
         }
         firstRowCollectionView.dataSource = self
         secondRowCollectionView.dataSource = self
+        firstRowCollectionView.delegate = self
+        secondRowCollectionView.delegate = self
     }
     
     private func layoutUI() {
@@ -152,5 +155,15 @@ extension MemeMainMostSharedNestedCell: UICollectionViewDataSource {
         let item = isFirstRow ? firstRowItems[indexPath.item] : secondRowItems[indexPath.item]
         cell.configureCell(with: item, isFirstRow: isFirstRow)
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension MemeMainMostSharedNestedCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let isFirstRow = collectionView == firstRowCollectionView
+        let item = isFirstRow ? firstRowItems[indexPath.item] : secondRowItems[indexPath.item]
+        guard let id = item.memeId else { return }
+        didTapCell?(id)
     }
 }
