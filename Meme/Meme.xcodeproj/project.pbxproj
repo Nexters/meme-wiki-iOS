@@ -103,10 +103,8 @@
 		2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC399A12E2F85AB00D14084 /* KeyChainError.swift */; };
 		2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552372E268F9E004BE9AF /* AppDelegate.swift */; };
 		2CE5523A2E268F9E004BE9AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552392E268F9E004BE9AF /* SceneDelegate.swift */; };
-		2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5523B2E268F9E004BE9AF /* ViewController.swift */; };
 		2CE552412E268FA0004BE9AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CE552402E268FA0004BE9AF /* Assets.xcassets */; };
 		2CE552442E268FA0004BE9AF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2CE552432E268FA0004BE9AF /* Base */; };
-		2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5523B2E268F9E004BE9AF /* ViewController.swift */; };
 		2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552372E268F9E004BE9AF /* AppDelegate.swift */; };
 		2CE5524F2E269159004BE9AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE552392E268F9E004BE9AF /* SceneDelegate.swift */; };
 		2CE552522E269159004BE9AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CE552402E268FA0004BE9AF /* Assets.xcassets */; };
@@ -241,7 +239,6 @@
 		2CE552342E268F9E004BE9AF /* Meme-release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme-release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE552372E268F9E004BE9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CE552392E268F9E004BE9AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CE5523B2E268F9E004BE9AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2CE552402E268FA0004BE9AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CE552432E268FA0004BE9AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CE552452E268FA0004BE9AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -627,7 +624,6 @@
 				2CE552422E268FA0004BE9AF /* LaunchScreen.storyboard */,
 				2CE552372E268F9E004BE9AF /* AppDelegate.swift */,
 				2CE552392E268F9E004BE9AF /* SceneDelegate.swift */,
-				2CE5523B2E268F9E004BE9AF /* ViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -966,7 +962,6 @@
 				ADE8E79A2E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */,
 				ADE8E7A62E4393D4008F0A24 /* MemeMainTopRatedHeaderView.swift in Sources */,
 				2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */,
-				2CE5523C2E268F9E004BE9AF /* ViewController.swift in Sources */,
 				2CAC9F532E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */,
 				2CAC9F4C2E48E12500D7C1F6 /* MemeCategorySection.swift in Sources */,
 				2C5EB08C2E3FA21500D37F94 /* BaseViewController.swift in Sources */,
@@ -1061,7 +1056,6 @@
 				2CAC9F4D2E48E12500D7C1F6 /* MemeCategorySection.swift in Sources */,
 				2CC3999D2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2C14ECF12E4376F6009B605C /* SearchResponseDTO.swift in Sources */,
-				2CE5524D2E269159004BE9AF /* ViewController.swift in Sources */,
 				2C5F24312E3F99A1000AA318 /* Providable.swift in Sources */,
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				ADE8E7A22E438FB8008F0A24 /* MemeMainCategoryHeaderView.swift in Sources */,
