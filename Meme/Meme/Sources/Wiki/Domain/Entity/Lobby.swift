@@ -23,6 +23,7 @@ extension Lobby {
     
     struct Item: Hashable {
         let id = UUID()
+        let memeId: Int?
         let type: Section
         let content: String
         let imageURL: String?
@@ -31,12 +32,14 @@ extension Lobby {
         let indexPath: IndexPath
         
         init(
+            memeId: Int? = nil,
             type: Section,
             content: String,
             imageURL: String? = nil,
             childs: [Item]? = nil,
             indexPath: IndexPath
         ) {
+            self.memeId = memeId
             self.type = type
             self.content = content
             self.imageURL = imageURL

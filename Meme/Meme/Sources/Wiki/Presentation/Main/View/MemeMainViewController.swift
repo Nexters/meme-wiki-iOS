@@ -62,6 +62,7 @@ class MemeMainViewController: UIViewController {
             collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .black
+        collectionView.delegate = self
         view.addSubview(collectionView)
         
         collectionView.register(
@@ -195,12 +196,14 @@ extension MemeMainViewController {
             _ section: Section,
             from array: [T],
             type: Lobby.Section,
+            memeId: (T) -> Int?,
             content: (T) -> String,
             imageURL: (T) -> String?
         ) {
             snapshot.appendSections([section])
             let items = array.enumerated().map { index, element in
                 Item(
+                    memeId: memeId(element),
                     type: type,
                     content: content(element),
                     imageURL: imageURL(element),
@@ -215,6 +218,7 @@ extension MemeMainViewController {
             .banner,
             from: Array(0..<3),
             type: .banner,
+            memeId: { _ in nil },
             content: { _ in "" },
             imageURL: { _ in nil }
         )
@@ -224,6 +228,7 @@ extension MemeMainViewController {
             .category,
             from: item.categories,
             type: .category,
+            memeId: { _ in nil },
             content: { $0.title },
             imageURL: { $0.imageURL }
         )
@@ -233,6 +238,7 @@ extension MemeMainViewController {
             .topRated,
             from: item.topRatedMemes,
             type: .topRated,
+            memeId: { $0.id },
             content: { $0.title },
             imageURL: { $0.imageURL }
         )
@@ -241,6 +247,7 @@ extension MemeMainViewController {
         snapshot.appendSections([.mostShared])
         let mostSharedItems = item.mostSharedMemes.enumerated().map { index, meme in
             Item(
+                memeId: meme.id,
                 type: .mostShared,
                 content: meme.title,
                 imageURL: meme.imageURL,
@@ -261,7 +268,17 @@ extension MemeMainViewController {
     }
 }
 
-// MARK: - compositional layout
+// MARK: - UICollectionViewDelegate
+extension MemeMainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = dataSource.itemIdentifier(for: indexPath)
+        guard let memeId = item?.memeId else { return }
+        Log.info("밈 상세 이동 \(memeId)", .ui)
+        gotoMemeDetail(id: memeId)
+    }
+}
+
+// MARK: - Compositional Layout
 extension MemeMainViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, environment in

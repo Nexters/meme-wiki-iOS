@@ -51,6 +51,7 @@ final class MemeMainCategoryCell: UICollectionViewCell {
             text: item.content,
             color: .gray(.gray1)
         )
+        titleLabel.textAlignment = .center
         let index = item.indexPath.item % gradientColors.count
         gradientLayer.makeDiagonalGradient(gradientColors[index])
     }
@@ -66,7 +67,6 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         imageView.image = UIImage(resource: .iconTemporaryCategory)
         
         titleLabel = UILabel()
-        titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         
         gradientView.addSubview(imageView)

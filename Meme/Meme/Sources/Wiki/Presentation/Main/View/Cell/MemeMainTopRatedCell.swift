@@ -60,10 +60,12 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
             .pretendard(.title(.subhead2)),
             text: "\(index + 1)위",
             color: .black(.black))
+        rateLabel.textAlignment = .center
         titleLabel.attributedText = .customFont(
-            .pretendard(.title(.subheadLong1)),
+            .pretendard(.title(.subheadLong2)),
             text: item.content,
             color: .black(.black))
+        titleLabel.textAlignment = .center
     }
     
     // MARK: - Private
@@ -83,10 +85,8 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         rateLabel = UILabel()
         rateLabel.layer.cornerRadius = 6
         rateLabel.layer.masksToBounds = true
-        rateLabel.textAlignment = .center
         
         titleLabel = UILabel()
-        titleLabel.textAlignment = .center
         
         imageView.addSubview(gradientView)
         contentView.addSubview(imageView)
