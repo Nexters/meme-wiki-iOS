@@ -20,11 +20,11 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
         [.violet95, .violet80]
     ]
     private let gradientColorsForSecondRow: [[UIColor]] = [
-        [.blue95, .blue80],
-        [.red95, .red80],
-        [.violet95, .violet80],
         [.lime95, .lime80],
-        [.pink95, .pink80]
+        [.violet95, .violet80],
+        [.lightBlue95, .lightBlue80],
+        [.red95, .red80],
+        [.blue95, .blue80]
     ]
     
     private var gradientView: UIView!

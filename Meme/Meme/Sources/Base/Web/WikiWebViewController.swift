@@ -21,6 +21,7 @@ class WikiWebViewController: UIViewController {
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.bounces = true
         webView.scrollView.alwaysBounceVertical = true
+        webView.backgroundColor = .gray10
         if #available(iOS 16.4, *) {
             webView.isInspectable = true
         }
@@ -66,28 +67,6 @@ class WikiWebViewController: UIViewController {
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.notifyClientReady()
-    }
 }
 
 extension WikiWebViewController: WKNavigationDelegate, WKUIDelegate {}
-
-extension WKWebView {
-    func notifyClientReady() {
-        guard
-            let javascript = CallbackJavaScript(data: ["type": "CLIENT_IOS", "data": "ready"])?.toScript()
-        else {
-            Log.error("Failed to create callback javascript", .networking)
-            return
-        }
-        self.evaluateJavaScript(javascript) { result, error in
-            if let error = error {
-                Log.error("notifyClientReady() error: \(error)", .networking)
-            } else {
-                Log.error("notifyClientReady() success: \(String(describing: result))", .networking)
-            }
-        }
-    }
-}

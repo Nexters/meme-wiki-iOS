@@ -28,7 +28,7 @@ class MemeMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .gray10
         setupNavigation()
         layoutCollectionView()
         setupDataSource()
@@ -63,7 +63,7 @@ class MemeMainViewController: UIViewController {
             frame: view.bounds,
             collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .gray10
         collectionView.delegate = self
         view.addSubview(collectionView)
         
