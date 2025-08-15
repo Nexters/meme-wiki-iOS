@@ -27,6 +27,10 @@
 		2C1B77FA2E4F250000E6C1B3 /* CategoryRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77F82E4F250000E6C1B3 /* CategoryRepositoryInterface.swift */; };
 		2C1B77FC2E4F252400E6C1B3 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77FB2E4F252400E6C1B3 /* CategoryRepository.swift */; };
 		2C1B77FD2E4F252400E6C1B3 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77FB2E4F252400E6C1B3 /* CategoryRepository.swift */; };
+		2C1B780A2E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */; };
+		2C1B780B2E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */; };
+		2C1B78102E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */; };
+		2C1B78112E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -208,6 +212,8 @@
 		2C14ED042E438E9A009B605C /* DebounceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTextField.swift; sourceTree = "<group>"; };
 		2C1B77F82E4F250000E6C1B3 /* CategoryRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepositoryInterface.swift; sourceTree = "<group>"; };
 		2C1B77FB2E4F252400E6C1B3 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
+		2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMemeUseCase.swift; sourceTree = "<group>"; };
+		2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMemeUseCaseInterface.swift; sourceTree = "<group>"; };
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				2C14ECFA2E437887009B605C /* SearchUseCaseInterface.swift */,
+				2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -679,6 +686,7 @@
 			children = (
 				AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */,
 				2C14ECEC2E437680009B605C /* SearchAPI.swift */,
+				2C1B77FE2E4F254700E6C1B3 /* CategoryAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -760,6 +768,7 @@
 			children = (
 				AD9FC4D82E4A1BC3008894E7 /* Lobby */,
 				2C14ECFD2E4378C0009B605C /* SearchUseCase.swift */,
+				2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -996,6 +1005,7 @@
 				2C3981DF2E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */,
 				2CFAA3222E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				ADE8E79A2E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */,
+				2C1B78102E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */,
 				ADE8E7A62E4393D4008F0A24 /* MemeMainTopRatedHeaderView.swift in Sources */,
 				2CC3999C2E2F848800D14084 /* KeyChainStore.swift in Sources */,
 				2CAC9F532E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */,
@@ -1015,6 +1025,7 @@
 				ADE8E79C2E424E4A008F0A24 /* MemeMainMostSharedCell.swift in Sources */,
 				AD848E3A2E2C93D40003F09F /* LobbyRepository.swift in Sources */,
 				AD848E402E2C94660003F09F /* LobbyRepositoryInterface.swift in Sources */,
+				2C1B78002E4F254700E6C1B3 /* CategoryAPI.swift in Sources */,
 				2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */,
 				2C3982322E40630E007BDE92 /* MemeSearchListCell.swift in Sources */,
 				2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
@@ -1100,6 +1111,7 @@
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				ADE8E7A22E438FB8008F0A24 /* MemeMainCategoryHeaderView.swift in Sources */,
 				AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */,
+				2C1B77FA2E4F250000E6C1B3 /* CategoryRepositoryInterface.swift in Sources */,
 				AD9FC4DB2E4A1BDE008894E7 /* CategoriesUseCase.swift in Sources */,
 				2C5F24222E3F98BD000AA318 /* APIResponse.swift in Sources */,
 				AD9FC4E12E4A1E44008894E7 /* MostSharedUseCase.swift in Sources */,
@@ -1135,6 +1147,7 @@
 				2C5EB0982E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
 				2C3982342E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,
+				2C1B77FF2E4F254700E6C1B3 /* CategoryAPI.swift in Sources */,
 				2C14ECFC2E437887009B605C /* SearchUseCaseInterface.swift in Sources */,
 				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
