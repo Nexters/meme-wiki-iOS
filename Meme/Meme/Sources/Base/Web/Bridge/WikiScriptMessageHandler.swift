@@ -44,6 +44,8 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
             viewController?.navigationController?.pushViewController(
                 MemeCustomViewController(imageURL: shareData.image),
                 animated: true)
+        case .WEB_ENTERED:
+            message.webView?.notifyClientReady()
         }
     }
 }
@@ -67,4 +69,5 @@ extension WikiScriptMessageHandler {
 enum WikiScriptMessageHandlerName: String, CaseIterable {
     case SHARE_MEME
     case CUSTOM_MEME
+    case WEB_ENTERED
 }

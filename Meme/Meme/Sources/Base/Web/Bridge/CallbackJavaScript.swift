@@ -15,7 +15,7 @@ struct CallbackJavaScript {
         self.script = script
     }
     
-    init?(data: [String: Any]) {
+    init?(data: [String]) {
         guard
             let jsonData = try? JSONSerialization.data(withJSONObject: data, options: .sortedKeys),
             let jsonString = String(data: jsonData, encoding: .utf8)
@@ -24,9 +24,8 @@ struct CallbackJavaScript {
     }
     
     func toScript() -> String {
-        // TODO: - 뭘로 보낼지
         """
-        window.onClientReady(\(script));
+        window.onNativeEntered(\(script));
         """
     }
 }
