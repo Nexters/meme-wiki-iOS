@@ -123,6 +123,9 @@ class MemeMainViewController: UIViewController {
                     withReuseIdentifier: MemeMainMostSharedNestedCell.identifier, for: indexPath)
                 guard let mostSharedCell = cell as? MemeMainMostSharedNestedCell else { return .none }
                 mostSharedCell.configureCell(with: item)
+                mostSharedCell.didTapCell = { [weak self] selectedId in
+                    self?.gotoMemeDetail(id: selectedId)
+                }
                 return cell
             }
         }
