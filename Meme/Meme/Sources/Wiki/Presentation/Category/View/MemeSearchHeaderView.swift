@@ -24,7 +24,6 @@ final class MemeSearchHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        updateUI("SectionTitleHeaderView")
     }
     
     required init?(coder: NSCoder) {

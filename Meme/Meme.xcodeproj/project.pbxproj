@@ -27,6 +27,10 @@
 		2C1B77FA2E4F250000E6C1B3 /* CategoryRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77F82E4F250000E6C1B3 /* CategoryRepositoryInterface.swift */; };
 		2C1B77FC2E4F252400E6C1B3 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77FB2E4F252400E6C1B3 /* CategoryRepository.swift */; };
 		2C1B77FD2E4F252400E6C1B3 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77FB2E4F252400E6C1B3 /* CategoryRepository.swift */; };
+		2C1B77FF2E4F254700E6C1B3 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77FE2E4F254700E6C1B3 /* CategoryAPI.swift */; };
+		2C1B78002E4F254700E6C1B3 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B77FE2E4F254700E6C1B3 /* CategoryAPI.swift */; };
+		2C1B78062E4F295100E6C1B3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78052E4F295100E6C1B3 /* CategoryViewModel.swift */; };
+		2C1B78072E4F295100E6C1B3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78052E4F295100E6C1B3 /* CategoryViewModel.swift */; };
 		2C1B780A2E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */; };
 		2C1B780B2E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */; };
 		2C1B78102E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */; };
@@ -212,6 +216,8 @@
 		2C14ED042E438E9A009B605C /* DebounceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTextField.swift; sourceTree = "<group>"; };
 		2C1B77F82E4F250000E6C1B3 /* CategoryRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepositoryInterface.swift; sourceTree = "<group>"; };
 		2C1B77FB2E4F252400E6C1B3 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
+		2C1B77FE2E4F254700E6C1B3 /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
+		2C1B78052E4F295100E6C1B3 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMemeUseCase.swift; sourceTree = "<group>"; };
 		2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMemeUseCaseInterface.swift; sourceTree = "<group>"; };
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
@@ -354,6 +360,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2C1B78042E4F294800E6C1B3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C1B78052E4F295100E6C1B3 /* CategoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2C3981D12E3B5E9C007BDE92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +492,7 @@
 		2CAC9F452E48DFA900D7C1F6 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2C1B78042E4F294800E6C1B3 /* ViewModel */,
 				2CAC9F512E4A325000D7C1F6 /* View */,
 				2CAC9F4A2E48E11900D7C1F6 /* Model */,
 				2CAC9F462E48DFB100D7C1F6 /* ViewController */,
@@ -1027,6 +1042,7 @@
 				AD848E402E2C94660003F09F /* LobbyRepositoryInterface.swift in Sources */,
 				2C1B78002E4F254700E6C1B3 /* CategoryAPI.swift in Sources */,
 				2C3981DC2E3B6495007BDE92 /* RandomColor.swift in Sources */,
+				2C1B78062E4F295100E6C1B3 /* CategoryViewModel.swift in Sources */,
 				2C3982322E40630E007BDE92 /* MemeSearchListCell.swift in Sources */,
 				2C5F23EB2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
 				ADE8E78C2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
@@ -1099,6 +1115,7 @@
 				2C5EB08E2E3FA25F00D37F94 /* BaseViewController.swift in Sources */,
 				2C5F24002E3D15E5000AA318 /* Galmuri.swift in Sources */,
 				AD9FC4F02E4F54F4008894E7 /* CallbackJavaScript.swift in Sources */,
+				2C1B78112E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */,
 				2C3981E02E3B6CEA007BDE92 /* SearchInfoView.swift in Sources */,
 				2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				ADE8E7992E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */,
@@ -1127,10 +1144,11 @@
 				2C1B77FD2E4F252400E6C1B3 /* CategoryRepository.swift in Sources */,
 				2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
 				ADE8E78D2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
-				ADE8E78D2E423447008F0A24 /* MemeMainCustomCell.swift in Sources */,
+				ADE8E78D2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
 				2CAC9F562E4A344F00D7C1F6 /* MemeSearchHeaderView.swift in Sources */,
 				2CAC9F5A2E4A35EA00D7C1F6 /* SeparatorDecorationView.swift in Sources */,
 				AD848E362E2C93790003F09F /* LobbyResponse.swift in Sources */,
+				2C1B78072E4F295100E6C1B3 /* CategoryViewModel.swift in Sources */,
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
 				2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */,
 				2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */,
@@ -1149,6 +1167,7 @@
 				2C3982342E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,
 				2C1B77FF2E4F254700E6C1B3 /* CategoryAPI.swift in Sources */,
 				2C14ECFC2E437887009B605C /* SearchUseCaseInterface.swift in Sources */,
+				2C1B780A2E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift in Sources */,
 				2C3981E62E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2CFAA3192E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C5F24342E3F99B1000AA318 /* Provider.swift in Sources */,
