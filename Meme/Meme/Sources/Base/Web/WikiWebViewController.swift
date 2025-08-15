@@ -14,6 +14,7 @@ class WikiWebViewController: UIViewController {
         let configuration = WKWebViewConfiguration()
         configuration.allowsAirPlayForMediaPlayback = true
         configuration.userContentController = WKUserContentController()
+        configuration.userContentController.add(wikiScriptMessageHandler, name: "wikiHandler")
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -25,6 +26,9 @@ class WikiWebViewController: UIViewController {
         }
         return webView
     }()
+    private var wikiScriptMessageHandler: WikiScriptMessageHandler {
+        WikiScriptMessageHandler(viewController: self)
+    }
 
     init(url: URL) {
         self.url = url
@@ -52,6 +56,28 @@ class WikiWebViewController: UIViewController {
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+           webView.notifyClientReady()
+       }
 }
 
 extension WikiWebViewController: WKNavigationDelegate, WKUIDelegate {}
+
+extension WKWebView {
+    func notifyClientReady() {
+        guard
+            let javascript = CallbackJavaScript(data: ["type": "CLIENT_IOS", "data": "ready"])?.toScript()
+        else {
+            Log.error("Failed to create callback javascript", .networking)
+            return
+        }
+        self.evaluateJavaScript(javascript) { result, error in
+            if let error = error {
+                Log.error("notifyClientReady() error: \(error)", .networking)
+            } else {
+                Log.error("notifyClientReady() success: \(String(describing: result))", .networking)
+            }
+        }
+    }
+}
