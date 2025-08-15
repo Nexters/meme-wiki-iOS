@@ -50,6 +50,8 @@ class MemeMainViewController: UIViewController {
             image: UIImage(resource: .imageLogo), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(resource: .iconSearch), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     private func layoutCollectionView() {

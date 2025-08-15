@@ -42,8 +42,18 @@ class WikiWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray10
+        setupNavigationBar()
         setupWebView()
         webView.load(URLRequest(url: url))
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(resource: .iconCheveronLeft), style: .plain, target: self, action: #selector(popToMain))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+    @objc private func popToMain() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupWebView() {
