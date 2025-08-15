@@ -176,6 +176,10 @@ class MemeCustomViewController: UIViewController {
         ]
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "완료", style: .plain, target: self, action: #selector(finishCustom))
+        navigationItem.leftBarButtonItems?.forEach {
+            $0.tintColor = .white
+        }
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     private func setupNavigationBarWhenFinishEditing() {
@@ -184,6 +188,8 @@ class MemeCustomViewController: UIViewController {
             image: UIImage(resource: .iconCheveronLeft), style: .plain, target: self, action: #selector(cancelCustom))
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(resource: .iconHome), style: .plain, target: self, action: #selector(popToMain))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     private func toggleNavigationBar() {
