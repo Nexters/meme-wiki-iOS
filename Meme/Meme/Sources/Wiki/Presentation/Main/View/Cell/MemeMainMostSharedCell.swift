@@ -11,19 +11,23 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = "MemeMainMostSharedCell"
-    private let gradientColors: [[UIColor]] = [
-        [.purple95, .purple80],
-        [.red95, .red80],
+    private let gradientColorsForFirstRow: [[UIColor]] = [
         [.lightBlue95, .lightBlue80],
-        [.lime95, .lime80],
         [.yellow95, .yellow80],
         [.pink95, .pink80],
+        [.lime95, .lime80],
+        [.violet95, .violet80]
+    ]
+    private let gradientColorsForSecondRow: [[UIColor]] = [
         [.blue95, .blue80],
-        [.redOrange95, .redOrange80]
+        [.red95, .red80],
+        [.violet95, .violet80],
+        [.lime95, .lime80],
+        [.pink95, .pink80]
     ]
     
     private var gradientView: UIView!
-    private var gradientLayer: CAGradientLayer?
+    private var gradientLayer = CAGradientLayer()
     private var imageView: UIImageView!
     private var label: UILabel!
     
@@ -38,19 +42,14 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
         layoutCell()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        imageView.kf.cancelDownloadTask()
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientView.frame = contentView.bounds
-        gradientLayer?.frame = gradientView.bounds
+        gradientLayer.frame = gradientView.bounds
     }
     
     // MARK: - Public
-    func configureCell(with item: Lobby.Item) {
+    func configureCell(with item: Lobby.Item, isFirstRow: Bool) {
         if let urlString = item.imageURL, let url = URL(string: urlString) {
             imageView.kf.setImage(with: url)
         }
@@ -58,9 +57,9 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
             .pretendard(.title(.subhead2)),
             text: item.content, color: .black(.black))
         
-        let index = item.indexPath.item % gradientColors.count
-        gradientLayer = makeDiagonalGradientLayer(gradientColors[index])
-        gradientView.layer.insertSublayer(gradientLayer!, at: 0)
+        let index = item.indexPath.item % gradientColorsForFirstRow.count
+        let colors = isFirstRow ? gradientColorsForFirstRow[index] : gradientColorsForSecondRow[index]
+        gradientLayer.makeDiagonalGradient(colors)
     }
     
     // MARK: - Private
@@ -69,6 +68,7 @@ final class MemeMainMostSharedCell: UICollectionViewCell {
         gradientView.layer.cornerRadius = 12
         gradientView.layer.masksToBounds = true
         gradientView.backgroundColor = .white
+        gradientView.layer.insertSublayer(gradientLayer, at: 0)
         
         imageView = UIImageView()
         imageView.image = UIImage(resource: .imageTemporary)

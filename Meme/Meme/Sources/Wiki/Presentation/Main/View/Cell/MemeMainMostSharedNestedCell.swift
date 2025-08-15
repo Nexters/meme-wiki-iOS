@@ -144,9 +144,13 @@ extension MemeMainMostSharedNestedCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemeMainMostSharedCell.identifier, for: indexPath) as! MemeMainMostSharedCell
-        let item = collectionView == firstRowCollectionView ? firstRowItems[indexPath.item] : secondRowItems[indexPath.item]
-        cell.configureCell(with: item)
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MemeMainMostSharedCell.identifier,
+            for: indexPath) as? MemeMainMostSharedCell
+        else { return UICollectionViewCell() }
+        let isFirstRow = collectionView == firstRowCollectionView
+        let item = isFirstRow ? firstRowItems[indexPath.item] : secondRowItems[indexPath.item]
+        cell.configureCell(with: item, isFirstRow: isFirstRow)
         return cell
     }
 }

@@ -13,7 +13,7 @@ final class MemeMainCategoryCell: UICollectionViewCell {
     static let identifier = "MemeMainCategoryCell"
     
     private var gradientView: UIView!
-    private var gradientLayer: CAGradientLayer?
+    private var gradientLayer = CAGradientLayer()
     private var imageView: UIImageView!
     private var titleLabel: UILabel!
     
@@ -38,7 +38,7 @@ final class MemeMainCategoryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientView.frame = contentView.bounds
-        gradientLayer?.frame = gradientView.bounds
+        gradientLayer.frame = gradientView.bounds
     }
     
     // MARK: - Public
@@ -46,10 +46,13 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         if let urlString = item.imageURL, let url = URL(string: urlString) {
             imageView.kf.setImage(with: url)
         }
-        titleLabel.text = item.content
+        titleLabel.attributedText = .customFont(
+            .pretendard(.body(.body1)),
+            text: item.content,
+            color: .gray(.gray1)
+        )
         let index = item.indexPath.item % gradientColors.count
-        gradientLayer = makeDiagonalGradientLayer(gradientColors[index])
-        gradientView.layer.insertSublayer(gradientLayer!, at: 0)
+        gradientLayer.makeDiagonalGradient(gradientColors[index])
     }
     
     // MARK: - Private
@@ -57,13 +60,12 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         gradientView = UIView()
         gradientView.layer.cornerRadius = 12
         gradientView.layer.masksToBounds = true
+        gradientView.layer.insertSublayer(gradientLayer, at: 0)
         
         imageView = UIImageView()
         imageView.image = UIImage(resource: .iconTemporaryCategory)
         
         titleLabel = UILabel()
-        titleLabel.font = .customFont(.pretendard(.body(.body1)))
-        titleLabel.textColor = .gray1
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         

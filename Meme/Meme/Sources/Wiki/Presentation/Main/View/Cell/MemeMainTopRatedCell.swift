@@ -14,8 +14,8 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
     private let fixedColor = [UIColor.pink90, .red90, .yellow90, .lightBlue80, .purple80, .green90]
     
     private var gradientView = UIView()
-    private var dimmedLayer: CAGradientLayer?
-    private var gradientLayer: CAGradientLayer?
+    private var dimmedLayer = CAGradientLayer()
+    private var gradientLayer = CAGradientLayer()
     private var imageView: UIImageView!
     private var rateLabel: UILabel!
     private var textView = UIView()
@@ -37,8 +37,8 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         imageView.frame = contentView.bounds.inset(
             by: UIEdgeInsets(top: 0, left: 0, bottom: 36, right: 0))
         gradientView.frame = imageView.bounds
-        dimmedLayer?.frame = gradientView.bounds
-        gradientLayer?.frame = gradientView.bounds
+        dimmedLayer.frame = gradientView.bounds
+        gradientLayer.frame = gradientView.bounds
     }
     
     override func prepareForReuse() {
@@ -53,12 +53,17 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         if let urlString = item.imageURL, let url = URL(string: urlString) {
             imageView.kf.setImage(with: url)
         }
-        gradientLayer = makeGradientLayer(itemColor)
-        gradientView.layer.insertSublayer(gradientLayer!, at: 1)
-        rateLabel.backgroundColor = itemColor
-        rateLabel.text = "\(index + 1)위"
+        gradientLayer.makeVerticalGradient(itemColor)
         textView.backgroundColor = itemColor
-        titleLabel.text = item.content
+        rateLabel.backgroundColor = itemColor
+        rateLabel.attributedText = .customFont(
+            .pretendard(.title(.subhead2)),
+            text: "\(index + 1)위",
+            color: .black(.black))
+        titleLabel.attributedText = .customFont(
+            .pretendard(.title(.subheadLong1)),
+            text: item.content,
+            color: .black(.black))
     }
     
     // MARK: - Private
@@ -67,8 +72,9 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .systemPink.withAlphaComponent(0.3)
         
-        dimmedLayer = makeDimmedLayer()
-        gradientView.layer.insertSublayer(dimmedLayer!, at: 0)
+        dimmedLayer.makeDimmed()
+        gradientView.layer.insertSublayer(dimmedLayer, at: 0)
+        gradientView.layer.insertSublayer(gradientLayer, at: 1)
         
         imageView = UIImageView()
         imageView.image = UIImage(resource: .imageTemporary)
@@ -77,13 +83,9 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         rateLabel = UILabel()
         rateLabel.layer.cornerRadius = 6
         rateLabel.layer.masksToBounds = true
-        rateLabel.font = .customFont(.pretendard(.title(.subhead2)))
-        rateLabel.textColor = .black
         rateLabel.textAlignment = .center
         
         titleLabel = UILabel()
-        titleLabel.font = .customFont(.pretendard(.title(.subhead2)))
-        titleLabel.textColor = .black
         titleLabel.textAlignment = .center
         
         imageView.addSubview(gradientView)
