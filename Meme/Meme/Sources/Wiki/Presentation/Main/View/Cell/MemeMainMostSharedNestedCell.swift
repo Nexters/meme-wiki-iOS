@@ -92,12 +92,12 @@ final class MemeMainMostSharedNestedCell: UICollectionViewCell {
             firstRowCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
             firstRowCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             firstRowCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            firstRowCollectionView.heightAnchor.constraint(equalToConstant: 172),
+            firstRowCollectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 172),
             
             secondRowCollectionView.topAnchor.constraint(equalTo: firstRowCollectionView.bottomAnchor, constant: 10),
             secondRowCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             secondRowCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            secondRowCollectionView.heightAnchor.constraint(equalToConstant: 172),
+            secondRowCollectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 172),
             secondRowCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }

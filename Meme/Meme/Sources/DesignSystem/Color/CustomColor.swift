@@ -8,7 +8,11 @@
 import UIKit
 
 enum CustomColor {
+    // MARK: - Common
     case black(Black)
+    case white(White)
+    
+    // MARK: - Custom
     case gray(Gray)
     case blue(Blue)
     case green(Green)
@@ -24,6 +28,7 @@ enum CustomColor {
     fileprivate var base: CustomColorConvertible {
         switch self {
         case .black(let black): return black
+        case .white(let white): return white
         case .gray(let gray): return gray
         case .blue(let blue): return blue
         case .green(let green): return green
@@ -47,6 +52,14 @@ enum CustomColor {
 
 enum Black: String, CustomColorConvertible {
     case black
+    
+    var color: UIColor? {
+        return UIColor(named: self.rawValue)
+    }
+}
+
+enum White: String, CustomColorConvertible {
+    case white
     
     var color: UIColor? {
         return UIColor(named: self.rawValue)

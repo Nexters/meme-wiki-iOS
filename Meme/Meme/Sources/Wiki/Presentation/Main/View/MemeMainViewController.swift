@@ -392,12 +392,12 @@ extension MemeMainViewController {
             case .mostShared:
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .estimated(172))
+                    heightDimension: .estimated(354))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 
                 let groupSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .estimated(172))
+                    heightDimension: .estimated(354))
                 let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: groupSize, subitems: [item])
                 group.interItemSpacing = .fixed(11)
