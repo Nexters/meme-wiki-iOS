@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon_undo.svg",
+      "filename" : "icon_redo.svg",
       "idiom" : "universal"
     }
   ],
