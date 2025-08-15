@@ -64,6 +64,11 @@ class MemeCustomViewController: UIViewController {
         handleNotification()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateCanvasFrameToImage()
+    }
+    
     // MARK: - Setup
     private func setupViews() {
         imageView.contentMode = .scaleAspectFit
@@ -72,7 +77,8 @@ class MemeCustomViewController: UIViewController {
         view.addSubview(imageView)
         
         canvasView.backgroundColor = .clear
-        canvasView.alwaysBounceVertical = true
+        canvasView.alwaysBounceVertical = false
+        canvasView.alwaysBounceHorizontal = false
         canvasView.drawingPolicy = .anyInput
         view.addSubview(canvasView)
         
@@ -89,6 +95,9 @@ class MemeCustomViewController: UIViewController {
     private func setupToolPicker() {
         toolPicker.setVisible(true, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
+        if #available(iOS 13.0, *) {
+            toolPicker.overrideUserInterfaceStyle = .dark
+        }
         canvasView.becomeFirstResponder()
     }
     
@@ -106,6 +115,7 @@ class MemeCustomViewController: UIViewController {
             object: canvasView.undoManager
         )
     }
+    
     @objc func undoRedoChanged() {
         let canUndo = canvasView.undoManager?.canUndo ?? false
         let canRedo = canvasView.undoManager?.canRedo ?? false
@@ -123,18 +133,41 @@ class MemeCustomViewController: UIViewController {
                   error == nil else { return }
             DispatchQueue.main.async {
                 self.imageView.image = image
+                self.updateCanvasFrameToImage()
                 self.canvasView.drawing = PKDrawing()
-                self.canvasView.frame = CGRect(origin: .zero, size: image.size)
             }
         }.resume()
+    }
+    
+    // MARK: - Canvas Frame Fit
+    private func imageFrameInImageView() -> CGRect {
+        guard let image = imageView.image else { return .zero }
+        let imageRatio = image.size.width / image.size.height
+        let viewRatio = imageView.bounds.width / imageView.bounds.height
+        
+        var scale: CGFloat
+        var size = CGSize.zero
+        
+        if imageRatio > viewRatio {
+            scale = imageView.bounds.width / image.size.width
+        } else {
+            scale = imageView.bounds.height / image.size.height
+        }
+        size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+        
+        let x = (imageView.bounds.width - size.width) / 2
+        let y = (imageView.bounds.height - size.height) / 2
+        return CGRect(origin: CGPoint(x: x, y: y), size: size)
+    }
+    
+    private func updateCanvasFrameToImage() {
+        canvasView.frame = imageFrameInImageView()
     }
     
     // MARK: - NavigationBar
     private func setupNavigationBarWhenEditing() {
         undoButton = UIBarButtonItem(image: UIImage(resource: .iconUndo), style: .plain, target: self, action: #selector(undoDrawing))
         redoButton = UIBarButtonItem(image: UIImage(resource: .iconRedo), style: .plain, target: self, action: #selector(redoDrawing))
-//        undoButton?.isEnabled = false
-//        redoButton?.isEnabled = false
         
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelCustom)),
@@ -144,6 +177,7 @@ class MemeCustomViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "완료", style: .plain, target: self, action: #selector(finishCustom))
     }
+    
     private func setupNavigationBarWhenFinishEditing() {
         navigationItem.leftBarButtonItems = nil
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -151,6 +185,7 @@ class MemeCustomViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(resource: .iconHome), style: .plain, target: self, action: #selector(popToMain))
     }
+    
     private func toggleNavigationBar() {
         isCustomizing.toggle()
         isCustomizing ? setupNavigationBarWhenEditing() : setupNavigationBarWhenFinishEditing()
@@ -159,21 +194,25 @@ class MemeCustomViewController: UIViewController {
     @objc private func cancelCustom() {
         navigationController?.popViewController(animated: true)
     }
+    
     @objc private func undoDrawing() {
         if canvasView.undoManager?.canUndo == true {
             canvasView.undoManager?.undo()
         }
     }
+    
     @objc private func redoDrawing() {
         if canvasView.undoManager?.canRedo == true {
             canvasView.undoManager?.redo()
         }
     }
+    
     @objc private func finishCustom() {
         toolPicker.setVisible(false, forFirstResponder: canvasView)
         saveButton.isHidden = false
         toggleNavigationBar()
     }
+    
     @objc private func popToMain() {
         navigationController?.popToRootViewController(animated: true)
     }
@@ -182,13 +221,18 @@ class MemeCustomViewController: UIViewController {
     func exportCombinedImage() -> UIImage? {
         guard let baseImage = imageView.image else { return nil }
         UIGraphicsBeginImageContextWithOptions(baseImage.size, false, baseImage.scale)
-        baseImage.draw(in: CGRect(origin: .zero, size: baseImage.size))
         
-        let drawingImage = canvasView.drawing.image(
-            from: CGRect(origin: .zero, size: baseImage.size),
-            scale: baseImage.scale
-        )
-        drawingImage.draw(in: CGRect(origin: .zero, size: baseImage.size))
+        baseImage.draw(in: CGRect(origin: .zero, size: baseImage.size))
+        let scaleX = baseImage.size.width / canvasView.bounds.width
+        let scaleY = baseImage.size.height / canvasView.bounds.height
+        
+        let drawingImage = canvasView.drawing.image(from: canvasView.bounds, scale: baseImage.scale)
+        drawingImage.draw(in: CGRect(
+            origin: .zero,
+            size: CGSize(
+                width: canvasView.bounds.width * scaleX,
+                height: canvasView.bounds.height * scaleY)
+        ))
         
         let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -205,13 +249,13 @@ class MemeCustomViewController: UIViewController {
             nil)
     }
     
-    @objc private func saveCompleted(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+    @objc private func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         let alert = UIAlertController(
-            title: error == nil ? "Saved!" : "Error",
+            title: error == nil ? "사진보관함에 저장되었어요" : "문제가 발생했어요!",
             message: error?.localizedDescription,
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
         present(alert, animated: true)
     }
 }

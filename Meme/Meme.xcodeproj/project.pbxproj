@@ -526,6 +526,8 @@
 		2CE552362E268F9E004BE9AF /* Meme */ = {
 			isa = PBXGroup;
 			children = (
+				2CE552592E26928D004BE9AF /* Development.xcconfig */,
+				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
 				AD848E112E2B42F30003F09F /* Sources */,
 				AD848E122E2B42F90003F09F /* Resources */,
 				2CC399972E2F830500D14084 /* KeyChain */,
@@ -640,8 +642,6 @@
 				2CFAA3072E34A8C5004E4604 /* Font */,
 				2CE552402E268FA0004BE9AF /* Assets.xcassets */,
 				2CE552452E268FA0004BE9AF /* Info.plist */,
-				2CE552592E26928D004BE9AF /* Development.xcconfig */,
-				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1377,6 +1377,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7D5PZJWQ9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meme/Resources/info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "나만의 밈을 저장하려면 접근 권한을 허용해 주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1411,6 +1412,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7D5PZJWQ9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meme/Resources/info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "나만의 밈을 저장하려면 접근 권한을 허용해 주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

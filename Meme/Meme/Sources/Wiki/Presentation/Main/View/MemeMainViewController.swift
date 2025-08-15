@@ -173,8 +173,6 @@ class MemeMainViewController: UIViewController {
         }
     }
     
-    
-    
     private func sectionItemCount(for section: Section) -> Int {
         guard let lobby = viewModel.lobby else { return 0 }
         switch section {
