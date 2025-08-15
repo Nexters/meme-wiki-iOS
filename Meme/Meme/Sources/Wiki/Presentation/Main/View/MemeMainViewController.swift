@@ -74,8 +74,8 @@ class MemeMainViewController: UIViewController {
             MemeMainTopRatedCell.self,
             forCellWithReuseIdentifier: MemeMainTopRatedCell.identifier)
         collectionView.register(
-            MemeMainMostSharedCell.self,
-            forCellWithReuseIdentifier: MemeMainMostSharedCell.identifier)
+            MemeMainMostSharedNestedCell.self,
+            forCellWithReuseIdentifier: MemeMainMostSharedNestedCell.identifier)
         collectionView.register(
             MemeMainBannerFooterView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
@@ -108,20 +108,20 @@ class MemeMainViewController: UIViewController {
             case .category:
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: MemeMainCategoryCell.identifier, for: indexPath)
-                guard let bannerCell = cell as? MemeMainCategoryCell else { return .none }
-                bannerCell.configureCell(with: item)
+                guard let categoryCell = cell as? MemeMainCategoryCell else { return .none }
+                categoryCell.configureCell(with: item)
                 return cell
             case .topRated:
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: MemeMainTopRatedCell.identifier, for: indexPath)
-                guard let bannerCell = cell as? MemeMainTopRatedCell else { return .none }
-                bannerCell.configureCell(with: item)
+                guard let topRatedCell = cell as? MemeMainTopRatedCell else { return .none }
+                topRatedCell.configureCell(with: item)
                 return cell
             case .mostShared:
                 let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: MemeMainMostSharedCell.identifier, for: indexPath)
-                guard let bannerCell = cell as? MemeMainMostSharedCell else { return .none }
-                bannerCell.configureCell(with: item)
+                    withReuseIdentifier: MemeMainMostSharedNestedCell.identifier, for: indexPath)
+                guard let mostSharedCell = cell as? MemeMainMostSharedNestedCell else { return .none }
+                mostSharedCell.configureCell(with: item)
                 return cell
             }
         }
@@ -181,7 +181,7 @@ class MemeMainViewController: UIViewController {
         case .topRated:
             return lobby.topRatedMemes.count
         case .mostShared:
-            return lobby.mostSharedMemes.count
+            return 1
         }
     }
 }
@@ -238,13 +238,24 @@ extension MemeMainViewController {
         )
         
         // 밈열차
-        appendSectionItems(
-            .mostShared,
-            from: item.mostSharedMemes,
+        snapshot.appendSections([.mostShared])
+        let mostSharedItems = item.mostSharedMemes.enumerated().map { index, meme in
+            Item(
+                type: .mostShared,
+                content: meme.title,
+                imageURL: meme.imageURL,
+                indexPath: IndexPath(
+                    item: index, section: Section.mostShared.rawValue)
+            )
+        }
+        let sectionItem = Item(
             type: .mostShared,
-            content: { $0.title },
-            imageURL: { $0.imageURL }
+            content: "",
+            childs: mostSharedItems,
+            indexPath: IndexPath(
+                item: item.mostSharedMemes.count, section: Section.mostShared.rawValue)
         )
+        snapshot.appendItems([sectionItem], toSection: .mostShared)
         
         dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -380,7 +391,7 @@ extension MemeMainViewController {
                 
             case .mostShared:
                 let itemSize = NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(0.5),
+                    widthDimension: .fractionalWidth(1.0),
                     heightDimension: .estimated(172))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 
@@ -395,6 +406,7 @@ extension MemeMainViewController {
                 section.interGroupSpacing = 10
                 section.contentInsets = NSDirectionalEdgeInsets(
                     top: 20, leading: 0, bottom: 100, trailing: 0)
+                section.orthogonalScrollingBehavior = .continuous
                 
                 /// setup header
                 let headerSize = NSCollectionLayoutSize(

@@ -26,8 +26,23 @@ extension Lobby {
         let type: Section
         let content: String
         let imageURL: String?
+        let childs: [Item]?
         
         let indexPath: IndexPath
+        
+        init(
+            type: Section,
+            content: String,
+            imageURL: String? = nil,
+            childs: [Item]? = nil,
+            indexPath: IndexPath
+        ) {
+            self.type = type
+            self.content = content
+            self.imageURL = imageURL
+            self.childs = childs
+            self.indexPath = indexPath
+        }
     }
 }
 
