@@ -65,6 +65,7 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         
         imageView = UIImageView()
         imageView.image = UIImage(resource: .iconTemporaryCategory)
+        imageView.contentMode = .scaleAspectFit
         
         titleLabel = UILabel()
         titleLabel.numberOfLines = 2
@@ -78,8 +79,8 @@ final class MemeMainCategoryCell: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             gradientView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            gradientView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            gradientView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            gradientView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            gradientView.widthAnchor.constraint(equalToConstant: 74),
             gradientView.heightAnchor.constraint(equalToConstant: 74),
             imageView.leadingAnchor.constraint(equalTo: gradientView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: gradientView.trailingAnchor),
