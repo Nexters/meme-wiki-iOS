@@ -19,23 +19,42 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
         didReceive message: WKScriptMessage
     ) {
         guard let parameters = message.body as? [String: Any],
-              let command = parameters["command"] as? String, // TODO: - command?
+              let command = parameters["type"] as? String,
               let handlerName = WikiScriptMessageHandlerName(rawValue: command)
         else { return }
         
         switch handlerName {
-        case .close:
-            Log.debug(">>> close", .networking)
-            return
-        case .share:
-            let method = parameters["method"] as? String
-            let link = (parameters["link"] as? String)?.asEncodedURL()
-            // TODO: - share
+        case .SHARE_MEME:
+            guard let data = parameters["data"] as? [String: Any] else { return }
+            let shareData = ShareData(data: data)
+            DispatchQueue.main.async { [weak self] in
+                guard let self, let viewController, let shareData else { return }
+                viewController.presentShareSheet(items: [shareData.image])
+            }
+        case .DIY_MEME:
+            // TODO: -
+            viewController?.present(MemeMainViewController(), animated: true)
+        }
+    }
+}
+
+extension WikiScriptMessageHandler {
+    struct ShareData {
+        let title: String
+        let image: String
+        
+        init?(data: [String: Any]) {
+            guard
+                let title = data["title"] as? String,
+                let image = data["image"] as? String
+            else { return nil }
+            self.title = title
+            self.image = image
         }
     }
 }
 
 enum WikiScriptMessageHandlerName: String, CaseIterable {
-    case close
-    case share
+    case SHARE_MEME
+    case DIY_MEME
 }
