@@ -8,65 +8,50 @@
 import WebKit
 
 class WikiWebViewController: UIViewController {
-    let url: URL
-    var webViews = [WKWebView]()
-    
+
+    private let url: URL
+    private lazy var webView: WKWebView = {
+        let configuration = WKWebViewConfiguration()
+        configuration.allowsAirPlayForMediaPlayback = true
+        configuration.userContentController = WKUserContentController()
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        webView.allowsBackForwardNavigationGestures = true
+        webView.scrollView.bounces = true
+        webView.scrollView.alwaysBounceVertical = true
+        if #available(iOS 16.4, *) {
+            webView.isInspectable = true
+        }
+        return webView
+    }()
+
     init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
-        fatalError("init(code:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .gray10
         setupWebView()
-    }
-    
-    private func setupWebView() {
-        let webView = createWebView(frame: view.frame, configuration: configuration)
-        load(url, in: webView)
-    }
-    private func load(_ url: URL, in webView: WKWebView) {
         webView.load(URLRequest(url: url))
     }
-}
 
-extension WikiWebViewController: WKUIDelegate, WKNavigationDelegate {
-    private func createWebView(frame: CGRect, configuration: WKWebViewConfiguration) -> WKWebView {
-        let webView = WKWebView(frame: frame, configuration: configuration)
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
-        webView.allowsBackForwardNavigationGestures = true
-        if #available(iOS 16.4, *) {
-            webView.isInspectable = true
-        }
-        
+    private func setupWebView() {
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        webViews.append(webView)
-        return webView
-    }
-    private var configuration: WKWebViewConfiguration {
-        let configuration = WKWebViewConfiguration()
-        configuration.allowsAirPlayForMediaPlayback = true
-        configuration.userContentController = userContentController
-        return configuration
-    }
-    private var userContentController: WKUserContentController {
-        let contentController = WKUserContentController()
-        contentController.add(wikiScriptMessageHandler, name: "wikiHandler")
-        return contentController
-    }
-    private var wikiScriptMessageHandler: WKScriptMessageHandler {
-        return WikiScriptMessageHandler()
     }
 }
+
+extension WikiWebViewController: WKNavigationDelegate, WKUIDelegate {}
