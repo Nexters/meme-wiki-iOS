@@ -41,6 +41,11 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         gradientLayer?.frame = gradientView.bounds
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.kf.cancelDownloadTask()
+    }
+    
     // MARK: - Public
     func configureCell(with item: Lobby.Item) {
         let index = item.indexPath.item % fixedColor.count
