@@ -8,7 +8,7 @@
 import WebKit
 
 class WikiWebViewController: UIViewController {
-
+    
     private let url: URL
     private lazy var webView: WKWebView = {
         let configuration = WKWebViewConfiguration()
@@ -29,23 +29,23 @@ class WikiWebViewController: UIViewController {
     private var wikiScriptMessageHandler: WikiScriptMessageHandler {
         WikiScriptMessageHandler(viewController: self)
     }
-
+    
     init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray10
         setupWebView()
         webView.load(URLRequest(url: url))
     }
-
+    
     private func setupWebView() {
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,8 +58,8 @@ class WikiWebViewController: UIViewController {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-           webView.notifyClientReady()
-       }
+        webView.notifyClientReady()
+    }
 }
 
 extension WikiWebViewController: WKNavigationDelegate, WKUIDelegate {}

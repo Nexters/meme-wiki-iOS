@@ -18,10 +18,15 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
-        guard let parameters = message.body as? [String: Any],
+        guard let body = message.body as? String,
+              let data = body.data(using: .utf8),
+              let parameters = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let command = parameters["type"] as? String,
               let handlerName = WikiScriptMessageHandlerName(rawValue: command)
-        else { return }
+        else {
+            // TODO: - alert
+            return
+        }
         
         switch handlerName {
         case .SHARE_MEME:
@@ -31,9 +36,14 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
                 guard let self, let viewController, let shareData else { return }
                 viewController.presentShareSheet(items: [shareData.image])
             }
-        case .DIY_MEME:
-            // TODO: -
-            viewController?.present(MemeMainViewController(), animated: true)
+        case .CUSTOM_MEME:
+            guard
+                let data = parameters["data"] as? [String: Any],
+                let shareData = ShareData(data: data)
+            else { return } // TODO: - alert
+            viewController?.navigationController?.pushViewController(
+                MemeCustomViewController(imageURL: shareData.image),
+                animated: true)
         }
     }
 }
@@ -56,5 +66,5 @@ extension WikiScriptMessageHandler {
 
 enum WikiScriptMessageHandlerName: String, CaseIterable {
     case SHARE_MEME
-    case DIY_MEME
+    case CUSTOM_MEME
 }
