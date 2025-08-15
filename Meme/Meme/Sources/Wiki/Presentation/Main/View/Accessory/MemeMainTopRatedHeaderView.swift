@@ -12,20 +12,23 @@ final class MemeMainTopRatedHeaderView: UICollectionReusableView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "🔥인급밈🔥"
-        label.font = .customFont(.pretendard(.title(.display1)))
+        label.attributedText = .customFont(
+            .pretendard(.title(.display1)),
+            text: "🔥인급밈🔥",
+            color: .black(.black))
         label.textAlignment = .center
-        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "지금 가장 따끈따근한 밈만 골랐어요"
-        label.font = .customFont(.pretendard(.title(.subhead2)))
+        label.attributedText = .customFont(
+            .pretendard(.title(.subhead2)),
+            text: "지금 가장 따끈따근한 밈만 골랐어요",
+            color: .gray(.gray7)
+        )
         label.textAlignment = .center
-        label.textColor = .gray7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -22,27 +22,35 @@ extension UIView {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         return gradientLayer
     }
-    
-    func makeDiagonalGradientLayer(_ colors: [UIColor]) -> CAGradientLayer {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = colors.map(\.cgColor)
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        return gradientLayer
+}
+
+extension CAGradientLayer {
+    func makeVerticalGradient(_ color: UIColor) {
+        self.colors = [
+            color.withAlphaComponent(0.0).cgColor,
+            color.withAlphaComponent(0.0).cgColor,
+            color.withAlphaComponent(0.2).cgColor,
+            color.withAlphaComponent(0.5).cgColor
+        ]
+        self.locations = [0.0, 0.4, 0.7, 1.0].map(NSNumber.init)
+        self.startPoint = CGPoint(x: 0.5, y: 0.0)
+        self.endPoint = CGPoint(x: 0.5, y: 1.0)
     }
     
-    func makeDimmedLayer() -> CAGradientLayer {
-        let gradient = CAGradientLayer()
-        
-        gradient.startPoint = CGPoint(x: 0.5, y: 0)
-        gradient.endPoint = CGPoint(x: 0.5, y: 1)
-        gradient.colors = [
+    func makeDiagonalGradient(_ colors: [UIColor]) {
+        self.colors = colors.map(\.cgColor)
+        self.startPoint = CGPoint(x: 0.0, y: 0.0)
+        self.endPoint = CGPoint(x: 1.0, y: 1.0)
+    }
+    
+    func makeDimmed() {
+        self.startPoint = CGPoint(x: 0.5, y: 0)
+        self.endPoint = CGPoint(x: 0.5, y: 1)
+        self.colors = [
             UIColor.clear.cgColor,
             UIColor.black.withAlphaComponent(0.2).cgColor,
             UIColor.black.cgColor
         ]
-        gradient.locations = [0.0, 0.65, 1.0]
-        
-        return gradient
+        self.locations = [0.0, 0.65, 1.0]
     }
 }
