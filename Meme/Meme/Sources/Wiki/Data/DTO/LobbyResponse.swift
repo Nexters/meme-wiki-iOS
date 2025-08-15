@@ -12,7 +12,7 @@ struct CategoryResponseDTO: Decodable {
     let name: String
     let imgUrl: String
     
-    func toEntity() -> Lobby.CategoryItem {
+    func toEntity() -> CategoryItem {
         .init(id: id, title: name, imageURL: imgUrl)
     }
 }
