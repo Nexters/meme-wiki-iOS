@@ -288,13 +288,22 @@ extension MemeMainViewController {
 // MARK: - UICollectionViewDelegate
 extension MemeMainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dataSource.itemIdentifier(for: indexPath)
-        if let memeId = item?.memeId {
-            Log.info("밈 상세 이동 \(memeId)", .ui)
-            gotoMemeDetail(id: memeId)
-        }
-        if Section(rawIndex: indexPath.section) == .banner, indexPath.item == 0 {
-            gotoMemeQuiz()
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+//        if let memeId = item.memeId {
+//            Log.info("밈 상세 이동 \(memeId)", .ui)
+//            gotoMemeDetail(id: memeId)
+//        }
+        
+        switch Section(rawIndex: indexPath.section) {
+        case .banner:
+            if indexPath.item == 0 {
+                gotoMemeQuiz()
+            }
+        case .category:
+            guard let categoryItem = viewModel.lobby?.categories[indexPath.row] else { return }
+            goToMemeCategoryViewControler(at: categoryItem)
+        default:
+            return
         }
     }
 }

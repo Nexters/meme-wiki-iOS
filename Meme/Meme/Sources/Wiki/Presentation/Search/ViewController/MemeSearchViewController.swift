@@ -167,15 +167,6 @@ final class MemeSearchViewController: BaseViewController {
 }
 
 private extension MemeSearchViewController {
-    @objc func popViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func popToRootViewController() {
-        navigationController?.popToRootViewController(animated: true)
-    }
-}
-private extension MemeSearchViewController {
     func updateSnapshot(section: MemeSearchSection, items: [MemeSearchDisplayItem]) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])

@@ -35,6 +35,7 @@ final class MemeCategoryViewController: BaseViewController {
     init(viewModel: CategoryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        Log.debug("MemeCategoryViewController - init", .ui)
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +46,7 @@ final class MemeCategoryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
+        configureNavigationBar()
     }
 
     // MARK: - Layout / UI
@@ -61,6 +63,7 @@ final class MemeCategoryViewController: BaseViewController {
     
     // MARK: - Bind
     override func bind() {
+        Log.debug("MemeCategoryViewController - bind", .ui)
         viewModel.fetchCategories()
         
         // 카테고리 목록
@@ -68,10 +71,9 @@ final class MemeCategoryViewController: BaseViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] categories in
                 guard let self = self else { return }
-                guard let firstCategory = categories.first else { return }
+                let selectedCategory = viewModel.getSelectedCategory()
                 self.applyCategories(categories)
-                self.viewModel.fetchCategoryMeme(firstCategory)
-
+                self.viewModel.fetchCategoryMeme(selectedCategory)
             }
             .store(in: &cancellables)
 
@@ -84,6 +86,15 @@ final class MemeCategoryViewController: BaseViewController {
                 self.applyGrid(items)
             }
             .store(in: &cancellables)
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconCheveronLeft), style: .plain, target: self, action: #selector(popViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconSearch), style: .plain, target: self, action: #selector(gotoMemeSearchViewController))
+
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem?.tintColor = .white
+
     }
 }
 
@@ -146,8 +157,11 @@ private extension MemeCategoryViewController {
             guard let self = self else { return }
             guard !categories.isEmpty else { return }
             guard let header = self.findHeader() else { return }
-            header.updateUI(categories.first?.title ?? "")
-            self.selectFirstCategoryCellIfNeeded()
+            let selectedCategory = viewModel.getSelectedCategory()
+            let indexPath = IndexPath(item: selectedCategory.id - 1, section: 0)
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+            selectedCategoryIndexPath = indexPath
+            header.updateUI(selectedCategory.title)
         }
     }
 
