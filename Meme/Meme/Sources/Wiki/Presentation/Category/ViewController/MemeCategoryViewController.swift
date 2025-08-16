@@ -16,6 +16,7 @@ final class MemeCategoryViewController: BaseViewController {
     private var dataSource: SearchDataSource?
     private let viewModel: CategoryViewModel
     private var cancellables = Set<AnyCancellable>()
+    private var selectedCategoryIndexPath: IndexPath? = IndexPath(row: 0, section: 0)
 
     // MARK: - UI Components
     
@@ -26,6 +27,7 @@ final class MemeCategoryViewController: BaseViewController {
         collectionView.register(SearchCategoryCell.self, forCellWithReuseIdentifier: SearchCategoryCell.identifier)
         collectionView.register(MemeSearchHeaderView.self, forSupplementaryViewOfKind: MemeSearchHeaderView.identifier, withReuseIdentifier: MemeSearchHeaderView.identifier)
         collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
         return collectionView
     }()
 
@@ -222,14 +224,19 @@ extension MemeCategoryViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource?.itemIdentifier(for: indexPath) else { return }
-        guard let header = findHeader() else { return }
-        if case let .category(category) = item {
-            viewModel.fetchCategoryMeme(category)
-            header.updateUI(category.title)
-        }
         
         if case let .grid(item) = item {
             gotoMemeDetail(id: item.id)
+        }
+        
+        if case let .category(category) = item {
+            guard let header = findHeader() else { return }
+            if let prev = selectedCategoryIndexPath, prev != indexPath {
+                collectionView.deselectItem(at: prev, animated: false)
+            }
+            selectedCategoryIndexPath = indexPath
+            viewModel.fetchCategoryMeme(category)
+            header.updateUI(category.title)
         }
     }
     
