@@ -52,11 +52,12 @@ class MemeMainViewController: BaseViewController {
                 loading ? self?.makeSplashVisible() : self?.hideSplash()
             }.store(in: &subscriptions)
         
-        viewModel.$hasError
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] error in
-                self?.presentAlertWithSingleAction(title: "시스템 에러가 발생했어요", message: "잠시 후에 다시 시도해 주세요")
-            }.store(in: &subscriptions)
+//        viewModel.$hasError
+//            .receive(on: DispatchQueue.main)
+//            .sink { [weak self] error in
+//                guard let error else { return }
+//                self?.presentAlertWithSingleAction(title: "시스템 에러가 발생했어요", message: "잠시 후에 다시 시도해 주세요")
+//            }.store(in: &subscriptions)
     }
     
     private func setupNavigation() {
