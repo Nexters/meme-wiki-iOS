@@ -21,7 +21,9 @@ class WikiWebViewController: UIViewController {
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.bounces = true
         webView.scrollView.alwaysBounceVertical = true
-        webView.backgroundColor = .gray10
+        webView.scrollView.isScrollEnabled = false
+        webView.backgroundColor = .black
+        webView.isOpaque = false
         if #available(iOS 16.4, *) {
             webView.isInspectable = true
         }
