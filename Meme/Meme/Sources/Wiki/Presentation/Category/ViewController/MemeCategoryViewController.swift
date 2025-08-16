@@ -228,9 +228,8 @@ extension MemeCategoryViewController: UICollectionViewDelegate {
             header.updateUI(category.title)
         }
         
-        // TODO: - 상세 화면 연결
         if case let .grid(item) = item {
-            Log.debug("selected item = \(item)", .ui)
+            gotoMemeDetail(id: item.id)
         }
     }
     
