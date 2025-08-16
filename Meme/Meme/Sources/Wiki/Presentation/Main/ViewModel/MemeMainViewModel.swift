@@ -12,6 +12,8 @@ final class MemeMainViewModel {
     private var subscriptions = Set<AnyCancellable>()
     
     @Published var lobby: Lobby?
+    @Published var loading = true
+    @Published var hasError: ServiceError?
     
     init(lobbyUseCase: LobbyUseCase) {
         self.lobbyUseCase = lobbyUseCase
@@ -24,8 +26,9 @@ final class MemeMainViewModel {
                 switch result {
                 case .success(let value):
                     self?.lobby = value
+                    self?.loading = false
                 case .failure(let error):
-                    let erorr = error
+                    self?.hasError = error
                 case nil:
                     break
                 }
@@ -35,6 +38,7 @@ final class MemeMainViewModel {
 }
 extension MemeMainViewModel {
     func fetch() {
+        loading = true
         lobbyUseCase.execute()
     }
 }

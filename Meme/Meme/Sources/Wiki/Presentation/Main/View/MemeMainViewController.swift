@@ -8,13 +8,15 @@
 import UIKit
 import Combine
 
+@MainActor
 class MemeMainViewController: BaseViewController {
     
     typealias Section = Lobby.Section
     typealias Item = Lobby.Item
     
-    var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
+    private var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
+    private var splashView: UIView!
     
     private var subscriptions = Set<AnyCancellable>()
     private lazy var viewModel: MemeMainViewModel = {
@@ -28,7 +30,7 @@ class MemeMainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray10
+        setupSplash()
         setupNavigation()
         layoutCollectionView()
         setupDataSource()
@@ -42,6 +44,18 @@ class MemeMainViewController: BaseViewController {
             .sink { [weak self] item in
                 guard let item else { return }
                 self?.applySnapshot(item)
+            }.store(in: &subscriptions)
+        
+        viewModel.$loading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] loading in
+                loading ? self?.makeSplashVisible() : self?.hideSplash()
+            }.store(in: &subscriptions)
+        
+        viewModel.$hasError
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] error in
+                self?.presentAlertWithSingleAction(title: "시스템 에러가 발생했어요", message: "잠시 후에 다시 시도해 주세요")
             }.store(in: &subscriptions)
     }
     
@@ -464,5 +478,42 @@ extension MemeMainViewController {
             default: return nil
             }
         }
+    }
+}
+
+// MARK: - Splash
+extension MemeMainViewController {
+    private func setupSplash() {
+        splashView = UIView()
+        splashView.backgroundColor = .gray10
+        splashView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let splashIcon = UIImage(resource: .splashIconLight)
+        let splashIconImageView = UIImageView(image: splashIcon)
+        splashIconImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(splashView)
+        splashView.addSubview(splashIconImageView)
+        NSLayoutConstraint.activate([
+            splashView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            splashView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            splashView.topAnchor.constraint(equalTo: view.topAnchor),
+            splashView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            splashIconImageView.centerXAnchor.constraint(equalTo: splashView.centerXAnchor),
+            splashIconImageView.centerYAnchor.constraint(equalTo: splashView.centerYAnchor),
+            splashIconImageView.widthAnchor.constraint(equalToConstant: 200),
+            splashIconImageView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+    
+    private func makeSplashVisible() {
+        splashView.isHidden = false
+        view.bringSubviewToFront(splashView)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func hideSplash() {
+        splashView.isHidden = true
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
