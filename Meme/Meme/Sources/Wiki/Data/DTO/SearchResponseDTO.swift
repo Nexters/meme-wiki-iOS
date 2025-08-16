@@ -33,6 +33,7 @@ struct SearchItemDTO: Codable {
     
     func toEntity() -> MemeSearchItem {
         return .init(
+            id: id,
             thumbnail: .init(
                 year: Int(trendPeriod) ?? 0,
                 title: title,

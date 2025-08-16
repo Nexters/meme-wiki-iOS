@@ -26,6 +26,13 @@ extension UIView {
 
 extension CAGradientLayer {
     func makeVerticalGradient(_ color: UIColor) {
+        self.actions = [
+            "bounds": NSNull(),
+            "position": NSNull(),
+            "frame": NSNull(),
+            "cornerRadius": NSNull()
+        ]
+        
         self.colors = [
             color.withAlphaComponent(0.0).cgColor,
             color.withAlphaComponent(0.0).cgColor,
@@ -38,12 +45,24 @@ extension CAGradientLayer {
     }
     
     func makeDiagonalGradient(_ colors: [UIColor]) {
+        self.actions = [
+            "bounds": NSNull(),
+            "position": NSNull(),
+            "frame": NSNull(),
+            "cornerRadius": NSNull()
+        ]
         self.colors = colors.map(\.cgColor)
         self.startPoint = CGPoint(x: 0.0, y: 0.0)
         self.endPoint = CGPoint(x: 1.0, y: 1.0)
     }
     
     func makeDimmed() {
+        self.actions = [
+            "bounds": NSNull(),
+            "position": NSNull(),
+            "frame": NSNull(),
+            "cornerRadius": NSNull()
+        ]
         self.startPoint = CGPoint(x: 0.5, y: 0)
         self.endPoint = CGPoint(x: 0.5, y: 1)
         self.colors = [

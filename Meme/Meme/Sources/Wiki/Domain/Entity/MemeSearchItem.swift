@@ -6,6 +6,7 @@
 //
 
 struct MemeSearchItem: Hashable {
+    var id: Int
     var thumbnail: Thumbnail
     var usage: String
     var source: String
