@@ -59,4 +59,14 @@ extension UIViewController {
         }
         present(activity, animated: true)
     }
+    
+    func presentAlertWithSingleAction(title: String, message: String?) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
 }

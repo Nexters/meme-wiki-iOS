@@ -47,6 +47,13 @@ final class DefaultLobbyUseCase: LobbyUseCase {
             let categories = try? output.0?.get()
             let topRated = try? output.1?.get()
             let mostShared = try? output.2?.get()
+            if categories == nil,
+               topRated == nil,
+               mostShared?.memes == nil {
+                self?.result.send(.failure(
+                    ServiceError.server(ErrorResponse.init(message: "모든 데이터를 불러오지 못했습니다."))))
+                return
+            }
             let lobby = Lobby(
                 categories: categories ?? [],
                 topRatedMemes: topRated ?? [],
