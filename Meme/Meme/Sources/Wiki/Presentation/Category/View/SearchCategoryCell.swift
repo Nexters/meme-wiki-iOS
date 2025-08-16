@@ -44,7 +44,7 @@ final class SearchCategoryCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = CustomColor.gray(.gray2).color
         label.font = .customFont(.pretendard(.body(.body1)))
-        return lb
+        return label
     }()
     
     private let selectLine: UIView = {
