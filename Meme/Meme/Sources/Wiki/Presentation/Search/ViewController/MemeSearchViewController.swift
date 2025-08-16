@@ -22,6 +22,7 @@ final class MemeSearchViewController: BaseViewController {
         let textField = SearchTextField()
         textField.setPlaceHolder(Constants.SearchTextField.placeHolder)
         textField.layer.cornerRadius = Constants.SearchTextField.cornerRadius
+        textField.delegate = self
         return textField
     }()
     
@@ -52,6 +53,7 @@ final class MemeSearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
+        configureNavigationBar()
     }
     
     override func configureUI() {
@@ -71,6 +73,17 @@ final class MemeSearchViewController: BaseViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.CollectionView.bottom)
         ])
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconCheveronLeft), style: .plain, target: self, action: #selector(popViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconHome), style: .plain, target: self, action: #selector(popToRootViewController))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     func configureDataSource() {
@@ -179,6 +192,19 @@ private extension MemeSearchViewController {
 }
 
 extension MemeSearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource?.itemIdentifier(for: indexPath)  else { return }
+        
+        switch item {
+        case .grid(let memeSearchItem):
+            gotoMemeDetail(id: memeSearchItem.id)
+        case .list(let memeSearchItem):
+            gotoMemeDetail(id: memeSearchItem.id)
+        case .empty:
+            return
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentH = scrollView.contentSize.height
@@ -188,6 +214,14 @@ extension MemeSearchViewController: UICollectionViewDelegate {
         }
     }
 }
+
+extension MemeSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 private extension MemeSearchViewController {
     enum Constants {
         enum SearchTextField {

@@ -49,10 +49,11 @@ class MemeMainViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(resource: .imageLogo), style: .plain, target: self, action: #selector(scrollToTop))
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(resource: .iconSearch), style: .plain, target: self, action: nil)
+            image: UIImage(resource: .iconSearch), style: .plain, target: self, action: #selector(gotoMemeSearchViewController))
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
+    
     @objc private func scrollToTop() {
         collectionView.scrollRectToVisible(
             CGRect(origin: .zero, size: CGSize(width: 1, height: 1)),
@@ -287,13 +288,20 @@ extension MemeMainViewController {
 // MARK: - UICollectionViewDelegate
 extension MemeMainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dataSource.itemIdentifier(for: indexPath)
-        if let memeId = item?.memeId {
-            Log.info("밈 상세 이동 \(memeId)", .ui)
-            gotoMemeDetail(id: memeId)
-        }
-        if Section(rawIndex: indexPath.section) == .banner, indexPath.item == 0 {
-            gotoMemeQuiz()
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        switch Section(rawIndex: indexPath.section) {
+        case .banner:
+            if indexPath.item == 0 {
+                gotoMemeQuiz()
+            }
+        case .category:
+            guard let categoryItem = viewModel.lobby?.categories[indexPath.row] else { return }
+            goToMemeCategoryViewControler(at: categoryItem)
+        case .mostShared, .topRated:
+            guard let memeID = item.memeId else { return }
+            gotoMemeDetail(id: memeID)
+        default:
+            return
         }
     }
 }

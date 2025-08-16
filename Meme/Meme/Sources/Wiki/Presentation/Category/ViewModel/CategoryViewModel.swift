@@ -15,11 +15,10 @@ final class CategoryViewModel {
     private var searchState: SearchState = .init(id: 1, page: .init(next: nil, hasMore: nil, pageSize: 20))
     private var isLoading: Bool = true
     private var isAppend: Bool = false
-    
+    private var selectedCategory: CategoryItem = .init(id: 1, title: "", imageURL: "")
     // MARK: - Subject
     private let categoriesSubject = PassthroughSubject<[CategoryItem], Never>()
     private let searchCategoryMemeSubject = CurrentValueSubject<[MemeSearchItem]?, Never>(nil)
-    private let selectedCategorySubject = PassthroughSubject<CategoryItem, Never>()
     
     // MARK: - Publisher
     
@@ -30,19 +29,16 @@ final class CategoryViewModel {
         categoriesSubject.eraseToAnyPublisher()
     }
     
-    var selectedCategoryPublisher: AnyPublisher<CategoryItem, Never> {
-        selectedCategorySubject.eraseToAnyPublisher()
-    }
-    
     // MARK: - UseCase
     private let categoriesUseCase: CategoriesUseCase
     private let categoryUseCase: CategoryMemeUseCaseInterface
     
     // MARK: - init
     
-    init(categoriesUseCase: CategoriesUseCase, categoryUseCase: CategoryMemeUseCaseInterface) {
+    init(categoriesUseCase: CategoriesUseCase, categoryUseCase: CategoryMemeUseCaseInterface, selectedCategory: CategoryItem) {
         self.categoriesUseCase = categoriesUseCase
         self.categoryUseCase = categoryUseCase
+        self.selectedCategory = selectedCategory
         bind()
     }
     
@@ -55,7 +51,7 @@ final class CategoryViewModel {
     
     func fetchCategoryMeme(_ category: CategoryItem) {
         searchState.setId(category.id)
-        selectedCategorySubject.send(category)
+        selectedCategory = category
         requestMemeItems(searchState: searchState, isAppend: false)
     }
     
@@ -63,6 +59,10 @@ final class CategoryViewModel {
         guard let hasMore = searchState.page.hasMore, hasMore, !isLoading else { return }
         isLoading = true
         requestMemeItems(searchState: searchState, isAppend: true)
+    }
+    
+    func getSelectedCategory() -> CategoryItem {
+        return selectedCategory
     }
 }
 

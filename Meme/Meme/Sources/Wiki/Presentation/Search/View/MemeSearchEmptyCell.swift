@@ -15,7 +15,8 @@ final class MemeSearchEmptyCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .blue30
+        view.image = UIImage(resource: .symbolPink)
+        view.backgroundColor = .black
         return view
     }()
     
