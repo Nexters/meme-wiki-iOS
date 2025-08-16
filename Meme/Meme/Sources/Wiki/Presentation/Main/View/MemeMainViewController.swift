@@ -514,7 +514,9 @@ extension MemeMainViewController {
     }
     
     private func hideSplash() {
-        splashView.isHidden = true
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.splashView.isHidden = true
+            self?.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 }
