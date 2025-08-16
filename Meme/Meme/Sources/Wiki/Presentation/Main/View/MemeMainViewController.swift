@@ -49,10 +49,11 @@ class MemeMainViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(resource: .imageLogo), style: .plain, target: self, action: #selector(scrollToTop))
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(resource: .iconSearch), style: .plain, target: self, action: nil)
+            image: UIImage(resource: .iconSearch), style: .plain, target: self, action: #selector(gotoMemeSearchViewController))
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
+    
     @objc private func scrollToTop() {
         collectionView.scrollRectToVisible(
             CGRect(origin: .zero, size: CGSize(width: 1, height: 1)),

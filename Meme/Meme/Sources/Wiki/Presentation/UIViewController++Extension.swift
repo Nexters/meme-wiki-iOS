@@ -18,6 +18,14 @@ extension UIViewController {
         guard let url = URL(string: "https://meme-wiki.net/") else { return }
         let webVC = WikiWebViewController(url: url)
         navigationController?.pushViewController(webVC, animated: true)
+	}
+
+    @objc func gotoMemeSearchViewController() {
+        let repository = SearchRepository()
+        let useCase = SearchUseCase(repository: repository)
+        let viewModel = MemeSearchViewModel(searchUseCase: useCase)
+        let viewController = MemeSearchViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func presentShareSheet(items: [Any]) {

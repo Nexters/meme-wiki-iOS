@@ -35,6 +35,8 @@
 		2C1B78102E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */; };
 		2C1B78112E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B780F2E4F2A3D00E6C1B3 /* CategoryMemeUseCaseInterface.swift */; };
 		2C1B78122E50A05A00E6C1B3 /* CategoryMemeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78092E4F29CF00E6C1B3 /* CategoryMemeUseCase.swift */; };
+		2C1B78132E50CD2400E6C1B3 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FC4E82E4F19B0008894E7 /* UIViewController++Extension.swift */; };
+		2C1B78142E50CD2700E6C1B3 /* MemeMainMostSharedNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FC4E52E4E46DD008894E7 /* MemeMainMostSharedNestedCell.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -1114,6 +1116,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1B78142E50CD2700E6C1B3 /* MemeMainMostSharedNestedCell.swift in Sources */,
+				2C1B78132E50CD2400E6C1B3 /* UIViewController++Extension.swift in Sources */,
 				2C5EB08D2E3FA25F00D37F94 /* MemeSearchViewController.swift in Sources */,
 				2C5EB08E2E3FA25F00D37F94 /* BaseViewController.swift in Sources */,
 				2C5F24002E3D15E5000AA318 /* Galmuri.swift in Sources */,
