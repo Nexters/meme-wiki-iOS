@@ -8,11 +8,12 @@
 import UIKit
 import Combine
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = CustomColor.gray(.gray10).color
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         configureUI()
         bind()
     }

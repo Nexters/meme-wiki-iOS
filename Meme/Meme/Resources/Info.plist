@@ -13,10 +13,6 @@
 		<string>Pretendard-Regular.otf</string>
 		<string>Pretendard-SemiBold.otf</string>
 	</array>
-	<key>APP_LABEL_TEXT</key>
-	<string>$(APP_LABEL_TEXT)</string>
-	<key>BASE_URL</key>
-	<string>$(BASE_URL)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
