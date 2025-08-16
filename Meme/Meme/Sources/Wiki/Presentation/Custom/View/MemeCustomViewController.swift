@@ -257,8 +257,8 @@ class MemeCustomViewController: UIViewController {
     
     @objc private func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         let alert = UIAlertController(
-            title: error == nil ? "사진보관함에 저장되었어요" : "문제가 발생했어요!",
-            message: error?.localizedDescription,
+            title: error == nil ? "저장이 완료되었습니다." : "저장 중 오류가 발생했습니다.",
+            message: error == nil ? nil : "다시 시도해주세요.",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "확인", style: .default))
