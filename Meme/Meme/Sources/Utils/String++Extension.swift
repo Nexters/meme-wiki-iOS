@@ -43,7 +43,7 @@ extension String {
 
 extension TimeInterval {
     func format() -> String {
-        let `default` = "24:00:00"
+        let `default` = "-- : -- : --"
         if self <= 0 { return `default` }
         let hours = Int(self) / 3600
         let minutes = (Int(self) % 3600) / 60

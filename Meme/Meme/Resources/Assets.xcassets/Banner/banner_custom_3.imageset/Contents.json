@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "banner_custom_3.svg",
-      "idiom" : "universal"
+      "filename" : "img_3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "img_3@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "img_3@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
