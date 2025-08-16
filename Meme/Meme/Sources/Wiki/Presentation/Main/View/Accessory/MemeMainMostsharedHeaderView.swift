@@ -12,6 +12,10 @@ final class MemeMainMostsharedHeaderView: UICollectionReusableView {
     // MARK: - Properties
     static let identifier = "MemeMainMostsharedHeaderView"
     
+    private var timer: Timer?
+    private var upcomingFetch: String?
+    private var defaultRemainingTime: TimeInterval = 0
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.attributedText = .customFont(
@@ -38,7 +42,7 @@ final class MemeMainMostsharedHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.attributedText = .customFont(
             .galmuri(.headline),
-            text: "24 : 00 : 00",
+            text: "-- : -- : --",
             color: .white(.white))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,5 +68,84 @@ final class MemeMainMostsharedHeaderView: UICollectionReusableView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        stop()
+    }
+    
+    // MARK: - Public
+    func configureHeader(upcomingFetch: String) {
+        stop()
+        self.upcomingFetch = upcomingFetch
+        
+        // upcomingFetch가 빈 문자열이거나 유효하지 않은 경우 기본 타이머 시작
+        if upcomingFetch.isEmpty {
+            startDefaultTimer { [weak self] remainingTime in
+                DispatchQueue.main.async {
+                    self?.timerLabel.attributedText = .customFont(
+                        .galmuri(.headline),
+                        text: remainingTime,
+                        color: .white(.white))
+                }
+            }
+        } else {
+            start { [weak self] remainingTime in
+                DispatchQueue.main.async {
+                    self?.timerLabel.attributedText = .customFont(
+                        .galmuri(.headline),
+                        text: remainingTime,
+                        color: .white(.white))
+                }
+            }
+        }
+    }
+    
+    private func startDefaultTimer(update: @escaping (String) -> Void) {
+        timer?.invalidate()
+        
+        // 기본 시작 시간을 현재 시간으로부터 24시간 후로 설정
+        let defaultStartTime = Date().addingTimeInterval(24 * 60 * 60)
+        defaultRemainingTime = defaultStartTime.timeIntervalSince(Date())
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.defaultRemainingTime -= 1
+            
+            if self.defaultRemainingTime <= 0 {
+                self.defaultRemainingTime = 0
+                self.stop()
+            }
+            
+            let formatted = self.defaultRemainingTime.format()
+            update(formatted)
+        }
+    }
+    
+    private func start(update: @escaping (String) -> Void) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self,
+                  let upcomingFetch = self.upcomingFetch,
+                  !upcomingFetch.isEmpty
+            else { return }
+            
+            let remaining = upcomingFetch.remainingTimeInterval()
+            
+            if remaining <= 0 {
+                self.stop()
+                return
+            }
+            
+            let formatted = remaining.format()
+            update(formatted)
+        }
+    }
+    
+    private func stop() {
+        timer?.invalidate()
+        timer = nil
+        defaultRemainingTime = 0
     }
 }

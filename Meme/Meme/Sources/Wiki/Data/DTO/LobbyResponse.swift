@@ -28,11 +28,24 @@ struct TopRatedRatedReponseDTO: Decodable {
 }
 
 struct MostSharedResponseDTO: Decodable {
-    let id: Int
-    let title: String
-    let imgUrl: String
+    let memes: [MemeDTO]
+    let nextFetchTime: String
     
     func toEntity() -> Lobby.MostSharedItem {
-        .init(id: id, title: title, imageURL: imgUrl)
+        .init(
+            nextFetchTime: nextFetchTime,
+            memes: memes.map { $0.toEntity() }
+        )
+    }
+    
+    struct MemeDTO: Decodable {
+        let id: Int
+        let title: String
+        let imgUrl: String
+        
+        func toEntity() -> Lobby.MostSharedItem.MemeItem {
+            .init(id: id, title: title, imageURL: imgUrl)
+        }
+
     }
 }

@@ -15,7 +15,7 @@ struct CallbackJavaScript {
         self.script = script
     }
     
-    init?(data: [String]) {
+    init?(data: [String: Any]) {
         guard
             let jsonData = try? JSONSerialization.data(withJSONObject: data, options: .sortedKeys),
             let jsonString = String(data: jsonData, encoding: .utf8)

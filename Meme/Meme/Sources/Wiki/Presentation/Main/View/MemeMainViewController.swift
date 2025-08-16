@@ -47,11 +47,16 @@ class MemeMainViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(resource: .imageLogo), style: .plain, target: self, action: nil)
+            image: UIImage(resource: .imageLogo), style: .plain, target: self, action: #selector(scrollToTop))
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(resource: .iconSearch), style: .plain, target: self, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    @objc private func scrollToTop() {
+        collectionView.scrollRectToVisible(
+            CGRect(origin: .zero, size: CGSize(width: 1, height: 1)),
+            animated: true)
     }
     
     private func layoutCollectionView() {
@@ -132,40 +137,44 @@ class MemeMainViewController: UIViewController {
             }
         }
         
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+        dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionHeader {
-                guard kind == UICollectionView.elementKindSectionHeader else { return nil }
-                let section = Section(rawValue: indexPath.section)
-                switch section {
-                case .category:
+                switch indexPath.section {
+                case 1: // .category
                     let header = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: MemeMainCategoryHeaderView.identifier,
                         for: indexPath) as! MemeMainCategoryHeaderView
                     return header
-                case .topRated:
+                case 2: // .topRated
                     let header = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: MemeMainTopRatedHeaderView.identifier,
                         for: indexPath) as? MemeMainTopRatedHeaderView
                     return header
-                case .mostShared:
+                case 3: // .mostShared
                     let header = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: MemeMainMostsharedHeaderView.identifier,
                         for: indexPath) as? MemeMainMostsharedHeaderView
+                    
+                    // 현재 스냅샷에서 실제 섹션을 가져와서 countdown 값 전달
+                    if let currentSnapshot = self?.dataSource.snapshot(),
+                       let section = currentSnapshot.sectionIdentifiers[safe: indexPath.section],
+                       case .mostShared(let countdown) = section {
+                        header?.configureHeader(upcomingFetch: countdown)
+                    }
                     return header
                 default:
-                    return nil
+                    return UICollectionReusableView()
                 }
             } else if kind == UICollectionView.elementKindSectionFooter {
-                let section = Section(rawValue: indexPath.section)
-                if section == .banner {
+                if indexPath.section == 0 { // .banner
                     let footer = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: MemeMainBannerFooterView.identifier,
                         for: indexPath) as? MemeMainBannerFooterView
-                    footer?.pageControl.numberOfPages = self.sectionItemCount(for: .banner)
+                    footer?.pageControl.numberOfPages = self?.sectionItemCount(for: 0) ?? 0
                     footer?.pageControl.currentPage = 0
                     footer?.pageControl.isUserInteractionEnabled = false
                     return footer
@@ -175,17 +184,19 @@ class MemeMainViewController: UIViewController {
         }
     }
     
-    private func sectionItemCount(for section: Section) -> Int {
+    private func sectionItemCount(for sectionIndex: Int) -> Int {
         guard let lobby = viewModel.lobby else { return 0 }
-        switch section {
-        case .banner:
+        switch sectionIndex {
+        case 0: // .banner
             return 3
-        case .category:
+        case 1: // .category
             return lobby.categories.count
-        case .topRated:
+        case 2: // .topRated
             return lobby.topRatedMemes.count
-        case .mostShared:
+        case 3: // .mostShared
             return 1
+        default:
+            return 0
         }
     }
 }
@@ -210,7 +221,7 @@ extension MemeMainViewController {
                     type: type,
                     content: content(element),
                     imageURL: imageURL(element),
-                    indexPath: IndexPath(item: index, section: section.rawValue)
+                    indexPath: IndexPath(item: index, section: section.index)
                 )
             }
             snapshot.appendItems(items, toSection: section)
@@ -247,25 +258,27 @@ extension MemeMainViewController {
         )
         
         // 밈열차
-        snapshot.appendSections([.mostShared])
-        let mostSharedItems = item.mostSharedMemes.enumerated().map { index, meme in
+        let countdown = item.mostSharedItem.nextFetchTime
+        let section = Section.mostShared(countdown: countdown)
+        snapshot.appendSections([section])
+        let mostSharedItems = item.mostSharedItem.memes.enumerated().map { index, meme in
             Item(
                 memeId: meme.id,
-                type: .mostShared,
+                type: section,
                 content: meme.title,
                 imageURL: meme.imageURL,
                 indexPath: IndexPath(
-                    item: index, section: Section.mostShared.rawValue)
+                    item: index, section: section.index)
             )
         }
         let sectionItem = Item(
-            type: .mostShared,
+            type: section,
             content: "",
             childs: mostSharedItems,
             indexPath: IndexPath(
-                item: item.mostSharedMemes.count, section: Section.mostShared.rawValue)
+                item: item.mostSharedItem.memes.count, section: section.index)
         )
-        snapshot.appendItems([sectionItem], toSection: .mostShared)
+        snapshot.appendItems([sectionItem], toSection: section)
         
         dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -285,10 +298,8 @@ extension MemeMainViewController: UICollectionViewDelegate {
 extension MemeMainViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, environment in
-            guard let sectionType = Section(rawValue: sectionIndex) else { return nil }
-            
-            switch sectionType {
-            case .banner:
+            switch sectionIndex {
+            case 0: // .banner
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.95),
                     heightDimension: .absolute(218))
@@ -323,14 +334,14 @@ extension MemeMainViewController {
                     let page = Int(round(offset.x / itemWidth))
                     if let footer = self.collectionView.supplementaryView(
                         forElementKind: UICollectionView.elementKindSectionFooter,
-                        at: IndexPath(item: 0, section: Section.banner.rawValue)
+                        at: IndexPath(item: 0, section: 0)
                     ) as? MemeMainBannerFooterView {
                         footer.pageControl.currentPage = page
                     }
                 }
                 return section
                 
-            case .category:
+            case 1: // .category
                 let itemFixSize = CGFloat(74)
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .absolute(itemFixSize),
@@ -375,7 +386,7 @@ extension MemeMainViewController {
                 section.boundarySupplementaryItems = [header]
                 return section
                 
-            case .topRated:
+            case 2: // .topRated
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.5),
                     heightDimension: .absolute(204))
@@ -409,7 +420,7 @@ extension MemeMainViewController {
                 section.decorationItems = [background]
                 return section
                 
-            case .mostShared:
+            case 3: // .mostShared
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
                     heightDimension: .estimated(354))
@@ -438,6 +449,7 @@ extension MemeMainViewController {
                     alignment: .top)
                 section.boundarySupplementaryItems = [header]
                 return section
+            default: return nil
             }
         }
     }

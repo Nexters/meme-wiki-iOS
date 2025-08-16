@@ -10,7 +10,7 @@ import WebKit
 extension WKWebView {
     func notifyClientReady() {
         guard
-            let javascript = CallbackJavaScript(data: ["APP_ENTERED"])?.toScript()
+            let javascript = CallbackJavaScript(data: ["type": "APP_ENTERED"])?.toScript()
         else {
             Log.error("Failed to create callback javascript", .networking)
             return

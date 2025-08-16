@@ -10,5 +10,5 @@ import Foundation
 protocol LobbyRepositoryInterface {
     func fetchCategories() async throws -> APIResponse<[CategoryResponseDTO]>
     func fetchTopRatedMemes() async throws -> APIResponse<[TopRatedRatedReponseDTO]>
-    func fetchMostSharedMemes() async throws -> APIResponse<[MostSharedResponseDTO]>
+    func fetchMostSharedMemes() async throws -> APIResponse<MostSharedResponseDTO>
 }
