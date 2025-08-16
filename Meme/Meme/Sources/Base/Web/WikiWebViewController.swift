@@ -7,7 +7,7 @@
 
 import WebKit
 
-class WikiWebViewController: UIViewController {
+class WikiWebViewController: BaseViewController {
     
     private let url: URL
     private lazy var webView: WKWebView = {
@@ -44,7 +44,6 @@ class WikiWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray10
         setupNavigationBar()
         setupWebView()
         webView.load(URLRequest(url: url))

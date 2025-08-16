@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class MemeMainViewController: UIViewController {
+class MemeMainViewController: BaseViewController {
     
     typealias Section = Lobby.Section
     typealias Item = Lobby.Item
