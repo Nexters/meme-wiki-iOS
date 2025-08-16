@@ -21,7 +21,7 @@ class MemeMainViewController: UIViewController {
         let repository = LobbyRepository()
         return MemeMainViewModel(
             lobbyUseCase: DefaultLobbyUseCase(
-                categoriesUseCase: DefaultCategoriesUseCase(repository: repository),
+                categoriesUseCase: DefaultCategoriesUseCase(repository: CategoryRepository()),
                 topRatedUseCase: DefaultTopRatedUseCase(repository: repository),
                 mostSharedUseCase: DefaultMostSharedUseCase(repository: repository)))
     }()

@@ -13,4 +13,5 @@ struct Thumbnail: Hashable {
     var title: String
     var hashtag: [String]
     var imageURL: String
+    let randomColor = RandomColor.allCases.randomElement() ?? .none
 }

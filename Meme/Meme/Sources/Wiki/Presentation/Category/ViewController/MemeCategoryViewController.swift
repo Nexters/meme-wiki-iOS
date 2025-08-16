@@ -13,11 +13,11 @@ final class MemeCategoryViewController: BaseViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<MemeCategorySection, MemeCategoryDisplayItem>
 
     // MARK: - Properties
-    
     private var dataSource: SearchDataSource?
-    private var memeDummyData: [MemeSearchItem] = []
-    private var categoriesDummyData: [CategoryItem] = []
-    
+    private let viewModel: CategoryViewModel
+    private var cancellables = Set<AnyCancellable>()
+    private var selectedCategoryIndexPath: IndexPath? = IndexPath(row: 0, section: 0)
+
     // MARK: - UI Components
     
     private lazy var collectionView: UICollectionView = {
@@ -26,17 +26,28 @@ final class MemeCategoryViewController: BaseViewController {
         collectionView.register(MemeSearchGridCell.self, forCellWithReuseIdentifier: MemeSearchGridCell.identifier)
         collectionView.register(SearchCategoryCell.self, forCellWithReuseIdentifier: SearchCategoryCell.identifier)
         collectionView.register(MemeSearchHeaderView.self, forSupplementaryViewOfKind: MemeSearchHeaderView.identifier, withReuseIdentifier: MemeSearchHeaderView.identifier)
+        collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
         return collectionView
     }()
 
-    // MARK: - Life Cycle
+    // MARK: - Init
+    init(viewModel: CategoryViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
-        bind()
     }
 
+    // MARK: - Layout / UI
     override func configureUI() {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,13 +58,48 @@ final class MemeCategoryViewController: BaseViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
+    
+    // MARK: - Bind
     override func bind() {
-        setDummyData()
-        var snapshot = Snapshot()
-        snapshot.appendSections([.category, .grid])
-        snapshot.appendItems(categoriesDummyData.map { .category($0) }, toSection: .category)
-        snapshot.appendItems(memeDummyData.map { .grid($0) }, toSection: .grid)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        viewModel.fetchCategories()
+        
+        // 카테고리 목록
+        viewModel.categoriesPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] categories in
+                guard let self = self else { return }
+                guard let firstCategory = categories.first else { return }
+                self.applyCategories(categories)
+                self.viewModel.fetchCategoryMeme(firstCategory)
+
+            }
+            .store(in: &cancellables)
+
+        // 현재 선택된 카테고리의 밈 목록
+        viewModel.searchCategoryMemePublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] items in
+                guard let self = self else { return }
+                guard let items = items else { return }
+                self.applyGrid(items)
+            }
+            .store(in: &cancellables)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension MemeCategoryViewController {
+    func selectFirstCategoryCellIfNeeded() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+    }
+    
+    func findHeader() -> MemeSearchHeaderView? {
+        guard let header = collectionView.visibleSupplementaryViews(
+            ofKind: MemeSearchHeaderView.identifier).first
+                as? MemeSearchHeaderView else { return nil }
+        return header
     }
 }
 
@@ -89,6 +135,28 @@ private extension MemeCategoryViewController {
 
             return UICollectionReusableView()
         }
+    }
+
+    func applyCategories(_ categories: [CategoryItem]) {
+        var snap = Snapshot()
+        snap.appendSections([.category, .grid])
+        snap.appendItems(categories.map { .category($0) }, toSection: .category)
+
+        dataSource?.apply(snap, animatingDifferences: false) { [weak self] in
+            guard let self = self else { return }
+            guard !categories.isEmpty else { return }
+            guard let header = self.findHeader() else { return }
+            header.updateUI(categories.first?.title ?? "")
+            self.selectFirstCategoryCellIfNeeded()
+        }
+    }
+
+    func applyGrid(_ memes: [MemeSearchItem]) {
+        guard var snap = dataSource?.snapshot() else { return }
+        let oldItems = snap.itemIdentifiers(inSection: .grid)
+        if !oldItems.isEmpty { snap.deleteItems(oldItems) }
+        snap.appendItems(memes.map { .grid($0) }, toSection: .grid)
+        dataSource?.apply(snap, animatingDifferences: false)
     }
 }
 
@@ -150,23 +218,35 @@ private extension MemeCategoryViewController {
     }
 }
 
-// MARK: - TEST
+// MARK: - UICollectionViewDelegate
 
-private extension MemeCategoryViewController {
-    func setDummyData() {
-        for _ in (0..<50) {
-            for j in (2010..<2025) {
-                memeDummyData += [.init(thumbnail: .init(year: j, title: "\(j)", hashtag: ["hastag1", "hastag2", "hastag3"], imageURL: ""), usage: "usageusageusageusageusageusageusage", source: "sourcesourcesourcesourcesourcesource")]
-            }
+extension MemeCategoryViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource?.itemIdentifier(for: indexPath) else { return }
+        
+        if case let .grid(item) = item {
+            gotoMemeDetail(id: item.id)
         }
         
-        categoriesDummyData = [
-            .init(id: 1, title: "직장·공부", imageURL: ""),
-            .init(id: 2, title: "날씨", imageURL: ""),
-            .init(id: 3, title: "캐릭터", imageURL: ""),
-            .init(id: 4, title: "인간관계", imageURL: ""),
-            .init(id: 5, title: "인간관계", imageURL: ""),
-            .init(id: 6, title: "인간관계", imageURL: ""),
-        ]
+        if case let .category(category) = item {
+            guard let header = findHeader() else { return }
+            if let prev = selectedCategoryIndexPath, prev != indexPath {
+                collectionView.deselectItem(at: prev, animated: false)
+            }
+            selectedCategoryIndexPath = indexPath
+            viewModel.fetchCategoryMeme(category)
+            header.updateUI(category.title)
+        }
+    }
+    
+    // TODO: - prefetch로 고도화
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentH = scrollView.contentSize.height
+        let visibleH = scrollView.bounds.height
+        if offsetY > contentH - visibleH - 200, contentH > 0 {
+            viewModel.fetchNextPage()
+        }
     }
 }

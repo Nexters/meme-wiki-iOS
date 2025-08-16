@@ -8,18 +8,18 @@
 import Combine
 
 protocol CategoriesUseCase {
-    var result: CurrentValueSubject<Result<[Lobby.CategoryItem], ServiceError>?, Never> { get }
+    var result: CurrentValueSubject<Result<[CategoryItem], ServiceError>?, Never> { get }
     func execute()
 }
 
 final class DefaultCategoriesUseCase: CategoriesUseCase {
     
-    var result = CurrentValueSubject<Result<[Lobby.CategoryItem], ServiceError>?, Never>(nil)
+    var result = CurrentValueSubject<Result<[CategoryItem], ServiceError>?, Never>(nil)
     
     private var task: Task<Void, Never>?
-    private let repository: LobbyRepositoryInterface
+    private let repository: CategoryRepositoryInterface
     
-    init(repository: LobbyRepositoryInterface) {
+    init(repository: CategoryRepositoryInterface) {
         self.repository = repository
     }
     
@@ -31,8 +31,7 @@ final class DefaultCategoriesUseCase: CategoriesUseCase {
         task?.cancel()
         task = Task {
             do {
-                let response = try await repository.fetchCategories()
-                let categories = response.success.map { $0.toEntity() }
+                let categories = try await repository.fetchCategories()
                 result.send(.success(categories))
             } catch let error as ServiceError {
                 result.send(.failure(error))

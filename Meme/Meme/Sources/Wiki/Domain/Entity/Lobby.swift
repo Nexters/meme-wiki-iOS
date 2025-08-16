@@ -99,12 +99,6 @@ extension Lobby {
         let imageURL: String
     }
     
-    struct CategoryItem {
-        let id: Int
-        let title: String
-        let imageURL: String
-    }
-    
     struct TopRatedItem {
         let id: Int
         let title: String

@@ -53,6 +53,7 @@ final class SearchThumbnailView: UIView {
     }()
     
     private var gradientLayer = CAGradientLayer()
+    private var dimmedLayer = CAGradientLayer()
     
     // MARK: - Init
     
@@ -76,6 +77,7 @@ final class SearchThumbnailView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
+        dimmedLayer.frame = bounds
     }
     
     // MARK: - Public Methods
@@ -129,7 +131,9 @@ private extension SearchThumbnailView {
     func configureGradient() {
         guard let baseColor = ThumbnailGradientColor else { return }
         gradientLayer = makeGradientLayer(baseColor)
+        dimmedLayer.makeDimmed()
         layer.insertSublayer(gradientLayer, above: imageView.layer)
+        layer.insertSublayer(dimmedLayer, above: imageView.layer)
     }
     
     func configureImageView(url: String) {
