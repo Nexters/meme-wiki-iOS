@@ -188,7 +188,7 @@ class MemeMainViewController: UIViewController {
         guard let lobby = viewModel.lobby else { return 0 }
         switch sectionIndex {
         case 0: // .banner
-            return 3
+            return 4
         case 1: // .category
             return lobby.categories.count
         case 2: // .topRated
@@ -230,7 +230,7 @@ extension MemeMainViewController {
         // 배너 (0~2 고정)
         appendSectionItems(
             .banner,
-            from: Array(0..<3),
+            from: Array(0..<4),
             type: .banner,
             memeId: { _ in nil },
             content: { _ in "" },
@@ -302,15 +302,15 @@ extension MemeMainViewController {
             case 0: // .banner
                 let itemSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.95),
-                    heightDimension: .absolute(218))
+                    heightDimension: .fractionalWidth(0.63))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 let groupSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.92),
-                    heightDimension: .absolute(218))
+                    heightDimension: .fractionalWidth(0.63))
                 let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: groupSize,
                     subitems: [item])
-                
+
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .paging
                 section.contentInsets = NSDirectionalEdgeInsets(

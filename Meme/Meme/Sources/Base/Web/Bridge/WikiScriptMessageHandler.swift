@@ -40,7 +40,7 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
             guard
                 let data = parameters["data"] as? [String: Any],
                 let shareData = ShareData(data: data)
-            else { return } // TODO: - alert
+            else { return }
             viewController?.navigationController?.pushViewController(
                 MemeCustomViewController(imageURL: shareData.image),
                 animated: true)

@@ -22,7 +22,7 @@ final class MemeMainBannerCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         
         let imageview = UIImageView()
-        imageview.image = UIImage(named: "banner_custom_\(item.indexPath.item + 1)")
+        imageview.image = UIImage(named: "banner_custom_\(item.indexPath.item)")
         imageview.contentMode = .scaleAspectFill
         contentView.addSubview(imageview)
         imageview.translatesAutoresizingMaskIntoConstraints = false
