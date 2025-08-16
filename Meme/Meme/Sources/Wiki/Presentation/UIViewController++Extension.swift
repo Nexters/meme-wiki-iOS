@@ -14,6 +14,12 @@ extension UIViewController {
         navigationController?.pushViewController(webVC, animated: true)
     }
     
+    func gotoMemeQuiz() {
+        guard let url = URL(string: "https://meme-wiki.net/") else { return }
+        let webVC = WikiWebViewController(url: url)
+        navigationController?.pushViewController(webVC, animated: true)
+    }
+    
     func presentShareSheet(items: [Any]) {
         let activity = UIActivityViewController(activityItems: items, applicationActivities: nil)
         

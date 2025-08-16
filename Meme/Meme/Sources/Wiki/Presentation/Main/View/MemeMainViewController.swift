@@ -288,9 +288,13 @@ extension MemeMainViewController {
 extension MemeMainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = dataSource.itemIdentifier(for: indexPath)
-        guard let memeId = item?.memeId else { return }
-        Log.info("밈 상세 이동 \(memeId)", .ui)
-        gotoMemeDetail(id: memeId)
+        if let memeId = item?.memeId {
+            Log.info("밈 상세 이동 \(memeId)", .ui)
+            gotoMemeDetail(id: memeId)
+        }
+        if Section(rawIndex: indexPath.section) == .banner, indexPath.item == 0 {
+            gotoMemeQuiz()
+        }
     }
 }
 
