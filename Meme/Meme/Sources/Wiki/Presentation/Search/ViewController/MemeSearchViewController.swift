@@ -52,6 +52,7 @@ final class MemeSearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
+        configureNavigationBar()
     }
     
     override func configureUI() {
@@ -71,6 +72,13 @@ final class MemeSearchViewController: BaseViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.CollectionView.bottom)
         ])
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconCheveronLeft), style: .plain, target: self, action: #selector(popViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconHome), style: .plain, target: self, action: #selector(popToRootViewController))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     func configureDataSource() {
@@ -159,6 +167,15 @@ final class MemeSearchViewController: BaseViewController {
 }
 
 private extension MemeSearchViewController {
+    @objc func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func popToRootViewController() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+}
+private extension MemeSearchViewController {
     func updateSnapshot(section: MemeSearchSection, items: [MemeSearchDisplayItem]) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
@@ -179,6 +196,19 @@ private extension MemeSearchViewController {
 }
 
 extension MemeSearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource?.itemIdentifier(for: indexPath)  else { return }
+        
+        switch item {
+        case .grid(let memeSearchItem):
+            gotoMemeDetail(id: memeSearchItem.id)
+        case .list(let memeSearchItem):
+            gotoMemeDetail(id: memeSearchItem.id)
+        case .empty:
+            return
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentH = scrollView.contentSize.height
