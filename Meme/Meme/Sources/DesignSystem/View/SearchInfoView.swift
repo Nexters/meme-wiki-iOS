@@ -14,7 +14,6 @@ final class SearchInfoView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = CustomColor.gray(.gray5).color
         return imageView
     }()
     
@@ -45,11 +44,12 @@ final class SearchInfoView: UIView {
     
     // MARK: - Public Methods
     
-    func updateUI(_ title: String, _ content: String) {
+    func updateUI(_ title: String, _ content: String, _ contentImage: UIImage) {
         titleLabel.attributedText = .customFont(.pretendard(.title(.subhead2)), text: title)
         contentLabel.attributedText = .customFont(.pretendard(.body(.body1)), text: content)
         titleLabel.textColor = CustomColor.gray(.gray1).color
         contentLabel.textColor = CustomColor.gray(.gray4).color
+        imageView.image = contentImage
     }
 }
 
