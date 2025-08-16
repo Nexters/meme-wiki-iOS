@@ -44,8 +44,8 @@ final class SearchResultView: UIView {
     
     func updateUI(_ item: MemeSearchItem) {
         thumbnailView.updateUI(item.thumbnail)
-        usageInfoView.updateUI("이럴때 쓰세요", item.usage)
-        sourceInfoView.updateUI("이렇게 시작됐어요", item.source)
+        usageInfoView.updateUI("이럴때 쓰세요", item.usage, UIImage(resource: .symbolPinkNobg))
+        sourceInfoView.updateUI("이렇게 시작됐어요", item.source, UIImage(resource: .symbolBlueNobg))
     }
 }
 

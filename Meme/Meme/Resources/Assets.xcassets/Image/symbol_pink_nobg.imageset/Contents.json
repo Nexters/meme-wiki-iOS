@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "symbol_pink_nobg.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
