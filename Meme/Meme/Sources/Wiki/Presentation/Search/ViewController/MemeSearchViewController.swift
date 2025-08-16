@@ -74,6 +74,10 @@ final class MemeSearchViewController: BaseViewController {
         ])
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func configureNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconCheveronLeft), style: .plain, target: self, action: #selector(popViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(resource: .iconHome), style: .plain, target: self, action: #selector(popToRootViewController))
@@ -209,6 +213,14 @@ extension MemeSearchViewController: UICollectionViewDelegate {
         }
     }
 }
+
+extension MemeSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 private extension MemeSearchViewController {
     enum Constants {
         enum SearchTextField {
