@@ -139,8 +139,8 @@
 		AD5194612E346D1E0069D29B /* WikiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */; };
 		AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */; };
 		AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */; };
-		AD5194672E346F770069D29B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String+Extension.swift */; };
-		AD5194682E346F770069D29B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String+Extension.swift */; };
+		AD5194672E346F770069D29B /* String++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String++Extension.swift */; };
+		AD5194682E346F770069D29B /* String++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5194662E346F770069D29B /* String++Extension.swift */; };
 		AD848E162E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E152E2B49620003F09F /* ErrorResponse.swift */; };
 		AD848E1D2E2B4A430003F09F /* LobbyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */; };
@@ -261,7 +261,7 @@
 		575181B62E4F8F7D009B8E8C /* WKWebView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView++Extension.swift"; sourceTree = "<group>"; };
 		AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiWebViewController.swift; sourceTree = "<group>"; };
 		AD5194622E346D3D0069D29B /* WikiScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiScriptMessageHandler.swift; sourceTree = "<group>"; };
-		AD5194662E346F770069D29B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		AD5194662E346F770069D29B /* String++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++Extension.swift"; sourceTree = "<group>"; };
 		AD848E152E2B49620003F09F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		AD848E1C2E2B4A430003F09F /* LobbyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyAPI.swift; sourceTree = "<group>"; };
 		AD848E252E2B55CF0003F09F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -549,7 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE552722E2B6EEA004BE9AF /* Logger.swift */,
-				AD5194662E346F770069D29B /* String+Extension.swift */,
+				AD5194662E346F770069D29B /* String++Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1014,9 +1014,9 @@
 				AD848E372E2C93790003F09F /* LobbyResponse.swift in Sources */,
 				2CC3999F2E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
 				2CAC9F432E48C8BF00D7C1F6 /* SearchPage.swift in Sources */,
-				AD5194682E346F770069D29B /* String+Extension.swift in Sources */,
 				2CAC9F572E4A344F00D7C1F6 /* MemeSearchHeaderView.swift in Sources */,
 				2CAC9F592E4A35EA00D7C1F6 /* SeparatorDecorationView.swift in Sources */,
+				AD5194682E346F770069D29B /* String++Extension.swift in Sources */,
 				AD5194632E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC399992E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				ADE8E7972E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
@@ -1111,8 +1111,8 @@
 				2CC399A02E2F84BD00D14084 /* KeyChainProperties.swift in Sources */,
 				2C14ECFF2E4378C0009B605C /* SearchUseCase.swift in Sources */,
 				2C5F24252E3F98CD000AA318 /* APIError.swift in Sources */,
-				AD5194672E346F770069D29B /* String+Extension.swift in Sources */,
 				2CAC9F492E48DFBE00D7C1F6 /* MemeCategoryViewController.swift in Sources */,
+				AD5194672E346F770069D29B /* String++Extension.swift in Sources */,
 				AD5194642E346D3D0069D29B /* WikiScriptMessageHandler.swift in Sources */,
 				2CC3999A2E2F831100D14084 /* KeyChainStorable.swift in Sources */,
 				2CAC9F4F2E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */,

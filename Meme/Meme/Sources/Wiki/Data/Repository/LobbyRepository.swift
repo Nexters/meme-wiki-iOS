@@ -23,8 +23,8 @@ extension LobbyRepository {
         return response
     }
     
-    func fetchMostSharedMemes() async throws -> APIResponse<[MostSharedResponseDTO]> {
-        let response = try await provider.request(api: .mostShared, dto: [MostSharedResponseDTO].self)
+    func fetchMostSharedMemes() async throws -> APIResponse<MostSharedResponseDTO> {
+        let response = try await provider.request(api: .mostShared, dto: MostSharedResponseDTO.self)
         return response
     }
 }

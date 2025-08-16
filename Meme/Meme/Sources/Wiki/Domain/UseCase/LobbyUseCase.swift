@@ -50,7 +50,7 @@ final class DefaultLobbyUseCase: LobbyUseCase {
             let lobby = Lobby(
                 categories: categories ?? [],
                 topRatedMemes: topRated ?? [],
-                mostSharedMemes: mostShared ?? [])
+                mostSharedItem: mostShared ?? Lobby.MostSharedItem.getDummy())
             self?.result.send(.success(lobby))
         }.store(in: &subscriptions)
     }

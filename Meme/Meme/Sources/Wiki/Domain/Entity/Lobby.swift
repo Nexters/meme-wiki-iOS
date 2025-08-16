@@ -10,15 +10,57 @@ import Foundation
 struct Lobby {
     let categories: [CategoryItem]
     let topRatedMemes: [TopRatedItem]
-    let mostSharedMemes: [MostSharedItem]
+    let mostSharedItem: MostSharedItem
 }
 
 extension Lobby {
-    enum Section: Int, CaseIterable {
-        case banner = 0
+    enum Section: Equatable, Hashable {
+        case banner
         case category
         case topRated
-        case mostShared
+        case mostShared(countdown: String)
+        
+        var index: Int {
+            switch self {
+            case .banner:
+                return 0
+            case .category:
+                return 1
+            case .topRated:
+                return 2
+            case .mostShared:
+                return 3
+            }
+        }
+        
+        init?(rawIndex: Int) {
+            switch rawIndex {
+            case 0: self = .banner
+            case 1: self = .category
+            case 2: self = .topRated
+            case 3: self = .mostShared(countdown: "")
+            default: return nil
+            }
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            switch self {
+            case .mostShared(let countdown):
+                hasher.combine(index)
+                hasher.combine(countdown)
+            default:
+                hasher.combine(index)
+            }
+        }
+
+        static func == (lhs: Section, rhs: Section) -> Bool {
+            switch (lhs, rhs) {
+            case (.mostShared(let lhsCountdown), .mostShared(let rhsCountdown)):
+                return lhsCountdown == rhsCountdown
+            default:
+                return lhs.index == rhs.index
+            }
+        }
     }
     
     struct Item: Hashable {
@@ -70,8 +112,17 @@ extension Lobby {
     }
     
     struct MostSharedItem {
-        let id: Int
-        let title: String
-        let imageURL: String
+        let nextFetchTime: String
+        let memes: [MemeItem]
+        
+        struct MemeItem {
+            let id: Int
+            let title: String
+            let imageURL: String
+        }
+        
+        static func getDummy() -> Self {
+            .init(nextFetchTime: "", memes: [])
+        }
     }
 }
