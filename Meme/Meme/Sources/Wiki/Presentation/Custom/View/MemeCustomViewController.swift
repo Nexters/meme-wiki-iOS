@@ -9,7 +9,7 @@ import Combine
 import UIKit
 import PencilKit
 
-class MemeCustomViewController: UIViewController {
+class MemeCustomViewController: BaseViewController {
     
     // MARK: - UI Components
     private var undoButton: UIBarButtonItem?
