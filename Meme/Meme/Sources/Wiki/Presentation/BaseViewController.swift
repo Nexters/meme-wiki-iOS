@@ -12,7 +12,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = CustomColor.black(.black).color
+        self.view.backgroundColor = CustomColor.gray(.gray10).color
         configureUI()
         bind()
     }

@@ -22,6 +22,7 @@ final class MemeSearchViewController: BaseViewController {
         let textField = SearchTextField()
         textField.setPlaceHolder(Constants.SearchTextField.placeHolder)
         textField.layer.cornerRadius = Constants.SearchTextField.cornerRadius
+        textField.delegate = self
         return textField
     }()
     
