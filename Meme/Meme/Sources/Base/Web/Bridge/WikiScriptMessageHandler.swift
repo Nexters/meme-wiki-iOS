@@ -29,45 +29,50 @@ class WikiScriptMessageHandler: NSObject, WKScriptMessageHandler {
         }
         
         switch handlerName {
+        case .SHARE_KAKAO:
+            guard let data = parameters["data"] as? [String: Any] else { return }
+            let shareData = ShareData(data: data)
+            DispatchQueue.main.async {
+                guard
+                    let shareData,
+                    let url = message.webView?.url
+                else { return }
+                KakaoShareManager.shared.shareToKakao(shareData: shareData, link: url)
+            }
         case .SHARE_MEME:
             guard let data = parameters["data"] as? [String: Any] else { return }
             let shareData = ShareData(data: data)
             DispatchQueue.main.async { [weak self] in
-                guard let self, let viewController, let shareData else { return }
-                viewController.presentShareSheet(items: [shareData.image])
+                guard
+                    let self, let viewController,
+                    let url = message.webView?.url?.absoluteString
+                else { return }
+                viewController.presentShareSheet(items: ["미미키에서 더 많은 밈을 확인해보세요!", url])
             }
         case .CUSTOM_MEME:
             guard
                 let data = parameters["data"] as? [String: Any],
                 let shareData = ShareData(data: data)
             else { return }
-            viewController?.navigationController?.pushViewController(
-                MemeCustomViewController(imageURL: shareData.image),
-                animated: true)
+            DispatchQueue.main.async { [weak self] in
+                self?.viewController?.navigationController?.pushViewController(
+                    MemeCustomViewController(imageURL: shareData.image),
+                    animated: true)
+            }
         case .WEB_ENTERED:
             message.webView?.notifyClientReady()
-        }
-    }
-}
-
-extension WikiScriptMessageHandler {
-    struct ShareData {
-        let title: String
-        let image: String
-        
-        init?(data: [String: Any]) {
-            guard
-                let title = data["title"] as? String,
-                let image = data["image"] as? String
-            else { return nil }
-            self.title = title
-            self.image = image
+        case .SHOW_MORE_MEMES:
+            DispatchQueue.main.async { [weak self] in
+                self?.viewController?.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
 }
 
 enum WikiScriptMessageHandlerName: String, CaseIterable {
+    case SHARE_KAKAO
     case SHARE_MEME
     case CUSTOM_MEME
     case WEB_ENTERED
+    case SHOW_MORE_MEMES
 }

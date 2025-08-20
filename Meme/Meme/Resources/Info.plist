@@ -6,6 +6,23 @@
 	<string>$(APP_LABEL_TEXT)</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>NATIVE_APP_KEY</key>
+	<string>$(NATIVE_APP_KEY)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao0c3d0333b1e66f2d4db226d64697f4de</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaolink</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Galmuri7.ttf</string>
