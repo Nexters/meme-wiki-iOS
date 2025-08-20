@@ -6,11 +6,10 @@
 //
 
 import UIKit
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
+        
+        // KAKAO
+        if let appKey = Bundle.main.object(forInfoDictionaryKey: "NATIVE_APP_KEY") as? String {
+            KakaoSDK.initSDK(appKey: appKey)
+        }
         
         return true
     }
