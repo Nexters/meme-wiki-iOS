@@ -17,21 +17,21 @@ final class SearchThumbnailView: UIView {
     
     // MARK: - UI Components
     
-    private var yearLabelColor: UIColor? {
-        return randomColor?.labelColor
-    }
+//    private var yearLabelColor: UIColor? {
+//        return randomColor?.labelColor
+//    }
     
     private var ThumbnailGradientColor: UIColor? {
         return randomColor?.gradientColor
     }
     
-    private let yearLabel: UILabel = {
-        // TODO: - yearlabel random color
-        let label = PaddingLabel(left: Constants.yearLabel.padding, right: Constants.yearLabel.padding)
-        label.layer.cornerRadius = Constants.yearLabel.cornerRadius
-        label.clipsToBounds = true
-        return label
-    }()
+//    private let yearLabel: UILabel = {
+//        // TODO: - yearlabel random color
+//        let label = PaddingLabel(left: Constants.yearLabel.padding, right: Constants.yearLabel.padding)
+//        label.layer.cornerRadius = Constants.yearLabel.cornerRadius
+//        label.clipsToBounds = true
+//        return label
+//    }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -39,7 +39,7 @@ final class SearchThumbnailView: UIView {
         return label
     }()
     
-    private let hastagLabel: UILabel = {
+    private let hashtagLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         return label
@@ -86,10 +86,10 @@ final class SearchThumbnailView: UIView {
         // TODO: - imageView Setting
         guard let type = type else { return }
         titleLabel.attributedText = .customFont(type.titleFont, text: thumbnail.title)
-        hastagLabel.attributedText = .customFont(type.hastagFont, text: thumbnail.hashtag.map { $0 }.joined(separator: " "))
-        yearLabel.attributedText = .customFont(type.yearFont, text: String(thumbnail.year))
+        hashtagLabel.attributedText = .customFont(type.hastagFont, text: thumbnail.hashtag.map { $0 }.joined(separator: " "))
+//        yearLabel.attributedText = .customFont(type.yearFont, text: String(thumbnail.year))
         titleLabel.textColor = .white
-        hastagLabel.textColor = .white
+        hashtagLabel.textColor = .white
         configureImageView(url: thumbnail.imageURL)
     }
 }
@@ -100,24 +100,24 @@ private extension SearchThumbnailView {
     
     func configureUI() {
         guard let padding = type?.padding else { return }
-        yearLabel.backgroundColor = yearLabelColor
+//        yearLabel.backgroundColor = yearLabelColor
         
-        [imageView, yearLabel, titleLabel, hastagLabel].forEach {
+        [imageView, /*yearLabel,*/ titleLabel, hashtagLabel].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            yearLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            yearLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+//            yearLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+//            yearLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            titleLabel.bottomAnchor.constraint(equalTo: hastagLabel.topAnchor, constant: Constants.titleLabel.bottom),
+            titleLabel.bottomAnchor.constraint(equalTo: hashtagLabel.topAnchor, constant: Constants.titleLabel.bottom),
             
-            hastagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            hastagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            hastagLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
+            hashtagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            hashtagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            hashtagLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
             
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
