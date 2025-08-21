@@ -80,7 +80,7 @@ final class UserTextView: UIView {
         selectedLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 1, dy: 1), cornerRadius: 0).cgPath
     }
     
-    // MARK: - Public Methods
+    // MARK: - Public Methods
     func select() {
         Log.debug("selected", .ui)
         selectedLayer.isHidden = false
@@ -90,6 +90,8 @@ final class UserTextView: UIView {
     }
     
     func deSelect() {
+        Log.debug("deselected", .ui)
+
         selectedLayer.isHidden = true
         rightResizeView.isHidden = true
         leftResizeView.isHidden = true

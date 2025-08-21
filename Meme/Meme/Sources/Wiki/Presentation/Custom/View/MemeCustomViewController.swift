@@ -88,6 +88,7 @@ class MemeCustomViewController: BaseViewController {
         setupViews()
         setupToolPicker()
         setupNavigationBarWhenEditing()
+        setupGesture()
         loadImage()
         handleNotification()
     }
@@ -119,11 +120,17 @@ class MemeCustomViewController: BaseViewController {
     }
     
     private func setupToolPicker() {
-        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        toolPicker.setVisible(false, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         if #available(iOS 13.0, *) {
             toolPicker.overrideUserInterfaceStyle = .dark
         }
+    }
+    
+    private func setupGesture() {
+        let backgroundTap = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
+        backgroundTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(backgroundTap)
     }
     
     private func handleNotification() {
@@ -139,6 +146,12 @@ class MemeCustomViewController: BaseViewController {
             name: .NSUndoManagerDidRedoChange,
             object: canvasView.undoManager
         )
+    }
+
+    @objc private func handleBackgroundTap(_ g: UITapGestureRecognizer) {
+        view.endEditing(true)
+        selectedUserTextView?.deSelect()
+        canvasView.becomeFirstResponder()
     }
     
     @objc func undoRedoChanged() {
@@ -291,13 +304,19 @@ class MemeCustomViewController: BaseViewController {
     }
 }
 
+// MARK: - EditToolDelegate
+
 extension MemeCustomViewController: EditToolDelegate {
     func didTapPenButton() {
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
         canvasView.becomeFirstResponder()
+        canvasView.isUserInteractionEnabled = true
     }
     
     func didTapTextButton() {
+        toolPicker.setVisible(false, forFirstResponder: canvasView)
         canvasView.resignFirstResponder()
+        canvasView.isUserInteractionEnabled = false
         makeUserTextView()
     }
     
@@ -316,9 +335,13 @@ extension MemeCustomViewController: EditToolDelegate {
     }
 }
 
+// MARK: - UserTextViewDelegate
+
 extension MemeCustomViewController: UserTextViewDelegate {
     func didTapUserTextView(_ userTextView: UserTextView) {
-        if let selectedView = selectedUserTextView { selectedView.deSelect() }
-        selectedUserTextView = userTextView
+        if selectedUserTextView !== userTextView {
+            selectedUserTextView?.deSelect()
+            selectedUserTextView = userTextView
+        }
     }
 }
