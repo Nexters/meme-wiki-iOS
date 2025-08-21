@@ -15,11 +15,35 @@ final class UserTextView: UIView {
     // MARK: - UI Components
     weak var delegate: UserTextViewDelegate?
     
+    // MARK: - Scaling state
+    private var currentScale: CGFloat = 1.0
+    private let minScale: CGFloat = 0.5
+    private let maxScale: CGFloat = 3.0
+    
+    private let rightResizeView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 6
+        view.backgroundColor = .systemBlue
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    private let leftResizeView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 6
+        view.backgroundColor = .systemBlue
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
     private let selectedLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor.systemBlue.cgColor
         layer.fillColor = UIColor.clear.cgColor
-        layer.lineDashPattern = [6,3]
         layer.isHidden = true
         return layer
     }()
@@ -53,28 +77,47 @@ final class UserTextView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         textView.frame = bounds
-        selectedLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 1, dy: 1), cornerRadius: 10).cgPath
-
+        selectedLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 1, dy: 1), cornerRadius: 0).cgPath
     }
     
     func select() {
         Log.debug("selected", .ui)
         selectedLayer.isHidden = false
+        rightResizeView.isHidden = false
+        leftResizeView.isHidden = false
         superview?.bringSubviewToFront(self)
     }
 }
 
 private extension UserTextView {
     func configureUI() {
-        addSubview(textView)
+        [ textView, rightResizeView, leftResizeView ].forEach { addSubview($0) }
         layer.addSublayer(selectedLayer)
+        
+        NSLayoutConstraint.activate([
+            rightResizeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 6),
+            rightResizeView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            rightResizeView.widthAnchor.constraint(equalToConstant: 12),
+            rightResizeView.heightAnchor.constraint(equalToConstant: 12),
+            
+            leftResizeView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -6),
+            leftResizeView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            leftResizeView.widthAnchor.constraint(equalToConstant: 12),
+            leftResizeView.heightAnchor.constraint(equalToConstant: 12),
+        ])
     }
     
     func configureGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTextTapGesture))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        let rightResizePanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleResize(_:)))
+        let leftResizePanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleResize(_:)))
         
-        [tapGesture, panGesture].forEach { addGestureRecognizer($0) }
+        [tapGesture, panGesture, pinchGesture].forEach { addGestureRecognizer($0) }
+        
+        leftResizeView.addGestureRecognizer(rightResizePanGesture)
+        rightResizeView.addGestureRecognizer(leftResizePanGesture)
     }
     
     @objc func handleTextTapGesture() {
@@ -83,15 +126,44 @@ private extension UserTextView {
     }
     
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        guard !selectedLayer.isHidden else { return } // 선택된 상태일 때만 이동
+        guard !selectedLayer.isHidden else { return }
         let translation = gesture.translation(in: superview)
-        if let view = gesture.view {
-            view.center = CGPoint(
-                x: view.center.x + translation.x,
-                y: view.center.y + translation.y
-            )
-        }
+        center = CGPoint(x: center.x + translation.x, y: center.y + translation.y)
         gesture.setTranslation(.zero, in: superview)
+    }
+    
+    @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
+        guard !selectedLayer.isHidden else { return }
+        transform = transform.scaledBy(x: gesture.scale, y: gesture.scale)
+        gesture.scale = 1
+    }
+    
+    @objc private func handleResize(_ gesture: UIPanGestureRecognizer) {
+        guard !selectedLayer.isHidden,
+              let handle = gesture.view else { return }
+        let translation = gesture.translation(in: superview)
+        gesture.setTranslation(.zero, in: superview)
+        let minWidth: CGFloat = 60, minHeight: CGFloat = 40
+
+        if handle === leftResizeView {
+            frame.origin.x += translation.x
+            frame.size.width -= translation.x
+            frame.size.height += translation.y
+            if frame.size.width < minWidth {
+                let diff = minWidth - frame.size.width
+                frame.origin.x -= diff
+                frame.size.width = minWidth
+            }
+            if frame.size.height < minHeight { frame.size.height = minHeight }
+        } else if handle === rightResizeView {
+            frame.size.width += translation.x
+            frame.size.height += translation.y
+            if frame.size.width < minWidth { frame.size.width = minWidth }
+            if frame.size.height < minHeight { frame.size.height = minHeight }
+        }
+
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }
 
