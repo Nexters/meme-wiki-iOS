@@ -38,10 +38,6 @@ class MemeCustomViewController: BaseViewController {
         return canvasView
     }()
     
-    private var undoButton: UIBarButtonItem?
-    private var redoButton: UIBarButtonItem?
-    
-    private var toolPicker = PKToolPicker()
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .iconDownload), for: .normal)
@@ -63,6 +59,12 @@ class MemeCustomViewController: BaseViewController {
         button.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
         return button
     }()
+    
+    private var undoButton: UIBarButtonItem?
+    private var redoButton: UIBarButtonItem?
+    private var toolPicker = PKToolPicker()
+    private var userTexts: [UserTextView] = []
+    private var selectedUserTextView: UserTextView?
     
     // MARK: - Data
     private var imageURL: String
@@ -292,12 +294,21 @@ class MemeCustomViewController: BaseViewController {
 
 extension MemeCustomViewController: EditToolDelegate {
     func didTapPenButton() {
-        Log.debug("didTapPenButton", .ui)
-
+        canvasView.becomeFirstResponder()
     }
     
     func didTapTextButton() {
-        Log.debug("didTapTextButton", .ui)
-
+        canvasView.resignFirstResponder()
+        makeUserTextView()
+    }
+    
+    func makeUserTextView() {
+        let textView = UserTextView()
+        let frame = imageFrameInImageView()
+        let width: CGFloat = 260, height: CGFloat = 80
+        textView.frame = CGRect(x: frame.midX - width / 2, y: frame.midY - height / 2, width: width, height: height)
+        view.addSubview(textView)
+        view.bringSubviewToFront(textView)
+        userTexts.append(textView)
     }
 }
