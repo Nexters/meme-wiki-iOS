@@ -124,13 +124,12 @@ final class MemeSearchViewController: BaseViewController {
             .sink { [weak self] items in
                 guard let self = self else { return }
                 let snapshot = dataSource?.snapshot()
-                if snapshot?.indexOfSection(.list) == nil {
+                if snapshot?.indexOfSection(.list) == nil || ((snapshot?.itemIdentifiers(inSection: .list).isEmpty) != nil) {
                     self.updateSnapshot(section: .list, items: items.map { .list($0) })
                 } else {
                     self.appendSnapshot(section: .list, items: items.map { .list($0) })
                 }
             }.store(in: &subscription)
-        
         
         viewModel.emptyPublisher
             .receive(on: DispatchQueue.main)
