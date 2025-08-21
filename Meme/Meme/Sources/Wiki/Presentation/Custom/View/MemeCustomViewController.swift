@@ -305,10 +305,17 @@ extension MemeCustomViewController: EditToolDelegate {
     func makeUserTextView() {
         let textView = UserTextView()
         let frame = imageFrameInImageView()
-        let width: CGFloat = 260, height: CGFloat = 80
+        let width: CGFloat = 90, height: CGFloat = 50
         textView.frame = CGRect(x: frame.midX - width / 2, y: frame.midY - height / 2, width: width, height: height)
+        textView.delegate = self
         view.addSubview(textView)
         view.bringSubviewToFront(textView)
+        textView.select()
         userTexts.append(textView)
+    }
+}
+
+extension MemeCustomViewController: UserTextViewDelegate {
+    func didTapUserTextView(_ userTextView: UserTextView) {
     }
 }

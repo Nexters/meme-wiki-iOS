@@ -24,7 +24,7 @@ final class UserTextView: UIView {
         return layer
     }()
     
-    private let textView: UITextView = {
+    private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.font = .systemFont(ofSize: 26)
@@ -32,6 +32,7 @@ final class UserTextView: UIView {
         textView.text = "텍스트"
         textView.isScrollEnabled = false
         textView.textAlignment = .center
+        textView.delegate = self
         return textView
     }()
     
@@ -52,6 +53,14 @@ final class UserTextView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         textView.frame = bounds
+        selectedLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 1, dy: 1), cornerRadius: 10).cgPath
+
+    }
+    
+    func select() {
+        Log.debug("selected", .ui)
+        selectedLayer.isHidden = false
+        superview?.bringSubviewToFront(self)
     }
 }
 
@@ -62,17 +71,34 @@ private extension UserTextView {
     }
     
     func configureGesture() {
-        let textTap = UITapGestureRecognizer(target: self, action: #selector(handleTextTapGesture))
-        addGestureRecognizer(textTap)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTextTapGesture))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        
+        [tapGesture, panGesture].forEach { addGestureRecognizer($0) }
     }
     
     @objc func handleTextTapGesture() {
-        selected()
+        select()
         delegate?.didTapUserTextView(self)
     }
     
-    func selected() {
-        selectedLayer.isHidden = false
-        superview?.bringSubviewToFront(self)
+    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        guard !selectedLayer.isHidden else { return } // 선택된 상태일 때만 이동
+        let translation = gesture.translation(in: superview)
+        if let view = gesture.view {
+            view.center = CGPoint(
+                x: view.center.x + translation.x,
+                y: view.center.y + translation.y
+            )
+        }
+        gesture.setTranslation(.zero, in: superview)
+    }
+}
+
+extension UserTextView: UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        select()
+        delegate?.didTapUserTextView(self)
+        return true
     }
 }
