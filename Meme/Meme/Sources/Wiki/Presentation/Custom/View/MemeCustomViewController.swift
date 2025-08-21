@@ -12,12 +12,37 @@ import PencilKit
 class MemeCustomViewController: BaseViewController {
     
     // MARK: - UI Components
+    private lazy var editToolView: EditToolView = {
+        let editToolView = EditToolView()
+        editToolView.backgroundColor = CustomColor.gray(.gray8).color
+        editToolView.layer.borderColor = CustomColor.gray(.gray7).color?.cgColor
+        editToolView.layer.cornerRadius = 25
+        editToolView.translatesAutoresizingMaskIntoConstraints = false
+        editToolView.delegate = self
+        return editToolView
+    }()
+    
+    private var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        return imageView
+    }()
+    
+    private var canvasView: PKCanvasView = {
+        let canvasView = PKCanvasView()
+        canvasView.backgroundColor = .clear
+        canvasView.alwaysBounceVertical = false
+        canvasView.alwaysBounceHorizontal = false
+        canvasView.drawingPolicy = .anyInput
+        return canvasView
+    }()
+    
     private var undoButton: UIBarButtonItem?
     private var redoButton: UIBarButtonItem?
-    private var imageView = UIImageView()
-    private var canvasView = PKCanvasView()
+    
     private var toolPicker = PKToolPicker()
-    private var saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .iconDownload), for: .normal)
         button.imageView?.tintColor = .white
@@ -35,6 +60,7 @@ class MemeCustomViewController: BaseViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6)
+        button.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
         return button
     }()
     
@@ -71,24 +97,22 @@ class MemeCustomViewController: BaseViewController {
     
     // MARK: - Setup
     private func setupViews() {
-        imageView.contentMode = .scaleAspectFit
+        [imageView, canvasView, editToolView, saveButton].forEach {
+            view.addSubview($0)
+        }
         imageView.frame = view.bounds
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(imageView)
-        
-        canvasView.backgroundColor = .clear
-        canvasView.alwaysBounceVertical = false
-        canvasView.alwaysBounceHorizontal = false
-        canvasView.drawingPolicy = .anyInput
-        view.addSubview(canvasView)
-        
-        saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
-        view.addSubview(saveButton)
+
         NSLayoutConstraint.activate([
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             saveButton.widthAnchor.constraint(equalToConstant: 130),
-            saveButton.heightAnchor.constraint(equalToConstant: 60)
+            saveButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            
+            editToolView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            editToolView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -59.5),
+            editToolView.widthAnchor.constraint(equalToConstant: 120),
+            editToolView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -98,7 +122,7 @@ class MemeCustomViewController: BaseViewController {
         if #available(iOS 13.0, *) {
             toolPicker.overrideUserInterfaceStyle = .dark
         }
-        canvasView.becomeFirstResponder()
+//        canvasView.becomeFirstResponder()
     }
     
     private func handleNotification() {
@@ -263,5 +287,17 @@ class MemeCustomViewController: BaseViewController {
         )
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         present(alert, animated: true)
+    }
+}
+
+extension MemeCustomViewController: EditToolDelegate {
+    func didTapPenButton() {
+        Log.debug("didTapPenButton", .ui)
+
+    }
+    
+    func didTapTextButton() {
+        Log.debug("didTapTextButton", .ui)
+
     }
 }
