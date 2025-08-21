@@ -20,8 +20,9 @@ final class UserTextView: UIView {
     private let minScale: CGFloat = 0.5
     private let maxScale: CGFloat = 3.0
     
-    private let rightResizeView: UIView = {
-        let view = UIView()
+    private let rightResizeView: TouchHandleView = {
+        let view = TouchHandleView()
+        view.hitTestOutset = 50
         view.layer.cornerRadius = 6
         view.backgroundColor = .systemBlue
         view.isHidden = true
@@ -30,8 +31,9 @@ final class UserTextView: UIView {
         return view
     }()
     
-    private let leftResizeView: UIView = {
-        let view = UIView()
+    private let leftResizeView: TouchHandleView = {
+        let view = TouchHandleView()
+        view.hitTestOutset = 50
         view.layer.cornerRadius = 6
         view.backgroundColor = .systemBlue
         view.isHidden = true
