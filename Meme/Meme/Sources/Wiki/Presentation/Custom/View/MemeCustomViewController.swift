@@ -124,7 +124,6 @@ class MemeCustomViewController: BaseViewController {
         if #available(iOS 13.0, *) {
             toolPicker.overrideUserInterfaceStyle = .dark
         }
-//        canvasView.becomeFirstResponder()
     }
     
     private func handleNotification() {
@@ -311,11 +310,15 @@ extension MemeCustomViewController: EditToolDelegate {
         view.addSubview(textView)
         view.bringSubviewToFront(textView)
         textView.select()
+        if let selectedView = selectedUserTextView { selectedView.deSelect() }
+        selectedUserTextView = textView
         userTexts.append(textView)
     }
 }
 
 extension MemeCustomViewController: UserTextViewDelegate {
     func didTapUserTextView(_ userTextView: UserTextView) {
+        if let selectedView = selectedUserTextView { selectedView.deSelect() }
+        selectedUserTextView = userTextView
     }
 }
