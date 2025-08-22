@@ -29,7 +29,7 @@ final class TextStylePanelView: UIView {
     private let sizeValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .secondaryLabel
+        label.textColor = CustomColor.gray(.gray6).color
         label.textAlignment = .right
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
