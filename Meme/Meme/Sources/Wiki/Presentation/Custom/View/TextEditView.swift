@@ -7,14 +7,22 @@
 
 import UIKit
 
+protocol TextEditViewDelegate: AnyObject {
+    func textAddButtonDidTapped()
+    func deleteButtonDidTapped()
+    func moreButtonDidTapped()
+}
+
 final class TextEditView: UIView {
     // MARK: - UI Components
     
-    private let textAddLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = .customFont(.pretendard(.title(.subhead2)), text: "텍스트 추가")
-        label.textColor = .gray9
-        return label
+    weak var delegate: TextEditViewDelegate?
+    
+    private lazy var textAddButton: UIButton = {
+        let button = UIButton()
+        button.setAttributedTitle(.customFont(.pretendard(.title(.subhead2)), text: "텍스트 추가", color: .gray(.gray9)), for: .normal)
+        button.addTarget(self, action: #selector(textAddButtonDidTapped), for: .touchUpInside)
+        return button
     }()
     
     private let separatorLine: UIView = {
@@ -23,17 +31,19 @@ final class TextEditView: UIView {
         return view
     }()
     
-    private let deleteButton: UIButton = {
+    private lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .iconDelete), for: .normal)
         button.tintColor = .red40
+        button.addTarget(self, action: #selector(deleteButtonDidTapped), for: .touchUpInside)
         return button
     }()
     
-    private let moreButton: UIButton = {
+    private lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .iconMoreCircle), for: .normal)
         button.tintColor = .gray9
+        button.addTarget(self, action: #selector(moreButtonDidTapped), for: .touchUpInside)
         return button
     }()
     
@@ -51,15 +61,15 @@ final class TextEditView: UIView {
 
 private extension TextEditView {
     func configureUI() {
-        [ textAddLabel, separatorLine, deleteButton, moreButton ].forEach {
+        [ textAddButton, separatorLine, deleteButton, moreButton ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            textAddLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            textAddLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            textAddLabel.trailingAnchor.constraint(equalTo: separatorLine.leadingAnchor, constant: 24),
+            textAddButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            textAddButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            textAddButton.trailingAnchor.constraint(equalTo: separatorLine.leadingAnchor, constant: -24),
             
             separatorLine.centerXAnchor.constraint(equalTo: centerXAnchor),
             separatorLine.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -77,5 +87,22 @@ private extension TextEditView {
             moreButton.widthAnchor.constraint(equalToConstant: 30),
             moreButton.heightAnchor.constraint(equalToConstant: 30)
         ])
+    }
+}
+
+private extension TextEditView {
+    @objc func textAddButtonDidTapped() {
+        Log.debug("textAddButtonDidTapped", .ui)
+        delegate?.textAddButtonDidTapped()
+    }
+
+    @objc func deleteButtonDidTapped() {
+        Log.debug("deleteButtonDidTapped", .ui)
+        delegate?.deleteButtonDidTapped()
+    }
+    
+    @objc func moreButtonDidTapped() {
+        Log.debug("moreButtonDidTapped", .ui)
+        delegate?.moreButtonDidTapped()
     }
 }

@@ -20,11 +20,12 @@ final class UserTextView: UIView {
     private let minScale: CGFloat = 0.5
     private let maxScale: CGFloat = 3.0
     
-    private let textEditView: TextEditView = {
+    private lazy var textEditView: TextEditView = {
         let view = TextEditView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 25
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
     private let rightResizeView: TouchHandleView = {
@@ -95,15 +96,17 @@ final class UserTextView: UIView {
         selectedLayer.isHidden = false
         rightResizeView.isHidden = false
         leftResizeView.isHidden = false
+        textEditView.isHidden = false
+        
         superview?.bringSubviewToFront(self)
     }
     
     func deSelect() {
         Log.debug("deselected", .ui)
-
         selectedLayer.isHidden = true
         rightResizeView.isHidden = true
         leftResizeView.isHidden = true
+        textEditView.isHidden = true
     }
 }
 
@@ -195,5 +198,19 @@ extension UserTextView: UITextViewDelegate {
         select()
         delegate?.didTapUserTextView(self)
         return true
+    }
+}
+
+extension UserTextView: TextEditViewDelegate {
+    func textAddButtonDidTapped() {
+        Log.debug("textAddButtonDidTapped", .ui)
+    }
+    
+    func deleteButtonDidTapped() {
+        Log.debug("deleteButtonDidTapped", .ui)
+    }
+    
+    func moreButtonDidTapped() {
+        Log.debug("moreButtonDidTapped", .ui)
     }
 }
