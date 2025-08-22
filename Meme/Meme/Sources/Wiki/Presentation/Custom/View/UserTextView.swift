@@ -20,6 +20,13 @@ final class UserTextView: UIView {
     private let minScale: CGFloat = 0.5
     private let maxScale: CGFloat = 3.0
     
+    private let textEditView: TextEditView = {
+        let view = TextEditView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 25
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private let rightResizeView: TouchHandleView = {
         let view = TouchHandleView()
         view.hitTestOutset = 50
@@ -102,7 +109,7 @@ final class UserTextView: UIView {
 
 private extension UserTextView {
     func configureUI() {
-        [ textView, rightResizeView, leftResizeView ].forEach { addSubview($0) }
+        [ textView, rightResizeView, leftResizeView, textEditView ].forEach { addSubview($0) }
         layer.addSublayer(selectedLayer)
         
         NSLayoutConstraint.activate([
@@ -115,6 +122,11 @@ private extension UserTextView {
             leftResizeView.centerYAnchor.constraint(equalTo: centerYAnchor),
             leftResizeView.widthAnchor.constraint(equalToConstant: 12),
             leftResizeView.heightAnchor.constraint(equalToConstant: 12),
+            
+            textEditView.topAnchor.constraint(equalTo: textView.topAnchor, constant: -70),
+            textEditView.centerXAnchor.constraint(equalTo: textView.centerXAnchor),
+            textEditView.widthAnchor.constraint(equalToConstant: 215),
+            textEditView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     

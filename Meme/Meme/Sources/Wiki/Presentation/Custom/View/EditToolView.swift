@@ -25,7 +25,7 @@ final class EditToolView: UIView {
     
     private lazy var textButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(resource: .iconHome), for: .normal)
+        button.setImage(UIImage(resource: .iconText), for: .normal)
         button.addTarget(self, action: #selector(didTapTextButton), for: .touchUpInside)
         return button
     }()
