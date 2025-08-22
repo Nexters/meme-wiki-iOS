@@ -107,7 +107,7 @@ class MemeCustomViewController: BaseViewController {
 
         NSLayoutConstraint.activate([
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
             saveButton.widthAnchor.constraint(equalToConstant: 130),
             saveButton.heightAnchor.constraint(equalToConstant: 60),
             
@@ -254,6 +254,7 @@ class MemeCustomViewController: BaseViewController {
     @objc private func finishCustom() {
         toolPicker.setVisible(false, forFirstResponder: canvasView)
         saveButton.isHidden = false
+        selectedUserTextView?.deSelect()
         toggleNavigationBar()
     }
     
@@ -343,5 +344,13 @@ extension MemeCustomViewController: UserTextViewDelegate {
             selectedUserTextView?.deSelect()
             selectedUserTextView = userTextView
         }
+    }
+    
+    func textAddButtonDidTapped() {
+        makeUserTextView()
+    }
+    
+    func deleteButtonDidTapped(_ userTextView: UserTextView) {
+        userTextView.removeFromSuperview()
     }
 }

@@ -43,6 +43,8 @@
 		2C1B781D2E57592300E6C1B3 /* UserTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B781B2E57592300E6C1B3 /* UserTextView.swift */; };
 		2C1B781F2E577D9D00E6C1B3 /* TouchHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B781E2E577D9D00E6C1B3 /* TouchHandleView.swift */; };
 		2C1B78202E577D9D00E6C1B3 /* TouchHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B781E2E577D9D00E6C1B3 /* TouchHandleView.swift */; };
+		2C1B78222E58939E00E6C1B3 /* TextStylePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78212E58939E00E6C1B3 /* TextStylePanelView.swift */; };
+		2C1B78232E58939E00E6C1B3 /* TextStylePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B78212E58939E00E6C1B3 /* TextStylePanelView.swift */; };
 		2C3981D32E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */; };
 		2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */; };
@@ -245,6 +247,7 @@
 		2C1B78182E57526F00E6C1B3 /* EditToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolView.swift; sourceTree = "<group>"; };
 		2C1B781B2E57592300E6C1B3 /* UserTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextView.swift; sourceTree = "<group>"; };
 		2C1B781E2E577D9D00E6C1B3 /* TouchHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandleView.swift; sourceTree = "<group>"; };
+		2C1B78212E58939E00E6C1B3 /* TextStylePanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStylePanelView.swift; sourceTree = "<group>"; };
 		2C3981D22E3B5EA8007BDE92 /* ThumbnailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailType.swift; sourceTree = "<group>"; };
 		2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
 		2C3981DB2E3B6495007BDE92 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -873,6 +876,7 @@
 				2C1B78182E57526F00E6C1B3 /* EditToolView.swift */,
 				2C1B781B2E57592300E6C1B3 /* UserTextView.swift */,
 				2CAB73332E5818E00025B648 /* TextEditView.swift */,
+				2C1B78212E58939E00E6C1B3 /* TextStylePanelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1150,6 +1154,7 @@
 				ADE8E7A02E438AD4008F0A24 /* MemeMainPageControlFooterView.swift in Sources */,
 				2C1B781C2E57592300E6C1B3 /* UserTextView.swift in Sources */,
 				ADE8E7892E4225E3008F0A24 /* MemeMainViewController.swift in Sources */,
+				2C1B78232E58939E00E6C1B3 /* TextStylePanelView.swift in Sources */,
 				2CFAA31B2E365459004E4604 /* CustomFontConvertible.swift in Sources */,
 				2C5F242C2E3F995F000AA318 /* BaseTargetType.swift in Sources */,
 				2C6767542E37A07E00794E10 /* PaddingLabel.swift in Sources */,
@@ -1186,6 +1191,7 @@
 				AD848E272E2B55CF0003F09F /* APIConfiguration.swift in Sources */,
 				2CAB73342E5818E00025B648 /* TextEditView.swift in Sources */,
 				ADE8E7A22E438FB8008F0A24 /* MemeMainCategoryHeaderView.swift in Sources */,
+				2C1B78222E58939E00E6C1B3 /* TextStylePanelView.swift in Sources */,
 				AD848E452E2C9BEC0003F09F /* Lobby.swift in Sources */,
 				2C1B77FA2E4F250000E6C1B3 /* CategoryRepositoryInterface.swift in Sources */,
 				AD9FC4DB2E4A1BDE008894E7 /* CategoriesUseCase.swift in Sources */,
