@@ -12,12 +12,33 @@ import PencilKit
 class MemeCustomViewController: BaseViewController {
     
     // MARK: - UI Components
-    private var undoButton: UIBarButtonItem?
-    private var redoButton: UIBarButtonItem?
-    private var imageView = UIImageView()
-    private var canvasView = PKCanvasView()
-    private var toolPicker = PKToolPicker()
-    private var saveButton: UIButton = {
+    private lazy var editToolView: EditToolView = {
+        let editToolView = EditToolView()
+        editToolView.backgroundColor = CustomColor.gray(.gray8).color
+        editToolView.layer.borderColor = CustomColor.gray(.gray7).color?.cgColor
+        editToolView.layer.cornerRadius = 25
+        editToolView.translatesAutoresizingMaskIntoConstraints = false
+        editToolView.delegate = self
+        return editToolView
+    }()
+    
+    private var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        return imageView
+    }()
+    
+    private var canvasView: PKCanvasView = {
+        let canvasView = PKCanvasView()
+        canvasView.backgroundColor = .clear
+        canvasView.alwaysBounceVertical = false
+        canvasView.alwaysBounceHorizontal = false
+        canvasView.drawingPolicy = .anyInput
+        return canvasView
+    }()
+    
+    private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .iconDownload), for: .normal)
         button.imageView?.tintColor = .white
@@ -35,8 +56,15 @@ class MemeCustomViewController: BaseViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6)
+        button.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
         return button
     }()
+    
+    private var undoButton: UIBarButtonItem?
+    private var redoButton: UIBarButtonItem?
+    private var toolPicker = PKToolPicker()
+    private var userTexts: [UserTextView] = []
+    private var selectedUserTextView: UserTextView?
     
     // MARK: - Data
     private var imageURL: String
@@ -60,6 +88,7 @@ class MemeCustomViewController: BaseViewController {
         setupViews()
         setupToolPicker()
         setupNavigationBarWhenEditing()
+        setupGesture()
         loadImage()
         handleNotification()
     }
@@ -71,34 +100,37 @@ class MemeCustomViewController: BaseViewController {
     
     // MARK: - Setup
     private func setupViews() {
-        imageView.contentMode = .scaleAspectFit
+        [imageView, canvasView, editToolView, saveButton].forEach {
+            view.addSubview($0)
+        }
         imageView.frame = view.bounds
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(imageView)
-        
-        canvasView.backgroundColor = .clear
-        canvasView.alwaysBounceVertical = false
-        canvasView.alwaysBounceHorizontal = false
-        canvasView.drawingPolicy = .anyInput
-        view.addSubview(canvasView)
-        
-        saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
-        view.addSubview(saveButton)
+
         NSLayoutConstraint.activate([
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             saveButton.widthAnchor.constraint(equalToConstant: 130),
-            saveButton.heightAnchor.constraint(equalToConstant: 60)
+            saveButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            
+            editToolView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            editToolView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+            editToolView.widthAnchor.constraint(equalToConstant: 120),
+            editToolView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
     private func setupToolPicker() {
-        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        toolPicker.setVisible(false, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         if #available(iOS 13.0, *) {
             toolPicker.overrideUserInterfaceStyle = .dark
         }
-        canvasView.becomeFirstResponder()
+    }
+    
+    private func setupGesture() {
+        let backgroundTap = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
+        backgroundTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(backgroundTap)
     }
     
     private func handleNotification() {
@@ -114,6 +146,12 @@ class MemeCustomViewController: BaseViewController {
             name: .NSUndoManagerDidRedoChange,
             object: canvasView.undoManager
         )
+    }
+
+    @objc private func handleBackgroundTap(_ g: UITapGestureRecognizer) {
+        view.endEditing(true)
+        selectedUserTextView?.deSelect()
+        canvasView.becomeFirstResponder()
     }
     
     @objc func undoRedoChanged() {
@@ -216,6 +254,8 @@ class MemeCustomViewController: BaseViewController {
     @objc private func finishCustom() {
         toolPicker.setVisible(false, forFirstResponder: canvasView)
         saveButton.isHidden = false
+        editToolView.isHidden = true
+        selectedUserTextView?.deSelect()
         toggleNavigationBar()
     }
     
@@ -223,27 +263,38 @@ class MemeCustomViewController: BaseViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
-    // MARK: - Export
     func exportCombinedImage() -> UIImage? {
         guard let baseImage = imageView.image else { return nil }
-        UIGraphicsBeginImageContextWithOptions(baseImage.size, false, baseImage.scale)
-        
-        baseImage.draw(in: CGRect(origin: .zero, size: baseImage.size))
-        let scaleX = baseImage.size.width / canvasView.bounds.width
-        let scaleY = baseImage.size.height / canvasView.bounds.height
-        
-        let drawingImage = canvasView.drawing.image(from: canvasView.bounds, scale: baseImage.scale)
-        drawingImage.draw(in: CGRect(
-            origin: .zero,
-            size: CGSize(
-                width: canvasView.bounds.width * scaleX,
-                height: canvasView.bounds.height * scaleY)
-        ))
-        
-        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return combinedImage
+
+        let baseSize = baseImage.size
+        let imageRectInView = imageFrameInImageView() // view 좌표계에서의 실제 표시 영역
+        let scaleX = baseSize.width / imageRectInView.width
+        let scaleY = baseSize.height / imageRectInView.height
+
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = baseImage.scale
+        format.opaque = false
+
+        let renderer = UIGraphicsImageRenderer(size: baseSize, format: format)
+        let combined = renderer.image { _ in
+            baseImage.draw(in: CGRect(origin: .zero, size: baseSize))
+            let drawingImage = canvasView.drawing.image(from: canvasView.bounds, scale: baseImage.scale)
+            drawingImage.draw(in: CGRect(origin: .zero, size: baseSize))
+            for t in userTexts where t.superview != nil {
+                guard let snap = t.snapshot() else { continue }
+                let displayed = t.convert(t.bounds, to: view)
+                guard displayed.intersects(imageRectInView) else { continue }
+                let x = (displayed.minX - imageRectInView.minX) * scaleX
+                let y = (displayed.minY - imageRectInView.minY) * scaleY
+                let w = displayed.width * scaleX
+                let h = displayed.height * scaleY
+                snap.draw(in: CGRect(x: x, y: y, width: w, height: h))
+            }
+        }
+        return combined
     }
+
+
     
     // MARK: - Save / Share
     @objc private func saveImage() {
@@ -263,5 +314,55 @@ class MemeCustomViewController: BaseViewController {
         )
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         present(alert, animated: true)
+    }
+}
+
+// MARK: - EditToolDelegate
+
+extension MemeCustomViewController: EditToolDelegate {
+    func didTapPenButton() {
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        canvasView.becomeFirstResponder()
+        canvasView.isUserInteractionEnabled = true
+    }
+    
+    func didTapTextButton() {
+        toolPicker.setVisible(false, forFirstResponder: canvasView)
+        canvasView.resignFirstResponder()
+        canvasView.isUserInteractionEnabled = false
+        makeUserTextView()
+    }
+    
+    func makeUserTextView() {
+        let textView = UserTextView()
+        let frame = imageFrameInImageView()
+        let width: CGFloat = 90, height: CGFloat = 50
+        textView.frame = CGRect(x: frame.midX - width / 2, y: frame.midY - height / 2, width: width, height: height)
+        textView.delegate = self
+        view.addSubview(textView)
+        view.bringSubviewToFront(textView)
+        textView.select()
+        if let selectedView = selectedUserTextView { selectedView.deSelect() }
+        selectedUserTextView = textView
+        userTexts.append(textView)
+    }
+}
+
+// MARK: - UserTextViewDelegate
+
+extension MemeCustomViewController: UserTextViewDelegate {
+    func didTapUserTextView(_ userTextView: UserTextView) {
+        if selectedUserTextView !== userTextView {
+            selectedUserTextView?.deSelect()
+            selectedUserTextView = userTextView
+        }
+    }
+    
+    func textAddButtonDidTapped() {
+        makeUserTextView()
+    }
+    
+    func deleteButtonDidTapped(_ userTextView: UserTextView) {
+        userTextView.removeFromSuperview()
     }
 }
