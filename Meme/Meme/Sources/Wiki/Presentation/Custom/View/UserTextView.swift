@@ -279,3 +279,22 @@ extension UserTextView: TextStylePanelViewDelegate {
     }
 }
 
+extension UserTextView {
+    func snapshot() -> UIImage? {
+        selectedLayer.isHidden = true
+        rightResizeView.isHidden = true
+        leftResizeView.isHidden = true
+        textEditView.isHidden = true
+        stylePanel.isHidden = true
+        layoutIfNeeded()
+        let format = UIGraphicsImageRendererFormat()
+        format.opaque = false
+        format.scale = 0 // 디바이스 스케일
+        let renderer = UIGraphicsImageRenderer(size: bounds.size, format: format)
+        let image = renderer.image { ctx in
+            layer.render(in: ctx.cgContext)
+        }
+        return image
+    }
+}
+

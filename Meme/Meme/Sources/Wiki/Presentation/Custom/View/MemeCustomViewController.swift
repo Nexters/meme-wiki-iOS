@@ -107,13 +107,13 @@ class MemeCustomViewController: BaseViewController {
 
         NSLayoutConstraint.activate([
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
+            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             saveButton.widthAnchor.constraint(equalToConstant: 130),
             saveButton.heightAnchor.constraint(equalToConstant: 60),
             
             
             editToolView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            editToolView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -59.5),
+            editToolView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             editToolView.widthAnchor.constraint(equalToConstant: 120),
             editToolView.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -254,6 +254,7 @@ class MemeCustomViewController: BaseViewController {
     @objc private func finishCustom() {
         toolPicker.setVisible(false, forFirstResponder: canvasView)
         saveButton.isHidden = false
+        editToolView.isHidden = true
         selectedUserTextView?.deSelect()
         toggleNavigationBar()
     }
@@ -262,27 +263,38 @@ class MemeCustomViewController: BaseViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
-    // MARK: - Export
     func exportCombinedImage() -> UIImage? {
         guard let baseImage = imageView.image else { return nil }
-        UIGraphicsBeginImageContextWithOptions(baseImage.size, false, baseImage.scale)
-        
-        baseImage.draw(in: CGRect(origin: .zero, size: baseImage.size))
-        let scaleX = baseImage.size.width / canvasView.bounds.width
-        let scaleY = baseImage.size.height / canvasView.bounds.height
-        
-        let drawingImage = canvasView.drawing.image(from: canvasView.bounds, scale: baseImage.scale)
-        drawingImage.draw(in: CGRect(
-            origin: .zero,
-            size: CGSize(
-                width: canvasView.bounds.width * scaleX,
-                height: canvasView.bounds.height * scaleY)
-        ))
-        
-        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return combinedImage
+
+        let baseSize = baseImage.size
+        let imageRectInView = imageFrameInImageView() // view 좌표계에서의 실제 표시 영역
+        let scaleX = baseSize.width / imageRectInView.width
+        let scaleY = baseSize.height / imageRectInView.height
+
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = baseImage.scale
+        format.opaque = false
+
+        let renderer = UIGraphicsImageRenderer(size: baseSize, format: format)
+        let combined = renderer.image { _ in
+            baseImage.draw(in: CGRect(origin: .zero, size: baseSize))
+            let drawingImage = canvasView.drawing.image(from: canvasView.bounds, scale: baseImage.scale)
+            drawingImage.draw(in: CGRect(origin: .zero, size: baseSize))
+            for t in userTexts where t.superview != nil {
+                guard let snap = t.snapshot() else { continue }
+                let displayed = t.convert(t.bounds, to: view)
+                guard displayed.intersects(imageRectInView) else { continue }
+                let x = (displayed.minX - imageRectInView.minX) * scaleX
+                let y = (displayed.minY - imageRectInView.minY) * scaleY
+                let w = displayed.width * scaleX
+                let h = displayed.height * scaleY
+                snap.draw(in: CGRect(x: x, y: y, width: w, height: h))
+            }
+        }
+        return combined
     }
+
+
     
     // MARK: - Save / Share
     @objc private func saveImage() {
