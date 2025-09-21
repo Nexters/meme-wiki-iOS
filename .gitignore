@@ -107,4 +107,8 @@ iOSInjectionProject/
 
 ### XCConfig Path ###
 *.xcconfig
+
+### Firebase ###
+GoogleService-Info.plist
+
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift
