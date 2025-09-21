@@ -163,6 +163,8 @@
 		576E35E32E808FD400F90262 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E22E808FD400F90262 /* FirebaseMessaging */; };
 		576E35E52E808FE100F90262 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E42E808FE100F90262 /* FirebaseAnalytics */; };
 		576E35E72E808FE100F90262 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E62E808FE100F90262 /* FirebaseMessaging */; };
+		576E35E92E8090C800F90262 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576E35E82E8090C800F90262 /* GoogleService-Info.plist */; };
+		576E35EA2E8090C800F90262 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576E35E82E8090C800F90262 /* GoogleService-Info.plist */; };
 		57AABB5D2E50AF0900659128 /* MemeMainMostSharedNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FC4E52E4E46DD008894E7 /* MemeMainMostSharedNestedCell.swift */; };
 		57AABB5E2E50AF1000659128 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FC4E82E4F19B0008894E7 /* UIViewController++Extension.swift */; };
 		AD1AC3102E561E1800D7D1B1 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = AD1AC30F2E561E1800D7D1B1 /* KakaoSDK */; };
@@ -298,8 +300,8 @@
 		2CE552432E268FA0004BE9AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CE552452E268FA0004BE9AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CE552572E269159004BE9AF /* Meme-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CE552592E26928D004BE9AF /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = ../Development.xcconfig; sourceTree = "<group>"; };
-		2CE5525A2E269298004BE9AF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = ../Release.xcconfig; sourceTree = "<group>"; };
+		2CE552592E26928D004BE9AF /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		2CE5525A2E269298004BE9AF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		2CE552722E2B6EEA004BE9AF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		2CFAA3092E34A8F9004E4604 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		2CFAA30A2E34A8F9004E4604 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -310,6 +312,9 @@
 		2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString++Extension.swift"; sourceTree = "<group>"; };
 		2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		575181B62E4F8F7D009B8E8C /* WKWebView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView++Extension.swift"; sourceTree = "<group>"; };
+		576E35E82E8090C800F90262 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		576E35EB2E8093FD00F90262 /* Meme-dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meme-dev.entitlements"; sourceTree = "<group>"; };
+		576E35EC2E80948300F90262 /* Meme-release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meme-release.entitlements"; sourceTree = "<group>"; };
 		AD1AC31B2E561F1500D7D1B1 /* KakaoShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoShareManager.swift; sourceTree = "<group>"; };
 		AD1AC31E2E56215400D7D1B1 /* ShareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareData.swift; sourceTree = "<group>"; };
 		AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiWebViewController.swift; sourceTree = "<group>"; };
@@ -586,6 +591,8 @@
 		2CE5522B2E268F9E004BE9AF = {
 			isa = PBXGroup;
 			children = (
+				576E35EC2E80948300F90262 /* Meme-release.entitlements */,
+				576E35EB2E8093FD00F90262 /* Meme-dev.entitlements */,
 				2CE552362E268F9E004BE9AF /* Meme */,
 				2CE552352E268F9E004BE9AF /* Products */,
 				2CE5525C2E26953F004BE9AF /* Frameworks */,
@@ -607,6 +614,9 @@
 				AD848E112E2B42F30003F09F /* Sources */,
 				AD848E122E2B42F90003F09F /* Resources */,
 				2CC399972E2F830500D14084 /* KeyChain */,
+				2CE552592E26928D004BE9AF /* Development.xcconfig */,
+				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
+				576E35E82E8090C800F90262 /* GoogleService-Info.plist */,
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -721,8 +731,6 @@
 				2CFAA3072E34A8C5004E4604 /* Font */,
 				2CE552402E268FA0004BE9AF /* Assets.xcassets */,
 				2CE552452E268FA0004BE9AF /* Info.plist */,
-				2CE552592E26928D004BE9AF /* Development.xcconfig */,
-				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1047,6 +1055,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE552412E268FA0004BE9AF /* Assets.xcassets in Resources */,
+				576E35EA2E8090C800F90262 /* GoogleService-Info.plist in Resources */,
 				2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */,
 				2CFAA30E2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */,
 				2CFAA3102E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */,
@@ -1061,6 +1070,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE552522E269159004BE9AF /* Assets.xcassets in Resources */,
+				576E35E92E8090C800F90262 /* GoogleService-Info.plist in Resources */,
 				2C5F23F02E3CE56C000AA318 /* Galmuri7.ttf in Resources */,
 				2CFAA30F2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */,
 				2CFAA3112E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */,
@@ -1430,6 +1440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-release.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1472,6 +1483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-release.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1514,6 +1526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-dev.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1553,6 +1566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-dev.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
