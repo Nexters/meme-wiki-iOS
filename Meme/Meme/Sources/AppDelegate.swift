@@ -86,14 +86,10 @@ extension AppDelegate: MessagingDelegate {
         _ messaging: Messaging,
         didReceiveRegistrationToken fcmToken: String?
     ) {
-        Log.info("Firebase registration token: \(String(describing: fcmToken))", .networking)
-        
-        let dataDict: [String: String] = ["token": fcmToken ?? ""]
-        NotificationCenter.default.post(
-            name: Notification.Name("FCMToken"),
-            object: nil,
-            userInfo: dataDict
-        )
-        // TODO: 서버에 토큰 전달
+        Log.info("🔥 Firebase registration token: \(String(describing: fcmToken))", .networking)
+         
+        guard let fcmToken else { return }
+        let usecase = DefaultNotificationUseCase(repository: NotificationRepository())
+        usecase.execute(token: fcmToken)
     }
 }
