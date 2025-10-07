@@ -205,6 +205,7 @@ extension MemeSearchViewController: UICollectionViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
         let offsetY = scrollView.contentOffset.y
         let contentH = scrollView.contentSize.height
         let visibleH = scrollView.bounds.height
