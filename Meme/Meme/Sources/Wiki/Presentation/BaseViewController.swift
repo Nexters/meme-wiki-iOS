@@ -35,6 +35,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
 private extension BaseViewController {
     func configureGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
 }
