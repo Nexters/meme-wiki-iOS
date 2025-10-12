@@ -31,7 +31,7 @@ final class MemeSearchViewController: BaseViewController {
         collectionView.register(MemeSearchGridCell.self, forCellWithReuseIdentifier: MemeSearchGridCell.identifier)
         collectionView.register(MemeSearchListCell.self, forCellWithReuseIdentifier: MemeSearchListCell.identifier)
         collectionView.register(MemeSearchEmptyCell.self, forCellWithReuseIdentifier: MemeSearchEmptyCell.identifier)
-        collectionView.backgroundColor = CustomColor.black(.black).color
+        collectionView.backgroundColor = CustomColor.gray(.gray10).color
         collectionView.delegate = self
         return collectionView
     }()
@@ -71,7 +71,7 @@ final class MemeSearchViewController: BaseViewController {
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: Constants.CollectionView.top),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.CollectionView.bottom)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.CollectionView.bottom)
         ])
     }
     

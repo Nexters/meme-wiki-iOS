@@ -298,7 +298,7 @@
 		2CE5525A2E269298004BE9AF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		2CE552722E2B6EEA004BE9AF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		2CFAA3092E34A8F9004E4604 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		2CFAA30A2E34A8F9004E4604 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		2CFAA30A2E34A8F9004E4604 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		2CFAA30B2E34A8F9004E4604 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		2CFAA3132E34A964004E4604 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		2CFAA3172E34B3C8004E4604 /* Pretendard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pretendard.swift; sourceTree = "<group>"; };
@@ -599,6 +599,8 @@
 				AD848E112E2B42F30003F09F /* Sources */,
 				AD848E122E2B42F90003F09F /* Resources */,
 				2CC399972E2F830500D14084 /* KeyChain */,
+				2CE552592E26928D004BE9AF /* Development.xcconfig */,
+				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -713,8 +715,6 @@
 				2CFAA3072E34A8C5004E4604 /* Font */,
 				2CE552402E268FA0004BE9AF /* Assets.xcassets */,
 				2CE552452E268FA0004BE9AF /* Info.plist */,
-				2CE552592E26928D004BE9AF /* Development.xcconfig */,
-				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
