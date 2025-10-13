@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<string>NO</string>
 	<key>APP_LABEL_TEXT</key>
 	<string>$(APP_LABEL_TEXT)</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
-	<key>NATIVE_APP_KEY</key>
-	<string>$(NATIVE_APP_KEY)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -23,6 +23,8 @@
 	<array>
 		<string>kakaolink</string>
 	</array>
+	<key>NATIVE_APP_KEY</key>
+	<string>$(NATIVE_APP_KEY)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Galmuri7.ttf</string>
@@ -47,5 +49,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

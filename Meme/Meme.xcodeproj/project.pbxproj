@@ -157,8 +157,22 @@
 		2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */; };
 		2CFAA3252E3654BC004E4604 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */; };
 		2CFAA3262E3654BC004E4604 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */; };
+		5709E87B2E895492007696ED /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E87A2E895492007696ED /* NotificationAPI.swift */; };
+		5709E87C2E895492007696ED /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E87A2E895492007696ED /* NotificationAPI.swift */; };
+		5709E87E2E8955DB007696ED /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E87D2E8955DB007696ED /* NotificationRepository.swift */; };
+		5709E87F2E8955DB007696ED /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E87D2E8955DB007696ED /* NotificationRepository.swift */; };
+		5709E8812E8956A9007696ED /* NotificationRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E8802E8956A9007696ED /* NotificationRepositoryInterface.swift */; };
+		5709E8822E8956A9007696ED /* NotificationRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E8802E8956A9007696ED /* NotificationRepositoryInterface.swift */; };
+		5709E8842E895703007696ED /* NotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E8832E895703007696ED /* NotificationUseCase.swift */; };
+		5709E8852E895703007696ED /* NotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709E8832E895703007696ED /* NotificationUseCase.swift */; };
 		575181B72E4F8F7D009B8E8C /* WKWebView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575181B62E4F8F7D009B8E8C /* WKWebView++Extension.swift */; };
 		575181B82E4F8F7D009B8E8C /* WKWebView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575181B62E4F8F7D009B8E8C /* WKWebView++Extension.swift */; };
+		576E35E12E808FD400F90262 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E02E808FD400F90262 /* FirebaseAnalytics */; };
+		576E35E32E808FD400F90262 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E22E808FD400F90262 /* FirebaseMessaging */; };
+		576E35E52E808FE100F90262 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E42E808FE100F90262 /* FirebaseAnalytics */; };
+		576E35E72E808FE100F90262 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 576E35E62E808FE100F90262 /* FirebaseMessaging */; };
+		576E35E92E8090C800F90262 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576E35E82E8090C800F90262 /* GoogleService-Info.plist */; };
+		576E35EA2E8090C800F90262 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576E35E82E8090C800F90262 /* GoogleService-Info.plist */; };
 		57AABB5D2E50AF0900659128 /* MemeMainMostSharedNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FC4E52E4E46DD008894E7 /* MemeMainMostSharedNestedCell.swift */; };
 		57AABB5E2E50AF1000659128 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FC4E82E4F19B0008894E7 /* UIViewController++Extension.swift */; };
 		AD1AC3102E561E1800D7D1B1 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = AD1AC30F2E561E1800D7D1B1 /* KakaoSDK */; };
@@ -305,7 +319,14 @@
 		2CFAA31A2E365458004E4604 /* CustomFontConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontConvertible.swift; sourceTree = "<group>"; };
 		2CFAA3212E36549D004E4604 /* NSAttributedString++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString++Extension.swift"; sourceTree = "<group>"; };
 		2CFAA3242E3654BC004E4604 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
+		5709E87A2E895492007696ED /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
+		5709E87D2E8955DB007696ED /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
+		5709E8802E8956A9007696ED /* NotificationRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryInterface.swift; sourceTree = "<group>"; };
+		5709E8832E895703007696ED /* NotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCase.swift; sourceTree = "<group>"; };
 		575181B62E4F8F7D009B8E8C /* WKWebView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView++Extension.swift"; sourceTree = "<group>"; };
+		576E35E82E8090C800F90262 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		576E35EB2E8093FD00F90262 /* Meme-dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meme-dev.entitlements"; sourceTree = "<group>"; };
+		576E35EC2E80948300F90262 /* Meme-release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Meme-release.entitlements"; sourceTree = "<group>"; };
 		AD1AC31B2E561F1500D7D1B1 /* KakaoShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoShareManager.swift; sourceTree = "<group>"; };
 		AD1AC31E2E56215400D7D1B1 /* ShareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareData.swift; sourceTree = "<group>"; };
 		AD51945F2E346D1E0069D29B /* WikiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiWebViewController.swift; sourceTree = "<group>"; };
@@ -344,8 +365,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576E35E72E808FE100F90262 /* FirebaseMessaging in Frameworks */,
 				AD1AC31A2E561E5000D7D1B1 /* KakaoSDKShare in Frameworks */,
 				2C5F23F62E3CEF53000AA318 /* MarqueeLabel in Frameworks */,
+				576E35E52E808FE100F90262 /* FirebaseAnalytics in Frameworks */,
 				AD1AC3162E561E5000D7D1B1 /* KakaoSDK in Frameworks */,
 				2CE5526A2E292245004BE9AF /* Kingfisher in Frameworks */,
 				2CE552632E269579004BE9AF /* Moya in Frameworks */,
@@ -358,8 +381,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576E35E32E808FD400F90262 /* FirebaseMessaging in Frameworks */,
 				AD1AC3142E561E1800D7D1B1 /* KakaoSDKShare in Frameworks */,
 				2C5F23F82E3CEF58000AA318 /* MarqueeLabel in Frameworks */,
+				576E35E12E808FD400F90262 /* FirebaseAnalytics in Frameworks */,
 				AD1AC3102E561E1800D7D1B1 /* KakaoSDK in Frameworks */,
 				2CE552682E292240004BE9AF /* Kingfisher in Frameworks */,
 				2CE552652E26957C004BE9AF /* Moya in Frameworks */,
@@ -578,6 +603,8 @@
 		2CE5522B2E268F9E004BE9AF = {
 			isa = PBXGroup;
 			children = (
+				576E35EC2E80948300F90262 /* Meme-release.entitlements */,
+				576E35EB2E8093FD00F90262 /* Meme-dev.entitlements */,
 				2CE552362E268F9E004BE9AF /* Meme */,
 				2CE552352E268F9E004BE9AF /* Products */,
 				2CE5525C2E26953F004BE9AF /* Frameworks */,
@@ -601,6 +628,7 @@
 				2CC399972E2F830500D14084 /* KeyChain */,
 				2CE552592E26928D004BE9AF /* Development.xcconfig */,
 				2CE5525A2E269298004BE9AF /* Release.xcconfig */,
+				576E35E82E8090C800F90262 /* GoogleService-Info.plist */,
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -671,6 +699,17 @@
 				2C3981D82E3B61F7007BDE92 /* UIView++Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5709E8792E895484007696ED /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5709E87A2E895492007696ED /* NotificationAPI.swift */,
+				5709E87D2E8955DB007696ED /* NotificationRepository.swift */,
+				5709E8802E8956A9007696ED /* NotificationRepositoryInterface.swift */,
+				5709E8832E895703007696ED /* NotificationUseCase.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		AD51945E2E346CF80069D29B /* Bridge */ = {
@@ -749,6 +788,7 @@
 		AD848E222E2B559B0003F09F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				5709E8792E895484007696ED /* Notification */,
 				AD848E142E2B45400003F09F /* Error */,
 				AD848E252E2B55CF0003F09F /* APIConfiguration.swift */,
 			);
@@ -956,6 +996,8 @@
 				AD1AC3152E561E5000D7D1B1 /* KakaoSDK */,
 				AD1AC3172E561E5000D7D1B1 /* KakaoSDKCommon */,
 				AD1AC3192E561E5000D7D1B1 /* KakaoSDKShare */,
+				576E35E42E808FE100F90262 /* FirebaseAnalytics */,
+				576E35E62E808FE100F90262 /* FirebaseMessaging */,
 			);
 			productName = Meme;
 			productReference = 2CE552342E268F9E004BE9AF /* Meme-release.app */;
@@ -982,6 +1024,8 @@
 				AD1AC30F2E561E1800D7D1B1 /* KakaoSDK */,
 				AD1AC3112E561E1800D7D1B1 /* KakaoSDKCommon */,
 				AD1AC3132E561E1800D7D1B1 /* KakaoSDKShare */,
+				576E35E02E808FD400F90262 /* FirebaseAnalytics */,
+				576E35E22E808FD400F90262 /* FirebaseMessaging */,
 			);
 			productName = Meme;
 			productReference = 2CE552572E269159004BE9AF /* Meme-dev.app */;
@@ -1017,6 +1061,7 @@
 				2CE552662E29220E004BE9AF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2C5F23F42E3CEF4A000AA318 /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
 				AD1AC30E2E561E1800D7D1B1 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				576E35DF2E808FD400F90262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2CE552352E268F9E004BE9AF /* Products */;
 			projectDirPath = "";
@@ -1034,6 +1079,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE552412E268FA0004BE9AF /* Assets.xcassets in Resources */,
+				576E35EA2E8090C800F90262 /* GoogleService-Info.plist in Resources */,
 				2C5F23EF2E3CE56C000AA318 /* Galmuri7.ttf in Resources */,
 				2CFAA30E2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */,
 				2CFAA3102E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */,
@@ -1048,6 +1094,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE552522E269159004BE9AF /* Assets.xcassets in Resources */,
+				576E35E92E8090C800F90262 /* GoogleService-Info.plist in Resources */,
 				2C5F23F02E3CE56C000AA318 /* Galmuri7.ttf in Resources */,
 				2CFAA30F2E34A8F9004E4604 /* Pretendard-Bold.otf in Resources */,
 				2CFAA3112E34A8F9004E4604 /* Pretendard-SemiBold.otf in Resources */,
@@ -1110,8 +1157,10 @@
 				ADE8E7972E4238CE008F0A24 /* MemeMainCategoryCell.swift in Sources */,
 				2CC399A32E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CAC9F482E48DFBE00D7C1F6 /* MemeCategoryViewController.swift in Sources */,
+				5709E8822E8956A9007696ED /* NotificationRepositoryInterface.swift in Sources */,
 				2C5F24242E3F98CD000AA318 /* APIError.swift in Sources */,
 				2C5F24302E3F99A1000AA318 /* Providable.swift in Sources */,
+				5709E87F2E8955DB007696ED /* NotificationRepository.swift in Sources */,
 				2CAC9F502E4A1FC000D7C1F6 /* CategoryItem.swift in Sources */,
 				2C5F24282E3F990F000AA318 /* MoyaLoggerPlugin.swift in Sources */,
 				2CE552382E268F9E004BE9AF /* AppDelegate.swift in Sources */,
@@ -1121,6 +1170,7 @@
 				2C3981E52E3B757D007BDE92 /* SearchResultView.swift in Sources */,
 				2C3982352E40637E007BDE92 /* MemeSearchEmptyCell.swift in Sources */,
 				2C14ECFB2E437887009B605C /* SearchUseCaseInterface.swift in Sources */,
+				5709E87C2E895492007696ED /* NotificationAPI.swift in Sources */,
 				AD1AC3202E56215400D7D1B1 /* ShareData.swift in Sources */,
 				2CFAA3182E34B3C8004E4604 /* Pretendard.swift in Sources */,
 				2C3981D92E3B61F7007BDE92 /* UIView++Extension.swift in Sources */,
@@ -1151,6 +1201,7 @@
 				AD9FC4DE2E4A1E07008894E7 /* TopRatedUseCase.swift in Sources */,
 				2CAB73352E5818E00025B648 /* TextEditView.swift in Sources */,
 				AD848E482E2C9D1D0003F09F /* MemeMainViewModel.swift in Sources */,
+				5709E8842E895703007696ED /* NotificationUseCase.swift in Sources */,
 				ADE8E7A02E438AD4008F0A24 /* MemeMainPageControlFooterView.swift in Sources */,
 				2C1B781C2E57592300E6C1B3 /* UserTextView.swift in Sources */,
 				ADE8E7892E4225E3008F0A24 /* MemeMainViewController.swift in Sources */,
@@ -1182,6 +1233,7 @@
 				2CFAA3232E36549D004E4604 /* NSAttributedString++Extension.swift in Sources */,
 				ADE8E7992E423EC6008F0A24 /* MemeMainTopRatedCell.swift in Sources */,
 				ADE8E7A52E4393D4008F0A24 /* MemeMainTopRatedHeaderView.swift in Sources */,
+				5709E8812E8956A9007696ED /* NotificationRepositoryInterface.swift in Sources */,
 				2CAC9F542E4A32C800D7C1F6 /* SearchCategoryCell.swift in Sources */,
 				2CAC9F4D2E48E12500D7C1F6 /* MemeCategorySection.swift in Sources */,
 				2CC3999D2E2F848800D14084 /* KeyChainStore.swift in Sources */,
@@ -1207,6 +1259,7 @@
 				2C3981DD2E3B6495007BDE92 /* RandomColor.swift in Sources */,
 				2CAC9F442E48C8BF00D7C1F6 /* SearchPage.swift in Sources */,
 				2C1B77FD2E4F252400E6C1B3 /* CategoryRepository.swift in Sources */,
+				5709E87E2E8955DB007696ED /* NotificationRepository.swift in Sources */,
 				2C5F23EC2E37C9E7000AA318 /* Thumbnail.swift in Sources */,
 				ADE8E78D2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
 				ADE8E78D2E423447008F0A24 /* MemeMainBannerCell.swift in Sources */,
@@ -1227,6 +1280,7 @@
 				2CC399A22E2F85AB00D14084 /* KeyChainError.swift in Sources */,
 				2CE5524E2E269159004BE9AF /* AppDelegate.swift in Sources */,
 				2C14ED062E438E9A009B605C /* DebounceTextField.swift in Sources */,
+				5709E87B2E895492007696ED /* NotificationAPI.swift in Sources */,
 				575181B82E4F8F7D009B8E8C /* WKWebView++Extension.swift in Sources */,
 				2C5EB0982E3FA52900D37F94 /* MemeSearchSection.swift in Sources */,
 				AD5194602E346D1E0069D29B /* WikiWebViewController.swift in Sources */,
@@ -1271,6 +1325,7 @@
 				AD1AC31D2E561F1500D7D1B1 /* KakaoShareManager.swift in Sources */,
 				2C14ECF42E43774B009B605C /* SearchReposioryInterface.swift in Sources */,
 				AD848E172E2B49620003F09F /* ErrorResponse.swift in Sources */,
+				5709E8852E895703007696ED /* NotificationUseCase.swift in Sources */,
 				2CE552742E2B6EEA004BE9AF /* Logger.swift in Sources */,
 				2C3981D42E3B5EA8007BDE92 /* ThumbnailType.swift in Sources */,
 			);
@@ -1417,6 +1472,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-release.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1438,7 +1494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wiki.meme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1459,6 +1515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-release.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1480,7 +1537,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wiki.meme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1501,6 +1558,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-dev.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1519,7 +1577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wiki.meme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1540,6 +1598,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Meme-dev.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1558,7 +1617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wiki.meme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1638,6 +1697,14 @@
 				minimumVersion = 8.5.0;
 			};
 		};
+		576E35DF2E808FD400F90262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.3.0;
+			};
+		};
 		AD1AC30E2E561E1800D7D1B1 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -1688,6 +1755,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2CE552662E29220E004BE9AF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		576E35E02E808FD400F90262 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E35DF2E808FD400F90262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		576E35E22E808FD400F90262 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E35DF2E808FD400F90262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		576E35E42E808FE100F90262 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E35DF2E808FD400F90262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		576E35E62E808FE100F90262 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E35DF2E808FD400F90262 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		AD1AC30F2E561E1800D7D1B1 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
