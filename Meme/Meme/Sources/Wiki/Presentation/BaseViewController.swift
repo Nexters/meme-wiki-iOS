@@ -16,6 +16,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         configureUI()
         bind()
+        configureGesture()
     }
     
     func configureUI() {
@@ -24,5 +25,17 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func bind() {
         
+    }
+    
+    @objc func handleBackgroundTap() {
+        view.endEditing(true)
+    }
+}
+
+private extension BaseViewController {
+    func configureGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
 }
