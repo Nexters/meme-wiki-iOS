@@ -15,14 +15,14 @@ final class MemeSearchEmptyCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(resource: .symbolPink)
-        view.backgroundColor = .black
+        view.image = UIImage(resource: .iconNoResults)
+        view.backgroundColor = .clear
         return view
     }()
     
     private let content: UILabel = {
         let label = UILabel()
-        label.attributedText = .customFont(.pretendard(.body(.body1)), text: "검색 결과가 없습니다.\n다시입력해주세요")
+        label.attributedText = .customFont(.pretendard(.body(.body1)), text: "검색 결과가 없습니다.\n다시 입력해주세요")
         label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = CustomColor.gray(.gray5).color

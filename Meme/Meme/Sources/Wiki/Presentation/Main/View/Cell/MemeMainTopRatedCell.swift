@@ -87,6 +87,8 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
         rateLabel.layer.masksToBounds = true
         
         titleLabel = UILabel()
+        titleLabel.textAlignment = .left
+        titleLabel.lineBreakMode = .byTruncatingTail
         
         imageView.addSubview(gradientView)
         contentView.addSubview(imageView)
@@ -116,8 +118,9 @@ final class MemeMainTopRatedCell: UICollectionViewCell {
             textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             textView.heightAnchor.constraint(equalToConstant: 36),
-            titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 136),
             titleLabel.centerXAnchor.constraint(equalTo: textView.centerXAnchor),
+            titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: textView.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: textView.trailingAnchor, constant: 16),
             titleLabel.centerYAnchor.constraint(equalTo: textView.centerYAnchor)
         ])
     }
