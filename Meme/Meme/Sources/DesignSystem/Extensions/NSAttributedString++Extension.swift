@@ -30,7 +30,9 @@ extension NSAttributedString {
     /// Pretendard와 Galmuri에는 이모지 글리프가 없다. 문자열 전체에 그 폰트를 지정하면
     /// 이모지 자리가 빈 네모로 그려지므로, 이모지 구간만 시스템 이모지 폰트로 덮어쓴다.
     private static func applyEmojiFont(to attributedText: NSMutableAttributedString, size: CGFloat) {
-        guard let emojiFont = UIFont(name: "AppleColorEmoji", size: size) else { return }
+        // 이모지 폰트를 못 찾더라도 시스템 폰트로 대체한다. 시스템 폰트는 이모지 글리프가
+        // 없어도 이모지 폰트로 넘겨주므로, 최소한 빈 네모가 그려지는 일은 없다.
+        let emojiFont = UIFont(name: "AppleColorEmoji", size: size) ?? .systemFont(ofSize: size)
 
         var location = 0
         for character in attributedText.string {
