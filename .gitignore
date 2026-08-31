@@ -107,6 +107,9 @@ iOSInjectionProject/
 
 ### XCConfig Path ###
 *.xcconfig
+# BASE_URL만 담고 있어 비밀값이 없다. 없으면 빌드해도 API 호출이 전부 실패하므로 추적한다.
+!Meme/Meme/Development.xcconfig
+!Meme/Meme/Release.xcconfig
 
 ### Firebase ###
 GoogleService-Info.plist

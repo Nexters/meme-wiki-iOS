@@ -17,13 +17,13 @@ extension UIViewController {
     }
     
     func gotoMemeDetail(id: Int) {
-        guard let url = URL(string: "https://meme-wiki.net/meme/\(id)") else { return }
+        guard let url = URL(string: "https://memewiki.app/meme/\(id)") else { return }
         let webVC = WikiWebViewController(url: url)
         navigationController?.pushViewController(webVC, animated: true)
     }
     
     func gotoMemeQuiz() {
-        guard let url = URL(string: "https://meme-wiki.net/") else { return }
+        guard let url = URL(string: "https://memewiki.app/") else { return }
         let webVC = WikiWebViewController(url: url)
         navigationController?.pushViewController(webVC, animated: true)
 	}
